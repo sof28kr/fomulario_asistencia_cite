@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pretty_animated_buttons/configs/pkg_sizes.dart';
+import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
+import 'package:go_router/go_router.dart';
 
 Widget crearFormField(
   titulo,
@@ -20,12 +23,58 @@ Widget crearFormField(
   );
 }
 
-Widget BusquedaDni() {
+Widget autocompletar() {
   return Padding(
-      padding: EdgeInsets.symmetric(vertical: 15),
-      child: Row(
-        children: [Text('data'), Text('data')],
-      ));
+    padding: EdgeInsets.symmetric(vertical: 20),
+    child: PrettyBorderButton(
+      label: '  Autocompletar  ',
+      onPressed: () {},
+      labelStyle: const TextStyle(fontSize: 16),
+      bgColor: Color(0xffC4ACCD),
+      borderColor: Color(0xff6C3082),
+      borderWidth: s5,
+    ),
+  );
 }
 
+class subirFirma extends StatefulWidget {
+  const subirFirma({super.key});
 
+  @override
+  State<subirFirma> createState() => _subirFirmaState();
+}
+
+class _subirFirmaState extends State<subirFirma> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 20),
+      child: PrettyBorderButton(
+        label: '  Ingresar Firma  ',
+        onPressed: () => context.push('/firma'),
+        labelStyle: const TextStyle(fontSize: 16),
+        bgColor: Color(0xffC4ACCD),
+        borderColor: Color(0xff6C3082),
+        borderWidth: s2,
+      ),
+    );
+  }
+}
+
+class appBarPErsonalizado extends StatefulWidget {
+  const appBarPErsonalizado({super.key});
+
+  @override
+  State<appBarPErsonalizado> createState() => _appBarPErsonalizadoState();
+}
+
+class _appBarPErsonalizadoState extends State<appBarPErsonalizado> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('gsdggds'),
+      ),
+    );
+  }
+}

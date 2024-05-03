@@ -1,13 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:go_router/go_router.dart';
-import 'package:fomulario_asistencia_cite/Custom_Widgets/AppColors.dart';
-import 'package:fomulario_asistencia_cite/Custom_Widgets/CustomFoms.dart';
-import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
-import 'package:pretty_animated_buttons/configs/pkg_sizes.dart';
-import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
-import 'package:provider/provider.dart';
+import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
 class FormularioParticipantes extends StatefulWidget {
   const FormularioParticipantes({super.key});
@@ -46,25 +37,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 15),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 140,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/CITEtex-Cusco.png'),
-                                          fit: BoxFit.cover)),
-                                ),
-                              ]),
-                        ),
-                        SizedBox(height: 50),
-
+                        bannerPersonalizado(),
                         //textxfields del formulario
                         Padding(
                           padding: EdgeInsets.symmetric(
@@ -89,10 +62,13 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
 
                               crearFormField(
                                   'DNI', 'Ingrese su Dni', Icon(Icons.badge)),
+                              autocompletar(),
                               crearFormField('Nombre Completo',
                                   'nombres y apellidos', Icon(Icons.person)),
                               crearFormField(
-                                  'DNI', 'Ingrese su Dni', Icon(Icons.badge)),
+                                  'Direccion',
+                                  'La direccion de su residencia',
+                                  Icon(Icons.badge)),
                               crearFormField('Telefono',
                                   'Telefono fijo o celular', Icon(Icons.phone)),
                               crearFormField('Correo Electronico',
@@ -101,6 +77,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                                   'Ruc',
                                   'Ingrese el numero de su RUC',
                                   Icon(Icons.badge)),
+                              subirFirma(),
                               SizedBox(height: 50),
                               PrettyBorderButton(
                                 label: '  Registrar Participacion   ',
@@ -109,7 +86,22 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                                 labelStyle: const TextStyle(fontSize: 20),
                                 bgColor: Color(0xffC4ACCD),
                                 borderColor: Color(0xff6C3082),
-                                borderWidth: s4,
+                                borderWidth: s3,
+                              ),
+                              SizedBox(
+                                height: 100,
+                              ),
+                              PrettySlideUnderlineButton(
+                                label: 'Ver Listado de Participantes',
+                                labelStyle:
+                                    TextStyle(fontSize: 16, color: colores.c3),
+                                onPressed: () {
+                                  context.push('/cards');
+                                },
+                                secondSlideColor: colores.c1,
+                              ),
+                              SizedBox(
+                                height: 50,
                               ),
                               FilledButton(
                                   onPressed: () {

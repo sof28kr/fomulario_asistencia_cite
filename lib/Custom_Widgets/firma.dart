@@ -1,7 +1,5 @@
 import 'dart:typed_data';
 import 'dart:ui';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
@@ -14,43 +12,74 @@ class IngresoFirma extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text("Ingreso de Firma"),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SfSignaturePad(
-                key: keySignaturePad,
-                backgroundColor: Colors.yellow.withOpacity(0.2),
-              ),
-              SizedBox(height: 50),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  ElevatedButton(
+        body: SafeArea(
+      child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            colors: [
+              Color(0xffC4ACCD),
+              Color(0xffF0EAF3),
+            ],
+          )),
+          child: SingleChildScrollView(
+              child: Column(children: [
+            bannerPersonalizado(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 100,
+                ),
+                Text(
+                  'Ingrese su firma',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: 'Lato',
+                      fontSize: 28,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff2A3439)),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                SfSignaturePad(
+                  key: keySignaturePad,
+                  backgroundColor: Colors.white.withOpacity(0.3),
+                ),
+                SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    PrettyBorderButton(
+                      label: 'Guardar',
                       onPressed: () {
                         onSubmit(context);
                         Navigator.pop(context);
                       },
-                      child: const Text('guardar')),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  ElevatedButton(
-                      onPressed: () => onClear(), child: Text('borrar'))
-                ],
-              ),
-              SizedBox(height: 50),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  onPressed: () => context.pop(),
-                  child: Text("Volver")),
-            ],
-          ),
-        ));
+                      labelStyle: const TextStyle(fontSize: 15),
+                      bgColor: Colors.yellow.withOpacity(0.2),
+                      borderColor: Color(0xff6C3082),
+                      borderWidth: s2,
+                    ),
+                    PrettyBorderButton(
+                      label: 'Borrar',
+                      onPressed: () {
+                        onClear();
+                      },
+                      labelStyle: const TextStyle(fontSize: 15),
+                      bgColor: Colors.red.withOpacity(0.2),
+                      borderColor: Color(0xff6C3082),
+                      borderWidth: s2,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 50),
+              ],
+            ),
+          ]))),
+    ));
   }
 
   void onClear() {

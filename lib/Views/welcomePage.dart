@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fomulario_asistencia_cite/Custom_Widgets/AppColors.dart';
-
 import 'package:pretty_animated_buttons/configs/pkg_sizes.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 
@@ -62,18 +61,10 @@ class Welcome extends StatelessWidget {
                     color: colores.c1),
               ),
               SizedBox(height: 50),
-              PrettySlideUnderlineButton(
-                label: 'Crear un nuevo evento ',
-                labelStyle: TextStyle(fontSize: 16, color: colores.c3),
-                onPressed: () {
-                  context.push('/f2');
-                },
-                secondSlideColor: colores.c1,
-              ),
               SizedBox(height: 50),
               PrettyBorderButton(
                 label: '   Registrar Participante   ',
-                onPressed: () => context.push('/ListadoParticipantes'),
+                onPressed: () => context.push('/formularioParticipantes'),
                 labelStyle: const TextStyle(fontSize: 20),
                 bgColor: Color(0xffC4ACCD),
                 borderColor: Color(0xff6C3082),

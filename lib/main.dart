@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fomulario_asistencia_cite/Views/listaParticipantes.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
           builder: (context, state) => Welcome(),
         ),
         GoRoute(
-          path: '/f2',
+          path: '/formularioParticipantes',
           builder: (context, state) => FormularioParticipantes(),
         ),
         GoRoute(
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
           path: '/ListadoParticipantes',
           builder: (context, state) => MyHomePage(title: 'Lista Participantes'),
         ),
+        GoRoute(path: '/cards', builder: (context, state) => CardsScreen())
       ]),
       title: 'Flutter Demo',
       theme: ThemeData(extensions: const [
