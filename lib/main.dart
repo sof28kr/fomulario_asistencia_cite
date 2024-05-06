@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/listaParticipantes.dart';
 import 'package:go_router/go_router.dart';
-import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
+
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
@@ -52,7 +52,9 @@ class MyApp extends StatelessWidget {
             builder: (context, state) =>
                 MyHomePage(title: 'Lista Participantes'),
           ),
-          GoRoute(path: '/cards', builder: (context, state) => CardsScreen())
+          GoRoute(
+              path: '/cards',
+              builder: (context, state) => listadoParticipantes())
         ]),
         title: 'Flutter Demo',
         theme: ThemeData(extensions: const [

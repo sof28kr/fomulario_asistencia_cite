@@ -128,16 +128,6 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                       SizedBox(
                         height: 50,
                       ),
-
-                      FilledButton(
-                          onPressed: () {
-                            //acceso a la clase participantes modelo
-                            final nombre = context.read<ParticipantesModelo>();
-                            // nombre es el objeto generado de la clase
-                            // el objeto generado llama a la clase
-                            nombre.agregar();
-                          },
-                          child: Text('Prueba'))
                     ],
                   ),
                 ),

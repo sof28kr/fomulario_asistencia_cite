@@ -1,81 +1,61 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-const cards = <Map<String, dynamic>>{
-  {'elevation': 0.0, 'label': 'Elevation 0'},
-  {'elevation': 1.0, 'label': 'Elevation 1'},
-  {'elevation': 2.0, 'label': 'Elevation 2'},
-  {'elevation': 3.0, 'label': 'Elevation 3'},
-  {'elevation': 4.0, 'label': 'Elevation 4'},
-  {'elevation': 5.0, 'label': 'Elevation 5'},
-  {'elevation': 6.0, 'label': 'Elevation 6'},
-};
+import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
+import 'package:fomulario_asistencia_cite/Views/Views.dart';
+import 'package:fomulario_asistencia_cite/Custom_Widgets/firma.dart';
 
-class CardsScreen extends StatelessWidget {
-  const CardsScreen({super.key});
+class listadoParticipantes extends StatefulWidget {
+  const listadoParticipantes({super.key});
 
-  static const String name = 'Cards_Screen';
+  @override
+  State<listadoParticipantes> createState() => _listadoParticipantesState();
+}
+
+class _listadoParticipantesState extends State<listadoParticipantes> {
+  //variables a moverse:
 
   @override
   Widget build(BuildContext context) {
+    final colores = Theme.of(context).extension<AppColors>();
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cards Screen'),
-      ),
-      body: const _CardsViewr(),
-    );
-  }
-}
-
-class _CardsViewr extends StatelessWidget {
-  const _CardsViewr();
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          ...cards.map((card) => _CardType3(
-                elevation: card['elevation'],
-                label: card['label'],
-              )),
-          SizedBox(
-            height: 50,
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class _CardType3 extends StatelessWidget {
-  final String label;
-  final double elevation;
-
-  const _CardType3({required this.label, required this.elevation});
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-
-    return Card(
-      color: colors.surfaceVariant,
-      elevation: elevation,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
-        child: Column(
-          children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: IconButton(
-                icon: const Icon(Icons.more_vert_outlined),
-                onPressed: () {},
-              ),
+      body: SafeArea(
+        child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            colors: [
+              Color(0xffC4ACCD),
+              Color(0xffF0EAF3),
+            ],
+          )),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                bannerPersonalizado(),
+                //textxfields del formulario
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Listado de Participantes',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: 'Lato',
+                            fontSize: 28,
+                            fontWeight: FontWeight.w400,
+                            color: colores!.c1),
+                      ),
+                      // Cuerpo de los form fields
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: Text('$label - filled'),
-            )
-          ],
+          ),
         ),
       ),
     );

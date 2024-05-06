@@ -8,7 +8,6 @@ export 'package:fomulario_asistencia_cite/Custom_Widgets/BotonDinamico.dart';
 export 'package:fomulario_asistencia_cite/Custom_Widgets/firma.dart';
 
 export 'package:fomulario_asistencia_cite/Custom_Widgets/CustomFoms.dart';
-export 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 
 export 'package:flutter/material.dart';
 export 'package:fomulario_asistencia_cite/Custom_Widgets/banner.dart';
