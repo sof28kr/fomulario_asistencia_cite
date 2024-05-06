@@ -1,4 +1,5 @@
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
+import 'package:fomulario_asistencia_cite/Custom_Widgets/firma.dart';
 
 class FormularioParticipantes extends StatefulWidget {
   const FormularioParticipantes({super.key});
@@ -12,6 +13,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
   //variables a moverse:
 
   final TextEditingController controllerInputNombre = TextEditingController();
+  String? base64Image;
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +80,17 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                                   'Ingrese el numero de su RUC',
                                   Icon(Icons.badge)),
                               subirFirma(),
+                              if (base64Image != null)
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 16),
+                                  child: Text(
+                                    'Firma codificada en base64: $base64Image',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
                               SizedBox(height: 50),
                               PrettyBorderButton(
                                 label: '  Registrar Participacion   ',
@@ -103,6 +116,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                               SizedBox(
                                 height: 50,
                               ),
+
                               FilledButton(
                                   onPressed: () {
                                     //acceso a la clase participantes modelo

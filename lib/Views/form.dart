@@ -5,7 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 Image img = Image.asset('');
 
 class formulario1 extends StatefulWidget {
-  const formulario1({super.key});
+  const formulario1({super.key, required String base64Image});
 
   @override
   State<formulario1> createState() => _formulario1State();

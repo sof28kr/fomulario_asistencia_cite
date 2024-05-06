@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
 import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
@@ -94,12 +96,13 @@ class IngresoFirma extends StatelessWidget {
       final imageSignature = await image.toByteData(
           format: ImageByteFormat.png); //tipo datos en formato png
 
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (BuildContext context) => formulario1()));
-
       if (imageSignature != null) {
         Uint8List imagenuit = imageSignature.buffer.asUint8List();
-        Image.memory(imagenuit);
+        String base64Image = base64Encode(imagenuit);
+        print('Imagen codificada en base64: $base64Image');
+
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) => FormularioParticipantes()));
 
         // 'uint8List' contiene los bytes de la imagen
       } else {

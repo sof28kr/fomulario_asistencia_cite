@@ -29,7 +29,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: GoRouter(initialLocation: '/inicio', routes: [
-        GoRoute(path: '/add', builder: (context, state) => formulario1()),
+        GoRoute(
+            path: '/add',
+            builder: (context, state) => FormularioParticipantes()),
         GoRoute(
           path: '/inicio',
           builder: (context, state) => Welcome(),
