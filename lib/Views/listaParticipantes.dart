@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:fomulario_asistencia_cite/Custom_Widgets/firma.dart';
@@ -48,6 +47,15 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                             fontSize: 28,
                             fontWeight: FontWeight.w400,
                             color: colores!.c1),
+                      ),
+                      PrettyBorderButton(
+                        label: '  Nuevo Participante   ',
+                        onPressed: () =>
+                            context.push('/formularioParticipantes'),
+                        labelStyle: const TextStyle(fontSize: 20),
+                        bgColor: Color(0xffC4ACCD),
+                        borderColor: Color(0xff6C3082),
+                        borderWidth: s3,
                       ),
                       // Cuerpo de los form fields
                     ],

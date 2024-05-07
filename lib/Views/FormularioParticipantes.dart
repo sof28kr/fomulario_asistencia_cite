@@ -15,7 +15,26 @@ class FormularioParticipantes extends StatefulWidget {
 class _FormularioParticipantesState extends State<FormularioParticipantes> {
   //variables a moverse:
 
-  final TextEditingController controllerInputNombre = TextEditingController();
+  String nombre = '';
+  String dni = '';
+  String telefono = '';
+  String direccion = '';
+  String email = '';
+  String password = '';
+  String RUC = '';
+  String firma = "";
+
+  final TextEditingController controllerInputNombre =
+      TextEditingController(); // Controlador asociado a texto Email donde se escribe
+  final TextEditingController controllerInputDni = TextEditingController();
+  final TextEditingController controllerInputTelefono =
+      TextEditingController(); // Controlador asociado a texto Email donde se escribe
+  final TextEditingController controllerInputDireccion =
+      TextEditingController();
+  final TextEditingController controllerInputEmail =
+      TextEditingController(); // Controlador asociado a texto Email donde se escribe
+  final TextEditingController controllerInputPassword = TextEditingController();
+  final TextEditingController controllerInputRuc = TextEditingController();
 
   bool isBase64String(String str) {
     try {
@@ -66,10 +85,24 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                             color: colores!.c1),
                       ),
                       // Cuerpo de los form fields
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: TextField(
+                          controller: controllerInputDni,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                              hintText: 'DNI',
+                              labelText: 'Ingrese su DNI',
+                              suffixIcon: Icon(Icons.badge),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              )),
+                        ),
+                      ),
 
-                      crearFormField(
-                          'DNI', 'Ingrese su Dni', Icon(Icons.badge)),
                       autocompletar(),
+                      //  aun por implementar
+
                       crearFormField('Nombre Completo', 'nombres y apellidos',
                           Icon(Icons.person)),
                       crearFormField('Direccion',
@@ -108,7 +141,29 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                       SizedBox(height: 50),
                       PrettyBorderButton(
                         label: '  Registrar Participacion   ',
-                        onPressed: () => context.push('/ListadoParticipantes'),
+                        onPressed: () {
+                          context.push('/ListadoParticipantes');
+
+                          //obtencion de valores
+
+                          print('El nombre es:${controllerInputNombre.text}');
+                          print('El DNI es:${controllerInputDni.text}');
+                          print(
+                              'El Telefono es:${controllerInputTelefono.text}');
+                          print(
+                              'La direccion es:${controllerInputDireccion.text}');
+                          print('El correo es:${controllerInputEmail.text}');
+                          print('El ruc es:${controllerInputRuc.text}');
+                          setState(() {
+                            // Necesitamos redibujar para que el campo Text que visualiza el email lo muestre
+                            nombre = controllerInputNombre.text;
+                            dni = controllerInputDni.text;
+                            telefono = controllerInputTelefono.text;
+                            direccion = controllerInputDireccion.text;
+                            email = controllerInputEmail.text;
+                            RUC = controllerInputRuc.text;
+                          });
+                        },
                         labelStyle: const TextStyle(fontSize: 20),
                         bgColor: Color(0xffC4ACCD),
                         borderColor: Color(0xff6C3082),
@@ -128,6 +183,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                       SizedBox(
                         height: 50,
                       ),
+                      _visualizarDatos(),
                     ],
                   ),
                 ),
@@ -136,6 +192,23 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _visualizarDatos() {
+    return Column(
+      children: [
+        Text('Nombre del asistente: $nombre'),
+        Text('Dni del asistente: $dni'),
+        Text('Telefono del asistente: $telefono'),
+        Text('Direccion del asistente: $direccion'),
+        Text('Email del asistente: $email'),
+        Text('Ruc del asistente: $RUC'),
+        Text('Password: $password'),
+        Text('Firma: $firma')
+
+        // mostrar la firma obtenida
+      ],
     );
   }
 }

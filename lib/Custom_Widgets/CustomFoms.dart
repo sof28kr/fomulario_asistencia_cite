@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pretty_animated_buttons/configs/pkg_sizes.dart';
 import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 import 'package:go_router/go_router.dart';
+import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
 Widget crearFormField(
   titulo,
@@ -56,24 +57,6 @@ class _subirFirmaState extends State<subirFirma> {
         bgColor: Color(0xffC4ACCD),
         borderColor: Color(0xff6C3082),
         borderWidth: s2,
-      ),
-    );
-  }
-}
-
-class appBarPErsonalizado extends StatefulWidget {
-  const appBarPErsonalizado({super.key});
-
-  @override
-  State<appBarPErsonalizado> createState() => _appBarPErsonalizadoState();
-}
-
-class _appBarPErsonalizadoState extends State<appBarPErsonalizado> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('gsdggds'),
       ),
     );
   }
