@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
-import 'package:fomulario_asistencia_cite/Custom_Widgets/firma.dart';
 
 class FormularioParticipantes extends StatefulWidget {
   const FormularioParticipantes({super.key});
@@ -196,31 +195,26 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                       ),
 
                       SizedBox(height: 50),
+
                       PrettyBorderButton(
                         label: '  Registrar Participacion   ',
                         onPressed: () {
-                          context.push('/ListadoParticipantes');
-
-                          //obtencion de valores
-
-                          print('El nombre es:${controllerInputNombre.text}');
-                          print('El DNI es:${controllerInputDni.text}');
-                          print(
-                              'El Telefono es:${controllerInputTelefono.text}');
-                          print(
-                              'La direccion es:${controllerInputDireccion.text}');
-                          print('El correo es:${controllerInputEmail.text}');
-                          print('El ruc es:${controllerInputRuc.text}');
-
-                          setState(() {
-                            // Necesitamos redibujar para que el campo Text que visualiza el email lo muestre
-                            nombre = controllerInputNombre.text;
-                            dni = controllerInputDni.text;
-                            telefono = controllerInputTelefono.text;
-                            direccion = controllerInputDireccion.text;
-                            email = controllerInputEmail.text;
-                            RUC = controllerInputRuc.text;
-                          });
+                          context
+                              .read<ProviderParticipantes>()
+                              .changeParticipantes(
+                                  newdni: controllerInputDni.text,
+                                  newnombre: controllerInputNombre.text,
+                                  newtelefono: controllerInputTelefono.text,
+                                  newdireccion: controllerInputDireccion.text,
+                                  newemail: controllerInputEmail.text,
+                                  newRUC: controllerInputRuc.text);
+                          controllerInputDni.clear();
+                          controllerInputNombre.clear();
+                          controllerInputTelefono.clear();
+                          controllerInputDireccion.clear();
+                          controllerInputEmail.clear();
+                          controllerInputRuc.clear();
+                          context.push('/cards');
                         },
                         labelStyle: const TextStyle(fontSize: 20),
                         bgColor: Color(0xffC4ACCD),
@@ -241,7 +235,6 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                       const SizedBox(
                         height: 50,
                       ),
-                      _visualizarDatos(),
                     ],
                   ),
                 ),
@@ -250,22 +243,6 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _visualizarDatos() {
-    return Column(
-      children: [
-        Text(context.watch<ProviderParticipantes>().dni),
-        Text(context.watch<ProviderParticipantes>().nombre),
-        Text(context.watch<ProviderParticipantes>().telefono),
-        Text(context.watch<ProviderParticipantes>().direccion),
-        Text(context.watch<ProviderParticipantes>().email),
-        Text(context.watch<ProviderParticipantes>().RUC),
-        Text(context.watch<ProviderFirma>().firmaString),
-
-        // mostrar la firma obtenida
-      ],
     );
   }
 }

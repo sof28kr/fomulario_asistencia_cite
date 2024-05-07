@@ -9,12 +9,12 @@ class ProviderParticipantes extends ChangeNotifier {
   String RUC;
 
   ProviderParticipantes({
-    this.dni = "",
-    this.nombre = "",
-    this.telefono = "",
-    this.direccion = "",
-    this.email = "",
-    this.RUC = "",
+    this.dni = "1",
+    this.nombre = "1",
+    this.telefono = "1",
+    this.direccion = "1",
+    this.email = "1",
+    this.RUC = "1",
   });
 
   void changeParticipantes({

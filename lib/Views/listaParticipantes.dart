@@ -1,7 +1,6 @@
-import 'dart:convert';
+import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
-import 'package:fomulario_asistencia_cite/Custom_Widgets/firma.dart';
 
 class listadoParticipantes extends StatefulWidget {
   const listadoParticipantes({super.key});
@@ -48,6 +47,13 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                             fontWeight: FontWeight.w400,
                             color: colores!.c1),
                       ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      _visualizarDatos(),
+                      SizedBox(
+                        height: 50,
+                      ),
                       PrettyBorderButton(
                         label: '  Nuevo Participante   ',
                         onPressed: () =>
@@ -66,6 +72,23 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _visualizarDatos() {
+    return Column(
+      children: [
+        Text('visualizando'),
+        Text(context.watch<ProviderParticipantes>().dni),
+        Text(context.watch<ProviderParticipantes>().nombre),
+        Text(context.watch<ProviderParticipantes>().telefono),
+        Text(context.watch<ProviderParticipantes>().direccion),
+        Text(context.watch<ProviderParticipantes>().email),
+        Text(context.watch<ProviderParticipantes>().RUC),
+        Text(context.watch<ProviderFirma>().firmaString),
+
+        // mostrar la firma obtenida
+      ],
     );
   }
 }
