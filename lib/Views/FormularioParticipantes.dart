@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:fomulario_asistencia_cite/Custom_Widgets/firma.dart';
@@ -20,20 +21,18 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
   String telefono = '';
   String direccion = '';
   String email = '';
-  String password = '';
   String RUC = '';
   String firma = "";
 
+  final TextEditingController controllerInputDni = TextEditingController();
   final TextEditingController controllerInputNombre =
       TextEditingController(); // Controlador asociado a texto Email donde se escribe
-  final TextEditingController controllerInputDni = TextEditingController();
   final TextEditingController controllerInputTelefono =
       TextEditingController(); // Controlador asociado a texto Email donde se escribe
   final TextEditingController controllerInputDireccion =
       TextEditingController();
   final TextEditingController controllerInputEmail =
       TextEditingController(); // Controlador asociado a texto Email donde se escribe
-  final TextEditingController controllerInputPassword = TextEditingController();
   final TextEditingController controllerInputRuc = TextEditingController();
 
   bool isBase64String(String str) {
@@ -89,7 +88,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                         padding: EdgeInsets.symmetric(vertical: 15),
                         child: TextField(
                           controller: controllerInputDni,
-                          keyboardType: TextInputType.name,
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               hintText: 'DNI',
                               labelText: 'Ingrese su DNI',
@@ -99,20 +98,78 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                               )),
                         ),
                       ),
-
                       autocompletar(),
-                      //  aun por implementar
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: TextField(
+                          controller: controllerInputNombre,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                              hintText: 'Nombre Completo',
+                              labelText: 'nombres y apellidos',
+                              suffixIcon: Icon(Icons.badge),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              )),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: TextField(
+                          controller: controllerInputTelefono,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                              hintText: 'Telefono',
+                              labelText: 'Telefono fijo o celular',
+                              suffixIcon: Icon(Icons.phone),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              )),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: TextField(
+                          controller: controllerInputDireccion,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                              hintText: 'Direccion',
+                              labelText: 'La direccion de su residencia',
+                              suffixIcon: Icon(Icons.badge),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              )),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: TextField(
+                          controller: controllerInputEmail,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                              hintText: 'Correo Electronico',
+                              labelText: 'xyz@gmail.com',
+                              suffixIcon: Icon(Icons.mail),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              )),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: TextField(
+                          controller: controllerInputRuc,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                              hintText: 'Ruc',
+                              labelText: 'Ingrese el numero de su RUC',
+                              suffixIcon: Icon(Icons.badge),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              )),
+                        ),
+                      ),
 
-                      crearFormField('Nombre Completo', 'nombres y apellidos',
-                          Icon(Icons.person)),
-                      crearFormField('Direccion',
-                          'La direccion de su residencia', Icon(Icons.badge)),
-                      crearFormField('Telefono', 'Telefono fijo o celular',
-                          Icon(Icons.phone)),
-                      crearFormField('Correo Electronico', 'xyz@gmail.com',
-                          Icon(Icons.mail)),
-                      crearFormField('Ruc', 'Ingrese el numero de su RUC',
-                          Icon(Icons.badge)),
                       subirFirma(),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 16),
@@ -154,6 +211,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                               'La direccion es:${controllerInputDireccion.text}');
                           print('El correo es:${controllerInputEmail.text}');
                           print('El ruc es:${controllerInputRuc.text}');
+
                           setState(() {
                             // Necesitamos redibujar para que el campo Text que visualiza el email lo muestre
                             nombre = controllerInputNombre.text;
@@ -169,7 +227,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                         borderColor: Color(0xff6C3082),
                         borderWidth: s3,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 100,
                       ),
                       PrettySlideUnderlineButton(
@@ -180,7 +238,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                         },
                         secondSlideColor: colores.c1,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 50,
                       ),
                       _visualizarDatos(),
@@ -198,14 +256,13 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
   Widget _visualizarDatos() {
     return Column(
       children: [
-        Text('Nombre del asistente: $nombre'),
-        Text('Dni del asistente: $dni'),
-        Text('Telefono del asistente: $telefono'),
-        Text('Direccion del asistente: $direccion'),
-        Text('Email del asistente: $email'),
-        Text('Ruc del asistente: $RUC'),
-        Text('Password: $password'),
-        Text('Firma: $firma')
+        Text(context.watch<ProviderParticipantes>().dni),
+        Text(context.watch<ProviderParticipantes>().nombre),
+        Text(context.watch<ProviderParticipantes>().telefono),
+        Text(context.watch<ProviderParticipantes>().direccion),
+        Text(context.watch<ProviderParticipantes>().email),
+        Text(context.watch<ProviderParticipantes>().RUC),
+        Text(context.watch<ProviderFirma>().firmaString),
 
         // mostrar la firma obtenida
       ],

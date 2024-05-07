@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/listaParticipantes.dart';
 import 'package:go_router/go_router.dart';
@@ -29,7 +30,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => ProviderFirma())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => ProviderFirma()),
+        ChangeNotifierProvider(create: (context) => ProviderParticipantes())
+      ],
       child: MaterialApp.router(
         routerConfig: GoRouter(initialLocation: '/inicio', routes: [
           GoRoute(
