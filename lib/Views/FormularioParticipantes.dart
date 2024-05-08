@@ -231,6 +231,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                           controllerInputDireccion.clear();
                           controllerInputEmail.clear();
                           controllerInputRuc.clear();
+                          context.read<ProviderFirma>().resetFirmaString();
 
                           context.push('/listaParticipantes');
                         },

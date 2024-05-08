@@ -11,4 +11,10 @@ class ProviderFirma extends ChangeNotifier {
     firmaString = newFirmaString;
     notifyListeners();
   }
+
+  void resetFirmaString() {
+    firmaString =
+        'no hay firma'; // Puedes cambiar esto por '' si prefieres que esté completamente en blanco
+    notifyListeners();
+  }
 }
