@@ -80,6 +80,9 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                                     subtitle: Text(
                                         participante['DNI'].toString() ??
                                             'No registro Dni'),
+                                    trailing: Text(
+                                        participante['created_at'].toString() ??
+                                            'No hay fecha registrada'),
                                   );
                                 });
                           }),
@@ -88,7 +91,7 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                         height: 50,
                       ),
 
-                      _visualizarDatos(),
+                      //_visualizarDatos(),
                       SizedBox(
                         height: 50,
                       ),
@@ -113,23 +116,23 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
     );
   }
 
-  Widget _visualizarDatos() {
-    final providerParticipantes = context.read<ProviderParticipantes>();
-    final providerFirma = context.read<ProviderFirma>();
+  //Widget _visualizarDatos() {
+  //final providerParticipantes = context.read<ProviderParticipantes>();
+  //final providerFirma = context.read<ProviderFirma>();
 
-    return Column(
-      children: [
-        Text('visualizando'),
-        Text(context.watch<ProviderParticipantes>().dni),
-        Text(context.watch<ProviderParticipantes>().nombre),
-        Text(context.watch<ProviderParticipantes>().telefono),
-        Text(context.watch<ProviderParticipantes>().direccion),
-        Text(context.watch<ProviderParticipantes>().email),
-        Text(context.watch<ProviderParticipantes>().RUC),
-        Text(context.watch<ProviderFirma>().firmaString),
+  //return Column(
+  //children: [
+  //Text('visualizando'),
+  //Text(context.watch<ProviderParticipantes>().dni),
+  //Text(context.watch<ProviderParticipantes>().nombre),
+  //Text(context.watch<ProviderParticipantes>().telefono),
+  //Text(context.watch<ProviderParticipantes>().direccion),
+  //Text(context.watch<ProviderParticipantes>().email),
+  //Text(context.watch<ProviderParticipantes>().RUC),
+  //Text(context.watch<ProviderFirma>().firmaString),
 
-        // mostrar la firma obtenida
-      ],
-    );
-  }
+  // mostrar la firma obtenida
+  //],
+  //);
+  //}
 }
