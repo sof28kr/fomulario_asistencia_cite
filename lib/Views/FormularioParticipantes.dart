@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class FormularioParticipantes extends StatefulWidget {
   const FormularioParticipantes({super.key});
@@ -198,7 +199,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
 
                       PrettyBorderButton(
                         label: '  Registrar Participacion   ',
-                        onPressed: () {
+                        onPressed: () async {
                           context
                               .read<ProviderParticipantes>()
                               .changeParticipantes(
@@ -208,13 +209,19 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                                   newdireccion: controllerInputDireccion.text,
                                   newemail: controllerInputEmail.text,
                                   newRUC: controllerInputRuc.text);
+
+                          await Supabase.instance.client
+                              .from("neoParticipantes")
+                              .insert({'DNI': controllerInputDni.text});
+
                           controllerInputDni.clear();
                           controllerInputNombre.clear();
                           controllerInputTelefono.clear();
                           controllerInputDireccion.clear();
                           controllerInputEmail.clear();
                           controllerInputRuc.clear();
-                          context.push('/cards');
+
+                          context.push('/listaParticipantes');
                         },
                         labelStyle: const TextStyle(fontSize: 20),
                         bgColor: Color(0xffC4ACCD),
