@@ -1,6 +1,7 @@
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class listadoParticipantes extends StatefulWidget {
   const listadoParticipantes({super.key});
@@ -11,6 +12,10 @@ class listadoParticipantes extends StatefulWidget {
 
 class _listadoParticipantesState extends State<listadoParticipantes> {
   //variables a moverse:
+
+  final participantesStream = Supabase.instance.client
+      .from('neoParticipantes')
+      .stream(primaryKey: ['id']);
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +55,39 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                       SizedBox(
                         height: 50,
                       ),
+
+                      StreamBuilder<List<Map<String, dynamic>>>(
+                          stream: participantesStream,
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                            final Participantes = snapshot.data!;
+
+                            return ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: Participantes.length,
+                                itemBuilder: (context, index) {
+                                  final participante = Participantes[index];
+                                  final participanteId =
+                                      participante['id'].toString();
+
+                                  return ListTile(
+                                    title: Text(participante['nombre'] ??
+                                        'No registro nombre'),
+                                    subtitle: Text(
+                                        participante['DNI'].toString() ??
+                                            'No registro Dni'),
+                                  );
+                                });
+                          }),
+
+                      SizedBox(
+                        height: 50,
+                      ),
+
                       _visualizarDatos(),
                       SizedBox(
                         height: 50,
@@ -76,6 +114,9 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
   }
 
   Widget _visualizarDatos() {
+    final providerParticipantes = context.read<ProviderParticipantes>();
+    final providerFirma = context.read<ProviderFirma>();
+
     return Column(
       children: [
         Text('visualizando'),

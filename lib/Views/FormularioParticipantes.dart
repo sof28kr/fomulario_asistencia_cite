@@ -200,6 +200,9 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                       PrettyBorderButton(
                         label: '  Registrar Participacion   ',
                         onPressed: () async {
+                          final firmaString =
+                              context.read<ProviderFirma>().firmaString;
+
                           context
                               .read<ProviderParticipantes>()
                               .changeParticipantes(
@@ -212,7 +215,15 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
 
                           await Supabase.instance.client
                               .from("neoParticipantes")
-                              .insert({'DNI': controllerInputDni.text});
+                              .insert({
+                            'DNI': controllerInputDni.text,
+                            'nombre': controllerInputNombre.text,
+                            'direccion': controllerInputDireccion.text,
+                            'telefono': controllerInputTelefono.text,
+                            'correo': controllerInputEmail.text,
+                            'ruc': controllerInputRuc.text,
+                            'firma': context.read<ProviderFirma>().firmaString,
+                          });
 
                           controllerInputDni.clear();
                           controllerInputNombre.clear();
@@ -235,7 +246,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                         label: 'Ver Listado de Participantes',
                         labelStyle: TextStyle(fontSize: 16, color: colores.c3),
                         onPressed: () {
-                          context.push('/cards');
+                          context.push('/listaParticipantes');
                         },
                         secondSlideColor: colores.c1,
                       ),
