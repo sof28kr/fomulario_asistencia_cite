@@ -82,9 +82,18 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                                       subtitle: Text(
                                           participante['DNI'].toString() ??
                                               'No registro Dni'),
-                                      trailing: Text(participante['created_at']
-                                              .toString() ??
-                                          'No hay fecha registrada'),
+                                      //trailing: Text(participante['created_at']
+                                      //.toString() ??
+                                      //'No hay fecha registrada'),
+
+                                      trailing: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(Icons.edit)),
+                                        ],
+                                      ),
                                     ),
                                   );
                                 });

@@ -5,15 +5,14 @@ import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class FormularioParticipantes extends StatefulWidget {
-  const FormularioParticipantes({super.key});
+class EditarParticipantes extends StatefulWidget {
+  const EditarParticipantes({super.key});
 
   @override
-  State<FormularioParticipantes> createState() =>
-      _FormularioParticipantesState();
+  State<EditarParticipantes> createState() => _EditarParticipantesState();
 }
 
-class _FormularioParticipantesState extends State<FormularioParticipantes> {
+class _EditarParticipantesState extends State<EditarParticipantes> {
   //variables a moverse:
 
   String nombre = '';
@@ -75,7 +74,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Ingreso de Datos del Participante',
+                        'Editar Datos del Participante',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontFamily: 'Lato',
@@ -198,7 +197,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                       SizedBox(height: 50),
 
                       PrettyBorderButton(
-                        label: '  Registrar Participacion   ',
+                        label: '  Editar Participacion   ',
                         onPressed: () async {
                           final firmaString =
                               context.read<ProviderFirma>().firmaString;
@@ -270,5 +269,12 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
         ),
       ),
     );
+  }
+
+  Future<void> updateParticipante(
+      String participanteId, String updatenombre) async {
+    await supabase.from("neoParticipantes").update({
+      'nombre': updatenombre,
+    }).eq("id", participanteId);
   }
 }
