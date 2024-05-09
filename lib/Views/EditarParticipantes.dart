@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
+import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -13,6 +14,7 @@ class EditarParticipantes extends StatefulWidget {
 }
 
 class _EditarParticipantesState extends State<EditarParticipantes> {
+  final supabase = Supabase.instance.client;
   //variables a moverse:
 
   String nombre = '';
@@ -25,7 +27,9 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
 
   final TextEditingController controllerInputDni = TextEditingController();
   final TextEditingController controllerInputNombre =
-      TextEditingController(); // Controlador asociado a texto Email donde se escribe
+      TextEditingController(text: 'working on this');
+  //inicializa el valor del controler
+  // Controlador asociado a texto Email donde se escribe
   final TextEditingController controllerInputTelefono =
       TextEditingController(); // Controlador asociado a texto Email donde se escribe
   final TextEditingController controllerInputDireccion =
@@ -73,6 +77,10 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Text(context
+                          .watch<providerParticipanteId>()
+                          .provParticipanteId
+                          .toString()),
                       Text(
                         'Editar Datos del Participante',
                         textAlign: TextAlign.center,
@@ -100,7 +108,7 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                       autocompletar(),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
+                        child: TextFormField(
                           controller: controllerInputNombre,
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
@@ -272,9 +280,27 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
   }
 
   Future<void> updateParticipante(
-      String participanteId, String updatenombre) async {
+    String participanteId,
+    String updatenombre,
+    String updatetelefono,
+    String updatedireccion,
+    String updateemail,
+    String updateruc,
+    String updatefirma,
+  ) async {
     await supabase.from("neoParticipantes").update({
       'nombre': updatenombre,
+      'telefono': updatetelefono,
+      'direccion': updatedireccion,
+      'email': updateemail,
+      'ruc': updateruc,
+      'firma': updatefirma,
     }).eq("id", participanteId);
+  }
+
+  Future<void> eliminarParticipante(
+    String participanteId,
+  ) async {
+    await supabase.from("neoParticipantes").delete().eq("id", participanteId);
   }
 }

@@ -10,3 +10,4 @@ export 'package:go_router/go_router.dart';
 export 'package:pretty_animated_buttons/configs/pkg_sizes.dart';
 export 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 export 'package:provider/provider.dart';
+import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
+import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
+import 'package:fomulario_asistencia_cite/Views/EditarParticipantes.dart';
 import 'package:fomulario_asistencia_cite/Views/listaParticipantes.dart';
 import 'package:go_router/go_router.dart';
 
@@ -32,7 +34,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => ProviderFirma()),
-        ChangeNotifierProvider(create: (context) => ProviderParticipantes())
+        ChangeNotifierProvider(create: (context) => ProviderParticipantes()),
+        ChangeNotifierProvider(create: (context) => providerParticipanteId()),
       ],
       child: MaterialApp.router(
         routerConfig: GoRouter(initialLocation: '/inicio', routes: [
@@ -50,7 +53,10 @@ class MyApp extends StatelessWidget {
           ),
           GoRoute(
               path: '/listaParticipantes',
-              builder: (context, state) => listadoParticipantes())
+              builder: (context, state) => listadoParticipantes()),
+          GoRoute(
+              path: '/editarParticipantes',
+              builder: (context, state) => EditarParticipantes()),
         ]),
         title: 'Flutter Demo',
         theme: ThemeData(extensions: const [

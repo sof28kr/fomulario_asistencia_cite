@@ -1,5 +1,4 @@
-import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
-import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
+import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -67,16 +66,18 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                             final Participantes = snapshot.data!;
 
                             return ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: Participantes.length,
                                 itemBuilder: (context, index) {
                                   final participante = Participantes[index];
-                                  final participanteId =
-                                      participante['id'].toString();
+                                  var participanteId = participante['id'];
                                   return Card(
                                     child: ListTile(
                                       tileColor: colores.c6,
-                                      onTap: () {},
+                                      onTap: () {
+                                        // hacer click en el listtile
+                                      },
                                       title: Text(participante['nombre'] ??
                                           'No registro nombre'),
                                       subtitle: Text(
@@ -90,8 +91,22 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                context.push(
+                                                    '/editarParticipantes');
+                                                participanteId =
+                                                    participante['id'];
+                                                context
+                                                    .read<
+                                                        providerParticipanteId>()
+                                                    .changeProvParticipanteId(
+                                                        newprovParticipanteId:
+                                                            participanteId);
+                                              },
                                               icon: Icon(Icons.edit)),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(Icons.delete))
                                         ],
                                       ),
                                     ),
