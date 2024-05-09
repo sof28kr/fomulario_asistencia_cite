@@ -73,16 +73,19 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                                   final participante = Participantes[index];
                                   final participanteId =
                                       participante['id'].toString();
-
-                                  return ListTile(
-                                    title: Text(participante['nombre'] ??
-                                        'No registro nombre'),
-                                    subtitle: Text(
-                                        participante['DNI'].toString() ??
-                                            'No registro Dni'),
-                                    trailing: Text(
-                                        participante['created_at'].toString() ??
-                                            'No hay fecha registrada'),
+                                  return Card(
+                                    child: ListTile(
+                                      tileColor: colores.c6,
+                                      onTap: () {},
+                                      title: Text(participante['nombre'] ??
+                                          'No registro nombre'),
+                                      subtitle: Text(
+                                          participante['DNI'].toString() ??
+                                              'No registro Dni'),
+                                      trailing: Text(participante['created_at']
+                                              .toString() ??
+                                          'No hay fecha registrada'),
+                                    ),
                                   );
                                 });
                           }),

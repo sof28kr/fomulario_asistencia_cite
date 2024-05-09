@@ -213,15 +213,22 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                                   newemail: controllerInputEmail.text,
                                   newRUC: controllerInputRuc.text);
 
+                          int dniInt =
+                              int.tryParse(controllerInputDni.text) ?? 0;
+                          int telefonoInt =
+                              int.tryParse(controllerInputTelefono.text) ?? 0;
+                          int rucInt =
+                              int.tryParse(controllerInputRuc.text) ?? 0;
+
                           await Supabase.instance.client
                               .from("neoParticipantes")
                               .insert({
-                            'DNI': controllerInputDni.text,
+                            'DNI': dniInt,
                             'nombre': controllerInputNombre.text,
                             'direccion': controllerInputDireccion.text,
-                            'telefono': controllerInputTelefono.text,
+                            'telefono': telefonoInt,
                             'correo': controllerInputEmail.text,
-                            'ruc': controllerInputRuc.text,
+                            'ruc': rucInt,
                             'firma': context.read<ProviderFirma>().firmaString,
                           });
 
