@@ -17,6 +17,10 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
   final supabase = Supabase.instance.client;
   //variables a moverse:
 
+  final participantesStream = Supabase.instance.client
+      .from('neoParticipantes')
+      .stream(primaryKey: ['id']);
+
   String nombre = '';
   String dni = '';
   String telefono = '';
@@ -50,9 +54,12 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
   @override
   Widget build(BuildContext context) {
     final colores = Theme.of(context).extension<AppColors>();
+    var indexParticipante =
+        context.watch<providerParticipanteId>().provParticipanteId;
     // context es como un lago de valores en el modelo
     //value es un valor que podemos jalar
     //el tipo de consumer es segun el modelo que tenemos
+    //en este caos el consumer esta como <providerParticipanteId>
     return Scaffold(
       //luego el scafold es que escucha y recive los cambios
 
@@ -90,7 +97,6 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                             fontWeight: FontWeight.w400,
                             color: colores!.c1),
                       ),
-                      // Cuerpo de los form fields
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
                         child: TextField(
@@ -176,7 +182,6 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                               )),
                         ),
                       ),
-
                       subirFirma(),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 16),
@@ -201,9 +206,7 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                                 ),
                               ),
                       ),
-
                       SizedBox(height: 50),
-
                       PrettyBorderButton(
                         label: '  Editar Participacion   ',
                         onPressed: () async {
@@ -220,24 +223,16 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                                   newemail: controllerInputEmail.text,
                                   newRUC: controllerInputRuc.text);
 
-                          int dniInt =
-                              int.tryParse(controllerInputDni.text) ?? 0;
-                          int telefonoInt =
-                              int.tryParse(controllerInputTelefono.text) ?? 0;
-                          int rucInt =
-                              int.tryParse(controllerInputRuc.text) ?? 0;
-
-                          await Supabase.instance.client
-                              .from("neoParticipantes")
-                              .insert({
-                            'DNI': dniInt,
-                            'nombre': controllerInputNombre.text,
-                            'direccion': controllerInputDireccion.text,
-                            'telefono': telefonoInt,
-                            'correo': controllerInputEmail.text,
-                            'ruc': rucInt,
-                            'firma': context.read<ProviderFirma>().firmaString,
-                          });
+                          await updateParticipante(
+                            indexParticipante,
+                            controllerInputDni.text,
+                            controllerInputNombre.text,
+                            controllerInputTelefono.text,
+                            controllerInputDireccion.text,
+                            controllerInputEmail.text,
+                            controllerInputRuc.text,
+                            context.read<ProviderFirma>().firmaString,
+                          );
 
                           controllerInputDni.clear();
                           controllerInputNombre.clear();
@@ -280,7 +275,8 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
   }
 
   Future<void> updateParticipante(
-    String participanteId,
+    int participanteId,
+    String updatedni,
     String updatenombre,
     String updatetelefono,
     String updatedireccion,
@@ -288,12 +284,17 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
     String updateruc,
     String updatefirma,
   ) async {
+    var telefono =
+        updatetelefono.isNotEmpty ? int.tryParse(updatetelefono) : null;
+    var ruc = updateruc.isNotEmpty ? int.tryParse(updateruc) : null;
+    var dniverif = updatedni.isNotEmpty ? int.tryParse(updatedni) : null;
     await supabase.from("neoParticipantes").update({
+      'DNI': dniverif,
       'nombre': updatenombre,
-      'telefono': updatetelefono,
+      'telefono': telefono,
       'direccion': updatedireccion,
-      'email': updateemail,
-      'ruc': updateruc,
+      'correo': updateemail,
+      'ruc': ruc,
       'firma': updatefirma,
     }).eq("id", participanteId);
   }

@@ -131,6 +131,9 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                         borderColor: Color(0xff6C3082),
                         borderWidth: s3,
                       ),
+                      SizedBox(
+                        height: 50,
+                      ),
                       // Cuerpo de los form fields
                     ],
                   ),
