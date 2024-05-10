@@ -43,19 +43,34 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
   Widget build(BuildContext context) {
     final identificacion =
         context.watch<providerParticipanteId>().provParticipanteId;
+    final identificacionDNI = context.watch<providerParticipanteId>().provDNIid;
+    final identificacionnombre =
+        context.watch<providerParticipanteId>().provnombreid;
+    final identificaciontelefono =
+        context.watch<providerParticipanteId>().provtelefonoid;
+    final identificaciondireccion =
+        context.watch<providerParticipanteId>().provdireccionid;
+    final identificacioncorreo =
+        context.watch<providerParticipanteId>().provcorreoid;
+    final identificacionruc = context.watch<providerParticipanteId>().provrucid;
 
     // inicializando controladores
 
-    final TextEditingController controllerInputDni = TextEditingController();
+    final TextEditingController controllerInputDni =
+        TextEditingController(text: identificacionDNI.toString());
     final TextEditingController controllerInputNombre =
-        TextEditingController(text: 'working on this');
-    final TextEditingController controllerInputTelefono =
-        TextEditingController(); // Controlador asociado a texto Email donde se escribe
+        TextEditingController(text: identificacionnombre);
+    final TextEditingController controllerInputTelefono = TextEditingController(
+        text: identificaciontelefono
+            .toString()); // Controlador asociado a texto Email donde se escribe
     final TextEditingController controllerInputDireccion =
-        TextEditingController();
-    final TextEditingController controllerInputEmail =
-        TextEditingController(); // Controlador asociado a texto Email donde se escribe
-    final TextEditingController controllerInputRuc = TextEditingController();
+        TextEditingController(text: identificaciondireccion);
+    final TextEditingController controllerInputEmail = TextEditingController(
+        text:
+            identificacioncorreo); // Controlador asociado a texto Email donde se escribe
+    final TextEditingController controllerInputRuc =
+        TextEditingController(text: identificacionruc.toString());
+
     final colores = Theme.of(context).extension<AppColors>();
     var indexParticipante =
         context.watch<providerParticipanteId>().provParticipanteId;
@@ -188,15 +203,16 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                       subirFirma(),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 16),
-                        child: isBase64String(
-                                context.watch<ProviderFirma>().firmaString)
+                        child: isBase64String(context
+                                .watch<providerParticipanteId>()
+                                .provfirmaid)
                             ? Expanded(
                                 child: AspectRatio(
                                   aspectRatio: 2,
                                   child: Image.memory(
                                     base64Decode(context
-                                        .watch<ProviderFirma>()
-                                        .firmaString),
+                                        .watch<providerParticipanteId>()
+                                        .provfirmaid),
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -306,15 +322,5 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
     String participanteId,
   ) async {
     await supabase.from("neoParticipantes").delete().eq("id", participanteId);
-  }
-
-  Future<void> obtenerDatosParticipante(int id) async {
-    final data = await supabase
-        .from('neoParticipantes')
-        .select('name, country_id')
-        .eq('name', 'The Shire')
-        .execute();
-
-    // Aquí puedes manejar 'data', por ejemplo, actualizar tu UI o estado de la aplicación
   }
 }

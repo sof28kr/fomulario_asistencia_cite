@@ -72,6 +72,22 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                                 itemBuilder: (context, index) {
                                   final participante = Participantes[index];
                                   var participanteId = participante['id'];
+                                  var participanteIdnombre =
+                                      participante['nombre'] ?? 'no hay nombre';
+                                  var participanteIdDNI =
+                                      participante['DNI'] ?? 0;
+                                  var participanteIdDireccion =
+                                      participante['direccion'] ??
+                                          'no hya direccion';
+                                  var participanteIdTelefono =
+                                      participante['telefono'] ?? 0;
+                                  var participanteIdCorreo =
+                                      participante['correo'] ?? 'no hay correo';
+                                  var participanteIdRuc =
+                                      participante['ruc'] ?? 0;
+                                  var participanteIdFirma =
+                                      participante['firma'] ?? 'no hay firma';
+
                                   return Card(
                                     child: ListTile(
                                       tileColor: colores.c6,
@@ -96,12 +112,45 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                                                     '/editarParticipantes');
                                                 participanteId =
                                                     participante['id'];
+                                                participanteIdnombre =
+                                                    participante['nombre'] ??
+                                                        'no hay';
+                                                participanteIdDNI =
+                                                    participante['DNI'] ?? 0;
+                                                participanteIdDireccion =
+                                                    participante['direccion'] ??
+                                                        'no hay';
+                                                participanteIdTelefono =
+                                                    participante['telefono'] ??
+                                                        0;
+                                                participanteIdCorreo =
+                                                    participante['correo'] ??
+                                                        'no hay';
+                                                participanteIdRuc =
+                                                    participante['ruc'] ?? 0;
+                                                participanteIdFirma =
+                                                    participante['firma'] ??
+                                                        'no hay';
                                                 context
                                                     .read<
                                                         providerParticipanteId>()
                                                     .changeProvParticipanteId(
                                                         newprovParticipanteId:
-                                                            participanteId);
+                                                            participanteId,
+                                                        newprovDNIid:
+                                                            participanteIdDNI,
+                                                        newprovnombreid:
+                                                            participanteIdnombre,
+                                                        newprovdireccionid:
+                                                            participanteIdDireccion,
+                                                        newprovcorreoid:
+                                                            participanteIdCorreo,
+                                                        newprovfirmaid:
+                                                            participanteIdFirma,
+                                                        newprovrucid:
+                                                            participanteIdRuc,
+                                                        newprovtelefonoid:
+                                                            participanteIdTelefono);
                                               },
                                               icon: Icon(Icons.edit)),
                                           IconButton(
