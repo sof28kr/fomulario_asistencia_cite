@@ -15,6 +15,7 @@ class EditarParticipantes extends StatefulWidget {
 
 class _EditarParticipantesState extends State<EditarParticipantes> {
   final supabase = Supabase.instance.client;
+
   //variables a moverse:
 
   final participantesStream = Supabase.instance.client
@@ -29,19 +30,6 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
   String RUC = '';
   String firma = "";
 
-  final TextEditingController controllerInputDni = TextEditingController();
-  final TextEditingController controllerInputNombre =
-      TextEditingController(text: 'working on this');
-  //inicializa el valor del controler
-  // Controlador asociado a texto Email donde se escribe
-  final TextEditingController controllerInputTelefono =
-      TextEditingController(); // Controlador asociado a texto Email donde se escribe
-  final TextEditingController controllerInputDireccion =
-      TextEditingController();
-  final TextEditingController controllerInputEmail =
-      TextEditingController(); // Controlador asociado a texto Email donde se escribe
-  final TextEditingController controllerInputRuc = TextEditingController();
-
   bool isBase64String(String str) {
     try {
       base64Decode(str);
@@ -53,6 +41,21 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
 
   @override
   Widget build(BuildContext context) {
+    final identificacion =
+        context.watch<providerParticipanteId>().provParticipanteId;
+
+    // inicializando controladores
+
+    final TextEditingController controllerInputDni = TextEditingController();
+    final TextEditingController controllerInputNombre =
+        TextEditingController(text: 'working on this');
+    final TextEditingController controllerInputTelefono =
+        TextEditingController(); // Controlador asociado a texto Email donde se escribe
+    final TextEditingController controllerInputDireccion =
+        TextEditingController();
+    final TextEditingController controllerInputEmail =
+        TextEditingController(); // Controlador asociado a texto Email donde se escribe
+    final TextEditingController controllerInputRuc = TextEditingController();
     final colores = Theme.of(context).extension<AppColors>();
     var indexParticipante =
         context.watch<providerParticipanteId>().provParticipanteId;
@@ -303,5 +306,15 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
     String participanteId,
   ) async {
     await supabase.from("neoParticipantes").delete().eq("id", participanteId);
+  }
+
+  Future<void> obtenerDatosParticipante(int id) async {
+    final data = await supabase
+        .from('neoParticipantes')
+        .select('name, country_id')
+        .eq('name', 'The Shire')
+        .execute();
+
+    // Aquí puedes manejar 'data', por ejemplo, actualizar tu UI o estado de la aplicación
   }
 }
