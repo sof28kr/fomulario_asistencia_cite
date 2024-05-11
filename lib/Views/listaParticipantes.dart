@@ -11,6 +11,7 @@ class listadoParticipantes extends StatefulWidget {
 
 class _listadoParticipantesState extends State<listadoParticipantes> {
   //variables a moverse:
+  final supabase = Supabase.instance.client;
 
   final participantesStream = Supabase.instance.client
       .from('neoParticipantes')
@@ -154,7 +155,45 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                                               },
                                               icon: Icon(Icons.edit)),
                                           IconButton(
-                                              onPressed: () {},
+                                              onPressed: () async {
+                                                // implementar metodo para eliminacion
+
+                                                bool deleteConfirmed =
+                                                    await showDialog(
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                'Eliminar Registro del Participantes'),
+                                                            content: Text(
+                                                                'Seguro que desea eliminar el registro del participante?'),
+                                                            actions: [
+                                                              TextButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context,
+                                                                        false);
+                                                                  },
+                                                                  child: Text(
+                                                                      'Cancelar')),
+                                                              TextButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context,
+                                                                        true);
+                                                                  },
+                                                                  child: Text(
+                                                                      'Eliminar registro')),
+                                                            ],
+                                                          );
+                                                        });
+                                                if (deleteConfirmed) {
+                                                  await eliminarParticipante(
+                                                      participanteId);
+                                                }
+                                              },
                                               icon: Icon(Icons.delete))
                                         ],
                                       ),
@@ -214,4 +253,10 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
   //],
   //);
   //}
+
+  Future<void> eliminarParticipante(
+    int participanteId,
+  ) async {
+    await supabase.from("neoParticipantes").delete().eq("id", participanteId);
+  }
 }

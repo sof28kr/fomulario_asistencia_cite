@@ -34,4 +34,11 @@ class ProviderParticipantes extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void setDni(String newDni) {
+    if (newDni != dni) {
+      dni = newDni;
+      notifyListeners(); // Notifica a los oyentes que el valor ha cambiado
+    }
+  }
 }

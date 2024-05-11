@@ -317,10 +317,4 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
       'firma': updatefirma,
     }).eq("id", participanteId);
   }
-
-  Future<void> eliminarParticipante(
-    String participanteId,
-  ) async {
-    await supabase.from("neoParticipantes").delete().eq("id", participanteId);
-  }
 }

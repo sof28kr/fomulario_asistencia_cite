@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
+import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -14,8 +15,13 @@ class FormularioParticipantes extends StatefulWidget {
 }
 
 class _FormularioParticipantesState extends State<FormularioParticipantes> {
-  //variables a moverse:
+  final supabase = Supabase.instance.client;
 
+  final participantesStream = Supabase.instance.client
+      .from('neoParticipantes')
+      .stream(primaryKey: ['id']);
+
+  //variables a moverse:
   String nombre = '';
   String dni = '';
   String telefono = '';
@@ -98,7 +104,85 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                               )),
                         ),
                       ),
-                      autocompletar(),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                        child: PrettyBorderButton(
+                          label: '  Autocompletar  ',
+                          onPressed: () {
+                            print('working till here');
+                            context
+                                .read<ProviderParticipantes>()
+                                .setDni(controllerInputDni.text);
+
+                            // fin de la funcion autocompletar
+                          },
+                          labelStyle: const TextStyle(fontSize: 16),
+                          bgColor: Color(0xffC4ACCD),
+                          borderColor: Color(0xff6C3082),
+                          borderWidth: s5,
+                        ),
+                      ),
+                      //funcion autocompletar
+                      Consumer<ProviderParticipantes>(
+                        builder: (context, ProviderParticipantes, child) {
+                          return StreamBuilder<List<Map<String, dynamic>>>(
+                            stream: participantesStream,
+                            builder: (context, snapshot) {
+                              if (!snapshot.hasData) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                              final Participantes = snapshot.data!;
+
+                              String newDniaBuscar = ProviderParticipantes.dni;
+                              // Filtra la lista de participantes para obtener solo el que coincida con newDniaBuscar
+                              final participanteEncontrado =
+                                  Participantes.firstWhere(
+                                (participante) =>
+                                    participante['DNI'] == newDniaBuscar,
+                                orElse: () => {
+                                  'id': 0,
+                                  'nombre': '',
+                                  'DNI': '',
+                                  'direccion': '',
+                                  'telefono': '',
+                                  'correo': '',
+                                  'ruc': '',
+                                  'firma': '',
+                                },
+                              );
+
+                              if (participanteEncontrado['id'] == 0 &&
+                                  participanteEncontrado['nombre'] == '') {
+                                // No se encontró ningún participante con el DNI buscado
+                                return const Text(
+                                    'No se encontraron resultados');
+                              }
+
+                              // Mostrar los datos del participante encontrado
+                              return Column(
+                                children: [
+                                  Text('ID: ${participanteEncontrado['id']}'),
+                                  Text(
+                                      'Nombre: ${participanteEncontrado['nombre']}'),
+                                  Text('DNI: ${participanteEncontrado['DNI']}'),
+                                  Text(
+                                      'Dirección: ${participanteEncontrado['direccion']}'),
+                                  Text(
+                                      'Teléfono: ${participanteEncontrado['telefono']}'),
+                                  Text(
+                                      'Correo: ${participanteEncontrado['correo']}'),
+                                  Text('RUC: ${participanteEncontrado['ruc']}'),
+                                  Text(
+                                      'Firma: ${participanteEncontrado['firma']}'),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                      ),
+
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
                         child: TextField(
@@ -271,4 +355,6 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
       ),
     );
   }
+
+  // metodo para hacer el fetch de la data buscada segun el Dni
 }
