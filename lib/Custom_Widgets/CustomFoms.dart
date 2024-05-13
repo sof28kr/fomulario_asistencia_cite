@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:pretty_animated_buttons/configs/pkg_sizes.dart';
-import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
-import 'package:go_router/go_router.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
 Widget crearFormField(
@@ -10,7 +6,7 @@ Widget crearFormField(
   icono,
 ) {
   return Padding(
-    padding: EdgeInsets.symmetric(vertical: 15),
+    padding: const EdgeInsets.symmetric(vertical: 15),
     child: TextField(
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
@@ -26,13 +22,13 @@ Widget crearFormField(
 
 Widget autocompletar() {
   return Padding(
-    padding: EdgeInsets.symmetric(vertical: 20),
+    padding: const EdgeInsets.symmetric(vertical: 20),
     child: PrettyBorderButton(
       label: '  Autocompletar  ',
       onPressed: () {},
       labelStyle: const TextStyle(fontSize: 16),
-      bgColor: Color(0xffC4ACCD),
-      borderColor: Color(0xff6C3082),
+      bgColor: const Color(0xffC4ACCD),
+      borderColor: const Color(0xff6C3082),
       borderWidth: s5,
     ),
   );
@@ -49,13 +45,13 @@ class _subirFirmaState extends State<subirFirma> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: PrettyBorderButton(
         label: '  Ingresar Firma  ',
         onPressed: () => context.push('/firma'),
         labelStyle: const TextStyle(fontSize: 16),
-        bgColor: Color(0xffC4ACCD),
-        borderColor: Color(0xff6C3082),
+        bgColor: const Color(0xffC4ACCD),
+        borderColor: const Color(0xff6C3082),
         borderWidth: s2,
       ),
     );

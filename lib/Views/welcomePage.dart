@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fomulario_asistencia_cite/Custom_Widgets/AppColors.dart';
 import 'package:pretty_animated_buttons/configs/pkg_sizes.dart';
@@ -16,7 +15,7 @@ class Welcome extends StatelessWidget {
         child: Container(
           height: double.infinity,
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
             colors: [
               Color(0xffC4ACCD),
@@ -26,31 +25,31 @@ class Welcome extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
                 child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.info_rounded,
                       size: 40,
                     ),
                     style: ButtonStyle(
-                        iconColor: MaterialStatePropertyAll(colores!.c4)),
+                        iconColor: WidgetStatePropertyAll(colores!.c4)),
                   )
                 ]),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 100),
+                padding: const EdgeInsets.only(top: 100),
                 child: Container(
                   width: 300,
                   height: 50,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('assets/CITEtex-Cusco.png'),
                           fit: BoxFit.cover)),
                 ),
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               Text(
                 'Aplicativo de Registro de Asistencia',
                 textAlign: TextAlign.center,
@@ -60,14 +59,23 @@ class Welcome extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: colores.c1),
               ),
-              SizedBox(height: 50),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
+              const SizedBox(height: 50),
               PrettyBorderButton(
                 label: '   Registrar Participante   ',
                 onPressed: () => context.push('/formularioParticipantes'),
                 labelStyle: const TextStyle(fontSize: 20),
-                bgColor: Color(0xffC4ACCD),
-                borderColor: Color(0xff6C3082),
+                bgColor: const Color(0xffC4ACCD),
+                borderColor: const Color(0xff6C3082),
+                borderWidth: s4,
+              ),
+              SizedBox(height: 50,),
+              PrettyBorderButton(
+                label: '   Eventos   ',
+                onPressed: () => context.push('/formularioEventos'),
+                labelStyle: const TextStyle(fontSize: 20),
+                bgColor: const Color(0xffC4ACCD),
+                borderColor: const Color(0xff6C3082),
                 borderWidth: s4,
               )
             ],

@@ -2,14 +2,14 @@ import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class listadoParticipantes extends StatefulWidget {
-  const listadoParticipantes({super.key});
+class listadoEventos extends StatefulWidget {
+  const listadoEventos({super.key});
 
   @override
-  State<listadoParticipantes> createState() => _listadoParticipantesState();
+  State<listadoEventos> createState() => _listadoEventosState();
 }
 
-class _listadoParticipantesState extends State<listadoParticipantes> {
+class _listadoEventosState extends State<listadoEventos> {
   //variables a moverse:
   final supabase = Supabase.instance.client;
 
@@ -44,7 +44,7 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Listado de Participantes',
+                        'Listado de Eventos',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontFamily: 'Lato',
@@ -211,7 +211,7 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                         height: 50,
                       ),
                       PrettyBorderButton(
-                        label: '  Nuevo Participante   ',
+                        label: '  Nuevo Evento   ',
                         onPressed: () =>
                             context.push('/formularioParticipantes'),
                         labelStyle: const TextStyle(fontSize: 20),

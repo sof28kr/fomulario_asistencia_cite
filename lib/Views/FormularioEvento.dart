@@ -5,15 +5,15 @@ import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class FormularioParticipantes extends StatefulWidget {
-  const FormularioParticipantes({super.key});
+class FormularioEvento extends StatefulWidget {
+  const FormularioEvento({super.key});
 
   @override
-  State<FormularioParticipantes> createState() =>
-      _FormularioParticipantesState();
+  State<FormularioEvento> createState() =>
+      _FormularioEventoState();
 }
 
-class _FormularioParticipantesState extends State<FormularioParticipantes> {
+class _FormularioEventoState extends State<FormularioEvento> {
   final supabase = Supabase.instance.client;
   String firmaSearch = '';
 
@@ -133,7 +133,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Ingreso de Datos del Participante',
+                        'Ingreso de Datos del Evento',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontFamily: 'Lato',
@@ -148,8 +148,8 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                           controller: controllerInputDni,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                              hintText: 'DNI',
-                              labelText: 'Ingrese su DNI',
+                              hintText: 'Tipo de Servicio',
+                              labelText: 'Ingrese el tipo de servicio',
                               suffixIcon: const Icon(Icons.badge),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
@@ -268,31 +268,6 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                             );
                           },
                         ),
-                      ),
-
-                      const subirFirma(),
-                      Container(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        child: isBase64String(
-                                context.watch<ProviderFirma>().firmaString)
-                            ? Expanded(
-                                child: AspectRatio(
-                                  aspectRatio: 2,
-                                  child: Image.memory(
-                                    base64Decode(context
-                                        .watch<ProviderFirma>()
-                                        .firmaString),
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                              )
-                            : const Text(
-                                'No hay firma disponible',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
                       ),
 
                       const SizedBox(height: 50),

@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
+import 'package:fomulario_asistencia_cite/Views/EditarEvento.dart';
 import 'package:fomulario_asistencia_cite/Views/EditarParticipantes.dart';
-import 'package:fomulario_asistencia_cite/Views/FormularioParticipantes.dart';
+import 'package:fomulario_asistencia_cite/Views/FormularioEvento.dart';
+import 'package:fomulario_asistencia_cite/Views/ListaEventos.dart';
 import 'package:fomulario_asistencia_cite/Views/listaParticipantes.dart';
-import 'package:go_router/go_router.dart';
 
-import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
@@ -42,11 +41,14 @@ class MyApp extends StatelessWidget {
         routerConfig: GoRouter(initialLocation: '/inicio', routes: [
           GoRoute(
             path: '/inicio',
-            builder: (context, state) => Welcome(),
+            builder: (context, state) => const Welcome(),
           ),
+
+          //rutas participante
+
           GoRoute(
             path: '/formularioParticipantes',
-            builder: (context, state) => FormularioParticipantes(),
+            builder: (context, state) => const FormularioParticipantes(),
           ),
           GoRoute(
             path: '/firma',
@@ -54,10 +56,24 @@ class MyApp extends StatelessWidget {
           ),
           GoRoute(
               path: '/listaParticipantes',
-              builder: (context, state) => listadoParticipantes()),
+              builder: (context, state) => const listadoParticipantes()),
           GoRoute(
               path: '/editarParticipantes',
-              builder: (context, state) => EditarParticipantes()),
+              builder: (context, state) => const EditarParticipantes()),
+
+          //rutas evento
+
+          GoRoute(
+              path: '/formularioEventos',
+              builder: (context, state) => const FormularioEvento()),
+          GoRoute(
+              path: '/listaEventos',
+              builder: (context, state) => const listadoEventos()),
+          GoRoute(
+              path: '/editarEventos',
+              builder: (context, state) => const EditarEvento()),
+       
+
         ]),
         title: 'Flutter Demo',
         theme: ThemeData(extensions: const [

@@ -6,14 +6,14 @@ import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class EditarParticipantes extends StatefulWidget {
-  const EditarParticipantes({super.key});
+class EditarEvento extends StatefulWidget {
+  const EditarEvento({super.key});
 
   @override
-  State<EditarParticipantes> createState() => _EditarParticipantesState();
+  State<EditarEvento> createState() => _EditarEventoState();
 }
 
-class _EditarParticipantesState extends State<EditarParticipantes> {
+class _EditarEventoState extends State<EditarEvento> {
   final supabase = Supabase.instance.client;
 
   //variables a moverse:
@@ -107,7 +107,7 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                           .provParticipanteId
                           .toString()),
                       Text(
-                        'Editar Datos del Participante',
+                        'Editar Datos del Evento',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontFamily: 'Lato',
@@ -129,7 +129,7 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                               )),
                         ),
                       ),
-                      
+                      autocompletar(),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: TextFormField(

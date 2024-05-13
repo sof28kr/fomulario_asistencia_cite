@@ -11,12 +11,12 @@ class _bannerPersonalizadoState extends State<bannerPersonalizado> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Container(
           width: 140,
           height: 40,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/CITEtex-Cusco.png'),
                   fit: BoxFit.cover)),

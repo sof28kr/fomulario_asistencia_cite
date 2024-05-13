@@ -19,7 +19,7 @@ class IngresoFirma extends StatelessWidget {
       child: Container(
           height: double.infinity,
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
             colors: [
               Color(0xffC4ACCD),
@@ -28,14 +28,14 @@ class IngresoFirma extends StatelessWidget {
           )),
           child: SingleChildScrollView(
               child: Column(children: [
-            bannerPersonalizado(),
+            const bannerPersonalizado(),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 ),
-                Text(
+                const Text(
                   'Ingrese su firma',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -44,14 +44,14 @@ class IngresoFirma extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       color: Color(0xff2A3439)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 SfSignaturePad(
                   key: keySignaturePad,
                   backgroundColor: Colors.white.withOpacity(0.3),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -63,7 +63,7 @@ class IngresoFirma extends StatelessWidget {
                       },
                       labelStyle: const TextStyle(fontSize: 15),
                       bgColor: Colors.yellow.withOpacity(0.2),
-                      borderColor: Color(0xff6C3082),
+                      borderColor: const Color(0xff6C3082),
                       borderWidth: s2,
                     ),
                     PrettyBorderButton(
@@ -73,12 +73,12 @@ class IngresoFirma extends StatelessWidget {
                       },
                       labelStyle: const TextStyle(fontSize: 15),
                       bgColor: Colors.red.withOpacity(0.2),
-                      borderColor: Color(0xff6C3082),
+                      borderColor: const Color(0xff6C3082),
                       borderWidth: s2,
                     ),
                   ],
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
               ],
             ),
           ]))),
@@ -109,12 +109,12 @@ class IngresoFirma extends StatelessWidget {
         base64Image = "";
 
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) => FormularioParticipantes()));
+            builder: (BuildContext context) => const FormularioParticipantes()));
 
         // 'uint8List' contiene los bytes de la imagen
       } else {
         // Maneja el caso en que 'byteData' sea nulo
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('La firma no fue ingresada'),
           duration: Duration(seconds: 1),
         ));
@@ -123,7 +123,7 @@ class IngresoFirma extends StatelessWidget {
 
       Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('¡Firma guardada correctamente!'),
           duration:
               Duration(seconds: 2), // Ajusta la duración según tu preferencia
