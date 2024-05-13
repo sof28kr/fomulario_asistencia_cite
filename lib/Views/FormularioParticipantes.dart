@@ -18,13 +18,6 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
   String firmaSearch = '';
 
   //variables a moverse:
-  String nombre = '';
-  String dni = '';
-  String telefono = '';
-  String direccion = '';
-  String email = '';
-  String RUC = '';
-  String firma = "";
 
   final TextEditingController controllerInputDni = TextEditingController();
   final TextEditingController controllerInputNombre =
@@ -54,9 +47,9 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
 
   Future<void> getInitialInfo(userdniSearch) async {
     final data = await supabase
-        .from('neoParticipantes')
+        .from('db')
         .select()
-        .eq('DNI', userdniSearch)
+        .eq('dni', userdniSearch)
         .maybeSingle()
         .limit(1);
 
@@ -81,7 +74,6 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
         controllerInputDireccion.text = '';
         controllerInputTelefono.text = '';
         controllerInputEmail.text = '';
-        controllerInputRuc.text = '';
 
         firmaSearch = '';
       });
@@ -91,13 +83,6 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
         controllerInputDireccion.text = data['direccion'];
         controllerInputTelefono.text = data['telefono'].toString();
         controllerInputEmail.text = data['correo'];
-        controllerInputRuc.text = data['ruc'].toString();
-
-        firmaSearch = data['firma'];
-
-        context
-            .read<ProviderFirma>()
-            .ChangeFirmaString(newFirmaString: firmaSearch);
       });
     }
   }
@@ -128,7 +113,8 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                 const bannerPersonalizado(),
                 //textxfields del formulario
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
