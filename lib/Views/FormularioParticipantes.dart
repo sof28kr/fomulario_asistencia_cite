@@ -16,10 +16,7 @@ class FormularioParticipantes extends StatefulWidget {
 
 class _FormularioParticipantesState extends State<FormularioParticipantes> {
   final supabase = Supabase.instance.client;
-
-  final participantesStream = Supabase.instance.client
-      .from('neoParticipantes')
-      .stream(primaryKey: ['id']);
+  String firmaSearch = '';
 
   //variables a moverse:
   String nombre = '';
@@ -47,6 +44,62 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
       return true;
     } catch (_) {
       return false;
+    }
+  }
+
+  @override
+  void dispose() {
+    controllerInputDni.dispose();
+    super.dispose();
+  }
+
+  Future<void> getInitialInfo(userdniSearch) async {
+    final data = await supabase
+        .from('neoParticipantes')
+        .select()
+        .eq('DNI', userdniSearch)
+        .maybeSingle()
+        .limit(1);
+
+    if (data == null) {
+      // Mostrar diálogo si no se encontraron datos
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('No se encontraron datos'),
+          content:
+              Text('No se encontraron registros para el DNI $userdniSearch'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text('Aceptar'),
+            ),
+          ],
+        ),
+      );
+      setState(() {
+        controllerInputNombre.text = '';
+        controllerInputDireccion.text = '';
+        controllerInputTelefono.text = '';
+        controllerInputEmail.text = '';
+        controllerInputRuc.text = '';
+
+        firmaSearch = '';
+      });
+    } else {
+      setState(() {
+        controllerInputNombre.text = data['nombre'];
+        controllerInputDireccion.text = data['direccion'];
+        controllerInputTelefono.text = data['telefono'].toString();
+        controllerInputEmail.text = data['correo'];
+        controllerInputRuc.text = data['ruc'].toString();
+
+        firmaSearch = data['firma'];
+
+        context
+            .read<ProviderFirma>()
+            .ChangeFirmaString(newFirmaString: firmaSearch);
+      });
     }
   }
 
@@ -109,11 +162,8 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                         child: PrettyBorderButton(
                           label: '  Autocompletar  ',
                           onPressed: () {
-                            print('working till here');
-                            context
-                                .read<ProviderParticipantes>()
-                                .setDni(controllerInputDni.text);
-
+                            final userdniSearch = controllerInputDni.text;
+                            getInitialInfo(userdniSearch);
                             // fin de la funcion autocompletar
                           },
                           labelStyle: const TextStyle(fontSize: 16),
@@ -123,134 +173,101 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                         ),
                       ),
                       //funcion autocompletar
-                      Consumer<ProviderParticipantes>(
-                        builder: (context, ProviderParticipantes, child) {
-                          return StreamBuilder<List<Map<String, dynamic>>>(
-                            stream: participantesStream,
-                            builder: (context, snapshot) {
-                              if (!snapshot.hasData) {
-                                return const Center(
-                                  child: CircularProgressIndicator(),
-                                );
-                              }
-                              final Participantes = snapshot.data!;
 
-                              String newDniaBuscar = ProviderParticipantes.dni;
-                              // Filtra la lista de participantes para obtener solo el que coincida con newDniaBuscar
-                              final participanteEncontrado =
-                                  Participantes.firstWhere(
-                                (participante) =>
-                                    participante['DNI'] == newDniaBuscar,
-                                orElse: () => {
-                                  'id': 0,
-                                  'nombre': '',
-                                  'DNI': '',
-                                  'direccion': '',
-                                  'telefono': '',
-                                  'correo': '',
-                                  'ruc': '',
-                                  'firma': '',
-                                },
-                              );
-
-                              if (participanteEncontrado['id'] == 0 &&
-                                  participanteEncontrado['nombre'] == '') {
-                                // No se encontró ningún participante con el DNI buscado
-                                return const Text(
-                                    'No se encontraron resultados');
-                              }
-
-                              // Mostrar los datos del participante encontrado
-                              return Column(
-                                children: [
-                                  Text('ID: ${participanteEncontrado['id']}'),
-                                  Text(
-                                      'Nombre: ${participanteEncontrado['nombre']}'),
-                                  Text('DNI: ${participanteEncontrado['DNI']}'),
-                                  Text(
-                                      'Dirección: ${participanteEncontrado['direccion']}'),
-                                  Text(
-                                      'Teléfono: ${participanteEncontrado['telefono']}'),
-                                  Text(
-                                      'Correo: ${participanteEncontrado['correo']}'),
-                                  Text('RUC: ${participanteEncontrado['ruc']}'),
-                                  Text(
-                                      'Firma: ${participanteEncontrado['firma']}'),
-                                ],
+                      Padding(
+                          padding: EdgeInsets.symmetric(vertical: 15),
+                          child: ValueListenableBuilder<TextEditingValue>(
+                            valueListenable: controllerInputNombre,
+                            builder: (context, value, child) {
+                              return TextField(
+                                controller: controllerInputNombre,
+                                keyboardType: TextInputType.name,
+                                decoration: InputDecoration(
+                                    hintText: 'Nombre Completo',
+                                    labelText: 'nombres y apellidos',
+                                    suffixIcon: Icon(Icons.badge),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                    )),
                               );
                             },
-                          );
-                        },
+                          )),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: ValueListenableBuilder<TextEditingValue>(
+                          valueListenable: controllerInputTelefono,
+                          builder: (context, value, child) {
+                            return TextField(
+                              controller: controllerInputTelefono,
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                  hintText: 'Telefono',
+                                  labelText: 'Telefono fijo o celular',
+                                  suffixIcon: Icon(Icons.phone),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  )),
+                            );
+                          },
+                        ),
                       ),
 
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
-                          controller: controllerInputNombre,
-                          keyboardType: TextInputType.name,
-                          decoration: InputDecoration(
-                              hintText: 'Nombre Completo',
-                              labelText: 'nombres y apellidos',
-                              suffixIcon: Icon(Icons.badge),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              )),
+                        child: ValueListenableBuilder(
+                          valueListenable: controllerInputDireccion,
+                          builder: (constant, value, child) {
+                            return TextField(
+                              controller: controllerInputDireccion,
+                              keyboardType: TextInputType.name,
+                              decoration: InputDecoration(
+                                  hintText: 'Direccion',
+                                  labelText: 'La direccion de su residencia',
+                                  suffixIcon: Icon(Icons.badge),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  )),
+                            );
+                          },
                         ),
                       ),
+
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
-                          controller: controllerInputTelefono,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              hintText: 'Telefono',
-                              labelText: 'Telefono fijo o celular',
-                              suffixIcon: Icon(Icons.phone),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              )),
-                        ),
+                        child: ValueListenableBuilder(
+                            valueListenable: controllerInputEmail,
+                            builder: (context, value, child) {
+                              return TextField(
+                                controller: controllerInputEmail,
+                                keyboardType: TextInputType.name,
+                                decoration: InputDecoration(
+                                    hintText: 'Correo Electronico',
+                                    labelText: 'xyz@gmail.com',
+                                    suffixIcon: Icon(Icons.mail),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                    )),
+                              );
+                            }),
                       ),
+
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
-                          controller: controllerInputDireccion,
-                          keyboardType: TextInputType.name,
-                          decoration: InputDecoration(
-                              hintText: 'Direccion',
-                              labelText: 'La direccion de su residencia',
-                              suffixIcon: Icon(Icons.badge),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              )),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
-                          controller: controllerInputEmail,
-                          keyboardType: TextInputType.name,
-                          decoration: InputDecoration(
-                              hintText: 'Correo Electronico',
-                              labelText: 'xyz@gmail.com',
-                              suffixIcon: Icon(Icons.mail),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              )),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
-                          controller: controllerInputRuc,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              hintText: 'Ruc',
-                              labelText: 'Ingrese el numero de su RUC',
-                              suffixIcon: Icon(Icons.badge),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              )),
+                        child: ValueListenableBuilder(
+                          valueListenable: controllerInputRuc,
+                          builder: (context, value, child) {
+                            return TextField(
+                              controller: controllerInputRuc,
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                  hintText: 'Ruc',
+                                  labelText: 'Ingrese el numero de su RUC',
+                                  suffixIcon: Icon(Icons.badge),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  )),
+                            );
+                          },
                         ),
                       ),
 
