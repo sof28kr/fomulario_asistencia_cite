@@ -3,6 +3,7 @@ import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/EditarParticipantes.dart';
+import 'package:fomulario_asistencia_cite/Views/FormularioParticipantes.dart';
 import 'package:fomulario_asistencia_cite/Views/listaParticipantes.dart';
 import 'package:go_router/go_router.dart';
 

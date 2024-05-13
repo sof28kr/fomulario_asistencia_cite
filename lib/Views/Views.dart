@@ -1,4 +1,4 @@
-export 'package:fomulario_asistencia_cite/Views/formularioParticipantes.dart';
+export 'package:fomulario_asistencia_cite/Views/FormularioParticipantes.dart';
 export 'package:fomulario_asistencia_cite/Views/info.dart';
 export 'package:fomulario_asistencia_cite/Views/welcomePage.dart';
 export 'package:fomulario_asistencia_cite/Custom_Widgets/AppColors.dart';
