@@ -1,7 +1,3 @@
-import 'dart:convert';
-
-import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
-import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -9,97 +5,29 @@ class FormularioEvento extends StatefulWidget {
   const FormularioEvento({super.key});
 
   @override
-  State<FormularioEvento> createState() =>
-      _FormularioEventoState();
+  State<FormularioEvento> createState() => _FormularioEventoState();
 }
 
 class _FormularioEventoState extends State<FormularioEvento> {
   final supabase = Supabase.instance.client;
-  String firmaSearch = '';
+  DateTime selectedDate = DateTime.now();
+  String dateString = '';
 
-  //variables a moverse:
-  String nombre = '';
-  String dni = '';
-  String telefono = '';
-  String direccion = '';
-  String email = '';
-  String RUC = '';
-  String firma = "";
+  final TextEditingController controllerInputServicio = TextEditingController();
+  late TextEditingController controllerInputFechaInicio;
 
-  final TextEditingController controllerInputDni = TextEditingController();
-  final TextEditingController controllerInputNombre =
-      TextEditingController(); // Controlador asociado a texto Email donde se escribe
-  final TextEditingController controllerInputTelefono =
-      TextEditingController(); // Controlador asociado a texto Email donde se escribe
-  final TextEditingController controllerInputDireccion =
-      TextEditingController();
-  final TextEditingController controllerInputEmail =
-      TextEditingController(); // Controlador asociado a texto Email donde se escribe
-  final TextEditingController controllerInputRuc = TextEditingController();
-
-  bool isBase64String(String str) {
-    try {
-      base64Decode(str);
-      return true;
-    } catch (_) {
-      return false;
-    }
+  @override
+  void initState() {
+    super.initState();
+    dateString =
+        "${selectedDate.year} - ${selectedDate.month} - ${selectedDate.day}";
+    controllerInputFechaInicio = TextEditingController(text: dateString);
   }
 
   @override
   void dispose() {
-    controllerInputDni.dispose();
+    controllerInputServicio.dispose();
     super.dispose();
-  }
-
-  Future<void> getInitialInfo(userdniSearch) async {
-    final data = await supabase
-        .from('neoParticipantes')
-        .select()
-        .eq('DNI', userdniSearch)
-        .maybeSingle()
-        .limit(1);
-
-    if (data == null) {
-      // Mostrar diálogo si no se encontraron datos
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('No se encontraron datos'),
-          content:
-              Text('No se encontraron registros para el DNI $userdniSearch'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Aceptar'),
-            ),
-          ],
-        ),
-      );
-      setState(() {
-        controllerInputNombre.text = '';
-        controllerInputDireccion.text = '';
-        controllerInputTelefono.text = '';
-        controllerInputEmail.text = '';
-        controllerInputRuc.text = '';
-
-        firmaSearch = '';
-      });
-    } else {
-      setState(() {
-        controllerInputNombre.text = data['nombre'];
-        controllerInputDireccion.text = data['direccion'];
-        controllerInputTelefono.text = data['telefono'].toString();
-        controllerInputEmail.text = data['correo'];
-        controllerInputRuc.text = data['ruc'].toString();
-
-        firmaSearch = data['firma'];
-
-        context
-            .read<ProviderFirma>()
-            .ChangeFirmaString(newFirmaString: firmaSearch);
-      });
-    }
   }
 
   @override
@@ -128,7 +56,8 @@ class _FormularioEventoState extends State<FormularioEvento> {
                 const bannerPersonalizado(),
                 //textxfields del formulario
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -145,7 +74,7 @@ class _FormularioEventoState extends State<FormularioEvento> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: TextField(
-                          controller: controllerInputDni,
+                          controller: controllerInputServicio,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               hintText: 'Tipo de Servicio',
@@ -157,116 +86,19 @@ class _FormularioEventoState extends State<FormularioEvento> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: PrettyBorderButton(
-                          label: '  Autocompletar  ',
-                          onPressed: () {
-                            final userdniSearch = controllerInputDni.text;
-                            getInitialInfo(userdniSearch);
-                            // fin de la funcion autocompletar
-                          },
-                          labelStyle: const TextStyle(fontSize: 16),
-                          bgColor: const Color(0xffC4ACCD),
-                          borderColor: const Color(0xff6C3082),
-                          borderWidth: s5,
-                        ),
-                      ),
-                      //funcion autocompletar
-
-                      Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15),
-                          child: ValueListenableBuilder<TextEditingValue>(
-                            valueListenable: controllerInputNombre,
-                            builder: (context, value, child) {
-                              return TextField(
-                                controller: controllerInputNombre,
-                                keyboardType: TextInputType.name,
-                                decoration: InputDecoration(
-                                    hintText: 'Nombre Completo',
-                                    labelText: 'nombres y apellidos',
-                                    suffixIcon: const Icon(Icons.badge),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15.0),
-                                    )),
-                              );
-                            },
-                          )),
-                      Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: ValueListenableBuilder<TextEditingValue>(
-                          valueListenable: controllerInputTelefono,
-                          builder: (context, value, child) {
-                            return TextField(
-                              controller: controllerInputTelefono,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                  hintText: 'Telefono',
-                                  labelText: 'Telefono fijo o celular',
-                                  suffixIcon: const Icon(Icons.phone),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  )),
-                            );
-                          },
-                        ),
-                      ),
+                        child: TextField(
+                          controller: controllerInputFechaInicio,
+                          keyboardType: TextInputType.datetime,
+                          decoration: InputDecoration(
+                              hintText: 'Fecha de Inicio',
+                              labelText: 'Inicio del evento',
+                              suffixIcon: const Icon(Icons.data_array),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              )),
 
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: ValueListenableBuilder(
-                          valueListenable: controllerInputDireccion,
-                          builder: (constant, value, child) {
-                            return TextField(
-                              controller: controllerInputDireccion,
-                              keyboardType: TextInputType.name,
-                              decoration: InputDecoration(
-                                  hintText: 'Direccion',
-                                  labelText: 'La direccion de su residencia',
-                                  suffixIcon: const Icon(Icons.badge),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  )),
-                            );
-                          },
-                        ),
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: ValueListenableBuilder(
-                            valueListenable: controllerInputEmail,
-                            builder: (context, value, child) {
-                              return TextField(
-                                controller: controllerInputEmail,
-                                keyboardType: TextInputType.name,
-                                decoration: InputDecoration(
-                                    hintText: 'Correo Electronico',
-                                    labelText: 'xyz@gmail.com',
-                                    suffixIcon: const Icon(Icons.mail),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15.0),
-                                    )),
-                              );
-                            }),
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: ValueListenableBuilder(
-                          valueListenable: controllerInputRuc,
-                          builder: (context, value, child) {
-                            return TextField(
-                              controller: controllerInputRuc,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                  hintText: 'Ruc',
-                                  labelText: 'Ingrese el numero de su RUC',
-                                  suffixIcon: const Icon(Icons.badge),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  )),
-                            );
-                          },
+                          // https://www.youtube.com/watch?v=ntwS8G-LWFU
                         ),
                       ),
 
@@ -274,49 +106,7 @@ class _FormularioEventoState extends State<FormularioEvento> {
 
                       PrettyBorderButton(
                         label: '  Registrar Participacion   ',
-                        onPressed: () async {
-                          final firmaString =
-                              context.read<ProviderFirma>().firmaString;
-
-                          context
-                              .read<ProviderParticipantes>()
-                              .changeParticipantes(
-                                  newdni: controllerInputDni.text,
-                                  newnombre: controllerInputNombre.text,
-                                  newtelefono: controllerInputTelefono.text,
-                                  newdireccion: controllerInputDireccion.text,
-                                  newemail: controllerInputEmail.text,
-                                  newRUC: controllerInputRuc.text);
-
-                          int dniInt =
-                              int.tryParse(controllerInputDni.text) ?? 0;
-                          int telefonoInt =
-                              int.tryParse(controllerInputTelefono.text) ?? 0;
-                          int rucInt =
-                              int.tryParse(controllerInputRuc.text) ?? 0;
-
-                          await Supabase.instance.client
-                              .from("neoParticipantes")
-                              .insert({
-                            'DNI': dniInt,
-                            'nombre': controllerInputNombre.text,
-                            'direccion': controllerInputDireccion.text,
-                            'telefono': telefonoInt,
-                            'correo': controllerInputEmail.text,
-                            'ruc': rucInt,
-                            'firma': context.read<ProviderFirma>().firmaString,
-                          });
-
-                          controllerInputDni.clear();
-                          controllerInputNombre.clear();
-                          controllerInputTelefono.clear();
-                          controllerInputDireccion.clear();
-                          controllerInputEmail.clear();
-                          controllerInputRuc.clear();
-                          context.read<ProviderFirma>().resetFirmaString();
-
-                          context.push('/listaParticipantes');
-                        },
+                        onPressed: () async {},
                         labelStyle: const TextStyle(fontSize: 20),
                         bgColor: const Color(0xffC4ACCD),
                         borderColor: const Color(0xff6C3082),

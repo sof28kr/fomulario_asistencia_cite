@@ -25,7 +25,8 @@ class Welcome extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
                 child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   IconButton(
                     onPressed: () {},
@@ -33,8 +34,6 @@ class Welcome extends StatelessWidget {
                       Icons.info_rounded,
                       size: 40,
                     ),
-                    style: ButtonStyle(
-                        iconColor: WidgetStatePropertyAll(colores!.c4)),
                   )
                 ]),
               ),
@@ -57,7 +56,7 @@ class Welcome extends StatelessWidget {
                     fontFamily: 'Lato',
                     fontSize: 40,
                     fontWeight: FontWeight.w400,
-                    color: colores.c1),
+                    color: colores?.c1),
               ),
               const SizedBox(height: 50),
               const SizedBox(height: 50),
@@ -69,7 +68,9 @@ class Welcome extends StatelessWidget {
                 borderColor: const Color(0xff6C3082),
                 borderWidth: s4,
               ),
-              SizedBox(height: 50,),
+              SizedBox(
+                height: 50,
+              ),
               PrettyBorderButton(
                 label: '   Eventos   ',
                 onPressed: () => context.push('/formularioEventos'),
