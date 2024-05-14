@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:intl/intl.dart';
 
 class FormularioEvento extends StatefulWidget {
   const FormularioEvento({super.key});
@@ -12,9 +12,36 @@ class FormularioEvento extends StatefulWidget {
 class _FormularioEventoState extends State<FormularioEvento> {
   final supabase = Supabase.instance.client;
 
+  TextEditingController dateInput = TextEditingController();
+
   final TextEditingController controllerInputServicio = TextEditingController();
   final TextEditingController _fechaController = TextEditingController();
   DateTime? _fechaSeleccionada;
+
+  //variables controladoras 
+  DateTime? selectedDate;
+  DateTime _date = DateTime.now();
+  var doa;
+
+    datePicker() async {
+    selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+      helpText: 'Application Date'.tr().toUpperCase(),
+    );
+    if (selectedDate != null && selectedDate != _date) {
+      setState(() {
+        _date = selectedDate!;
+        doa = DateFormat('dd-MM-yyyy')
+            .format(_date); //change date format on your need
+        print(
+          doa.toString(),
+        );
+      });
+    }
+  }
 
   @override
   void dispose() {
@@ -77,55 +104,14 @@ class _FormularioEventoState extends State<FormularioEvento> {
                       ),
 
                       // Agrega el TextField con el DatePicker
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: GestureDetector(
-                          onTap: () async {
-                            final fechaSeleccionada = await showDatePicker(
-                              context: context,
-                              initialDate: _fechaSeleccionada ?? DateTime.now(),
-                              firstDate: DateTime(2000),
-                              lastDate: DateTime(2100),
-                            );
-
-                            if (fechaSeleccionada != null) {
-                              setState(() {
-                                _fechaSeleccionada = fechaSeleccionada;
-                                _fechaController.text =
-                                    _fechaSeleccionada.toString().split(' ')[0];
-                              });
-                            }
-                          },
-                          child: TextField(
-                            controller: _fechaController,
-                            enabled: false,
-                            style: TextStyle(
-                              color:
-                                  Colors.blue, // Cambia el color de las letras
-                            ),
-                            decoration: InputDecoration(
-                              hintText: 'Fecha del Evento',
-                              labelText: 'Selecciona la fecha',
-                              suffixIcon: const Icon(Icons.calendar_today),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                                borderSide: BorderSide(
-                                  color:
-                                      Colors.red, // Cambia el color del borde
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-
+                     
                       InputDecorator(
                         decoration: InputDecoration(
                           labelText: 'Mi Texto',
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
                         ),
-                        child: Text('Texto con borde'),
+                        child: const Text('Texto con borde'),
                       ),
 
                       const SizedBox(height: 50),
