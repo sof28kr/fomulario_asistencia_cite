@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -10,51 +11,39 @@ class FormularioEvento extends StatefulWidget {
 
 class _FormularioEventoState extends State<FormularioEvento> {
   final supabase = Supabase.instance.client;
-  DateTime selectedDate = DateTime.now();
-  String dateString = '';
 
   final TextEditingController controllerInputServicio = TextEditingController();
-  late TextEditingController controllerInputFechaInicio;
-
-  @override
-  void initState() {
-    super.initState();
-    dateString =
-        "${selectedDate.year} - ${selectedDate.month} - ${selectedDate.day}";
-    controllerInputFechaInicio = TextEditingController(text: dateString);
-  }
+  final TextEditingController _fechaController = TextEditingController();
+  DateTime? _fechaSeleccionada;
 
   @override
   void dispose() {
     controllerInputServicio.dispose();
+    _fechaController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final colores = Theme.of(context).extension<AppColors>();
-    // context es como un lago de valores en el modelo
-    //value es un valor que podemos jalar
-    //el tipo de consumer es segun el modelo que tenemos
-    return Scaffold(
-      //luego el scafold es que escucha y recive los cambios
 
+    return Scaffold(
       body: SafeArea(
         child: Container(
           height: double.infinity,
           width: double.infinity,
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Color(0xffC4ACCD),
-              Color(0xffF0EAF3),
-            ],
-          )),
+            gradient: LinearGradient(
+              colors: [
+                Color(0xffC4ACCD),
+                Color(0xffF0EAF3),
+              ],
+            ),
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 const bannerPersonalizado(),
-                //textxfields del formulario
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
@@ -65,41 +54,78 @@ class _FormularioEventoState extends State<FormularioEvento> {
                         'Ingreso de Datos del Evento',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontFamily: 'Lato',
-                            fontSize: 28,
-                            fontWeight: FontWeight.w400,
-                            color: colores!.c1),
+                          fontFamily: 'Lato',
+                          fontSize: 28,
+                          fontWeight: FontWeight.w400,
+                          color: colores!.c1,
+                        ),
                       ),
-                      // Cuerpo de los form fields
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: TextField(
                           controller: controllerInputServicio,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                              hintText: 'Tipo de Servicio',
-                              labelText: 'Ingrese el tipo de servicio',
-                              suffixIcon: const Icon(Icons.badge),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              )),
+                            hintText: 'Tipo de Servicio',
+                            labelText: 'Ingrese el tipo de servicio',
+                            suffixIcon: const Icon(Icons.badge),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                          ),
                         ),
                       ),
+
+                      // Agrega el TextField con el DatePicker
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
-                          controller: controllerInputFechaInicio,
-                          keyboardType: TextInputType.datetime,
-                          decoration: InputDecoration(
-                              hintText: 'Fecha de Inicio',
-                              labelText: 'Inicio del evento',
-                              suffixIcon: const Icon(Icons.data_array),
+                        child: GestureDetector(
+                          onTap: () async {
+                            final fechaSeleccionada = await showDatePicker(
+                              context: context,
+                              initialDate: _fechaSeleccionada ?? DateTime.now(),
+                              firstDate: DateTime(2000),
+                              lastDate: DateTime(2100),
+                            );
+
+                            if (fechaSeleccionada != null) {
+                              setState(() {
+                                _fechaSeleccionada = fechaSeleccionada;
+                                _fechaController.text =
+                                    _fechaSeleccionada.toString().split(' ')[0];
+                              });
+                            }
+                          },
+                          child: TextField(
+                            controller: _fechaController,
+                            enabled: false,
+                            style: TextStyle(
+                              color:
+                                  Colors.blue, // Cambia el color de las letras
+                            ),
+                            decoration: InputDecoration(
+                              hintText: 'Fecha del Evento',
+                              labelText: 'Selecciona la fecha',
+                              suffixIcon: const Icon(Icons.calendar_today),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
-                              )),
-
-                          // https://www.youtube.com/watch?v=ntwS8G-LWFU
+                                borderSide: BorderSide(
+                                  color:
+                                      Colors.red, // Cambia el color del borde
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
+                      ),
+
+                      InputDecorator(
+                        decoration: InputDecoration(
+                          labelText: 'Mi Texto',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                        ),
+                        child: Text('Texto con borde'),
                       ),
 
                       const SizedBox(height: 50),
@@ -136,6 +162,4 @@ class _FormularioEventoState extends State<FormularioEvento> {
       ),
     );
   }
-
-  // metodo para hacer el fetch de la data buscada segun el Dni
 }
