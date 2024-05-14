@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:intl/intl.dart';
@@ -15,32 +16,33 @@ class _FormularioEventoState extends State<FormularioEvento> {
   TextEditingController dateInput = TextEditingController();
 
   final TextEditingController controllerInputServicio = TextEditingController();
-  final TextEditingController _fechaController = TextEditingController();
-  DateTime? _fechaSeleccionada;
+  final TextEditingController controllerInputInicio = TextEditingController();
+  final TextEditingController controllerInputCierre = TextEditingController();
 
-  //variables controladoras 
+  final TextEditingController _fechaController = TextEditingController();
+
+  //variables controladoras
   DateTime? selectedDate;
   DateTime _date = DateTime.now();
   var doa;
 
-    datePicker() async {
+  datePicker(titulo, TextEditingController controller) async {
     selectedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
-      helpText: 'Application Date'.tr().toUpperCase(),
+      helpText: titulo.toUpperCase(),
     );
     if (selectedDate != null && selectedDate != _date) {
       setState(() {
         _date = selectedDate!;
-        doa = DateFormat('dd-MM-yyyy')
-            .format(_date); //change date format on your need
-        print(
-          doa.toString(),
-        );
+        // doa es el string con la fecha
+        doa = DateFormat('dd-MM-yyyy').format(_date);
+        controller.text = doa;
       });
     }
+    return doa;
   }
 
   @override
@@ -87,6 +89,7 @@ class _FormularioEventoState extends State<FormularioEvento> {
                           color: colores!.c1,
                         ),
                       ),
+
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: TextField(
@@ -104,14 +107,50 @@ class _FormularioEventoState extends State<FormularioEvento> {
                       ),
 
                       // Agrega el TextField con el DatePicker
-                     
-                      InputDecorator(
-                        decoration: InputDecoration(
-                          labelText: 'Mi Texto',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)),
+
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        child: Column(
+                          children: [
+                            Text("fecha de inicio", textAlign: TextAlign.left),
+                            TextFormField(
+                              onTap: () {
+                                setState(() {
+                                  datePicker("Ingrese la fecha de inicio",
+                                      controllerInputInicio);
+                                });
+                              },
+                              controller: controllerInputInicio,
+                              decoration: InputDecoration(
+                                hintText: doa,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                labelText: "fecha de inicio",
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.never,
+                              ),
+                            ),
+                          ],
                         ),
-                        child: const Text('Texto con borde'),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        child: TextFormField(
+                          onTap: () {
+                            setState(() {
+                              datePicker("Ingrese la fecha de cierre",
+                                  controllerInputCierre);
+                            });
+                          },
+                          decoration: InputDecoration(
+                            hintText: (doa.toString()),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            labelText: "fecha de cierre",
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                          ),
+                        ),
                       ),
 
                       const SizedBox(height: 50),
