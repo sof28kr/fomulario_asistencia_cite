@@ -6,6 +6,7 @@ import 'package:fomulario_asistencia_cite/Views/EditarParticipantes.dart';
 import 'package:fomulario_asistencia_cite/Views/FormularioEvento.dart';
 import 'package:fomulario_asistencia_cite/Views/ListaEventos.dart';
 import 'package:fomulario_asistencia_cite/Views/listaParticipantes.dart';
+import 'package:fomulario_asistencia_cite/Views/pruebadropdown.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
@@ -72,8 +73,6 @@ class MyApp extends StatelessWidget {
           GoRoute(
               path: '/editarEventos',
               builder: (context, state) => const EditarEvento()),
-       
-
         ]),
         title: 'Flutter Demo',
         theme: ThemeData(extensions: const [

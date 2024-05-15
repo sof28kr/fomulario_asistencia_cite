@@ -42,6 +42,7 @@ dependencies:
   provider: ^6.1.2
   image_picker: ^1.1.1
   convert: ^3.1.1
+  country_state_city_pro: ^0.0.6
 
 dev_dependencies:
   flutter_test:
