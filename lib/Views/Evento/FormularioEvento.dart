@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fomulario_asistencia_cite/Custom_Widgets/DropDownUbicacion.dart';
 
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
-import 'package:fomulario_asistencia_cite/Views/pruebadropdown.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -20,6 +20,8 @@ class _FormularioEventoState extends State<FormularioEvento> {
 
   TextEditingController dateInput = TextEditingController();
 
+  final TextEditingController controllerInputNombreEvento =
+      TextEditingController();
   final TextEditingController controllerInputServicio = TextEditingController();
   final TextEditingController controllerInputInicio = TextEditingController();
   final TextEditingController controllerInputCierre = TextEditingController();
@@ -93,6 +95,22 @@ class _FormularioEventoState extends State<FormularioEvento> {
                             fontSize: 28,
                             fontWeight: FontWeight.w400,
                             color: colores!.c1,
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: TextField(
+                            controller: controllerInputServicio,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              hintText: 'Nombre del Evento',
+                              labelText: 'Ingrese el nombre del evento',
+                              suffixIcon: const Icon(Icons.badge),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
                           ),
                         ),
 
@@ -176,7 +194,17 @@ class _FormularioEventoState extends State<FormularioEvento> {
                         ),
 
                         const SizedBox(height: 50),
-                        DropdownWidget(),
+                        DropdownExample(
+                          onDepartmentChanged: (department) {
+                            print('Departamento seleccionado: $department');
+                          },
+                          onProvinceChanged: (province) {
+                            print('Provincia seleccionada: $province');
+                          },
+                          onDistrictChanged: (district) {
+                            print('Distrito seleccionado: $district');
+                          },
+                        ),
                         const SizedBox(height: 50),
 
                         ElevatedButton(

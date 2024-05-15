@@ -1,15 +1,14 @@
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
-import 'package:fomulario_asistencia_cite/Views/EditarEvento.dart';
-import 'package:fomulario_asistencia_cite/Views/EditarParticipantes.dart';
-import 'package:fomulario_asistencia_cite/Views/FormularioEvento.dart';
-import 'package:fomulario_asistencia_cite/Views/ListaEventos.dart';
-import 'package:fomulario_asistencia_cite/Views/listaParticipantes.dart';
-import 'package:fomulario_asistencia_cite/Views/pruebadropdown.dart';
+import 'package:fomulario_asistencia_cite/Views/Evento/EditarEvento.dart';
+import 'package:fomulario_asistencia_cite/Views/Participantes/EditarParticipantes.dart';
+import 'package:fomulario_asistencia_cite/Views/Evento/FormularioEvento.dart';
+import 'package:fomulario_asistencia_cite/Views/Evento/ListaEventos.dart';
+import 'package:fomulario_asistencia_cite/Views/Participantes/listaParticipantes.dart';
+import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
