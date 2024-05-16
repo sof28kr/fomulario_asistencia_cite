@@ -5,6 +5,7 @@ import 'package:fomulario_asistencia_cite/Custom_Widgets/DropDownUbicacion.dart'
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
 
 import 'package:intl/intl.dart';
 
@@ -27,6 +28,13 @@ class _FormularioEventoState extends State<FormularioEvento> {
   final TextEditingController controllerInputCierre = TextEditingController();
 
   final TextEditingController _fechaController = TextEditingController();
+
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _inicioController = TextEditingController();
+  final TextEditingController _finalController = TextEditingController();
+  final TextEditingController _departamentoController = TextEditingController();
+  final TextEditingController _provinciaController = TextEditingController();
+  final TextEditingController _distritoController = TextEditingController();
 
   //variables controladoras
   DateTime? selectedDate;
@@ -62,6 +70,7 @@ class _FormularioEventoState extends State<FormularioEvento> {
 
   @override
   Widget build(BuildContext context) {
+    final providerEventos = Provider.of<ProviderEventos>(context);
     final colores = Theme.of(context).extension<AppColors>();
 
     return Scaffold(
@@ -96,6 +105,34 @@ class _FormularioEventoState extends State<FormularioEvento> {
                             fontWeight: FontWeight.w400,
                             color: colores!.c1,
                           ),
+                        ),
+
+                        TextField(
+                          controller: _nameController,
+                          decoration: InputDecoration(labelText: 'Nombre'),
+                        ),
+                        TextField(
+                          controller: _inicioController,
+                          decoration:
+                              InputDecoration(labelText: 'Fecha de Inicio'),
+                        ),
+                        TextField(
+                          controller: _finalController,
+                          decoration:
+                              InputDecoration(labelText: 'Fecha de Final'),
+                        ),
+                        TextField(
+                          controller: _departamentoController,
+                          decoration:
+                              InputDecoration(labelText: 'Departamento'),
+                        ),
+                        TextField(
+                          controller: _provinciaController,
+                          decoration: InputDecoration(labelText: 'Provincia'),
+                        ),
+                        TextField(
+                          controller: _distritoController,
+                          decoration: InputDecoration(labelText: 'Distrito'),
                         ),
 
                         Padding(
@@ -216,7 +253,17 @@ class _FormularioEventoState extends State<FormularioEvento> {
 
                         PrettyBorderButton(
                           label: '  Registrar Participacion   ',
-                          onPressed: () async {},
+                          onPressed: () {
+                            providerEventos.changeProvParticipanteId(
+                              newprovNombre: _nameController.text,
+                              newprovInicio: _inicioController.text,
+                              newprovFinal: _finalController.text,
+                              newprovDepartamento: _departamentoController.text,
+                              newprovProvincia: _provinciaController.text,
+                              newprovDistrito: _distritoController.text,
+                            );
+                            providerEventos.saveEventToSupabase(context);
+                          },
                           labelStyle: const TextStyle(fontSize: 20),
                           bgColor: const Color(0xffC4ACCD),
                           borderColor: const Color(0xff6C3082),

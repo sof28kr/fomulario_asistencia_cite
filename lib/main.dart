@@ -1,6 +1,8 @@
+import 'package:fomulario_asistencia_cite/Conexion/supabaseEvento.dart';
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
+import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
 import 'package:fomulario_asistencia_cite/Views/Evento/EditarEvento.dart';
 import 'package:fomulario_asistencia_cite/Views/Participantes/EditarParticipantes.dart';
 import 'package:fomulario_asistencia_cite/Views/Evento/FormularioEvento.dart';
@@ -13,6 +15,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  final supabaseService = SupabaseService(
+    'https://oicgtegeayqbqvzoousx.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pY2d0ZWdlYXlxYnF2em9vdXN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM4MTUyNTYsImV4cCI6MjAyOTM5MTI1Nn0.fyhjKUZqSBNuVWZNg5aXQUtH07I6iG-PWQKQrEiphPM',
+  );
   await Supabase.initialize(
     url: 'https://oicgtegeayqbqvzoousx.supabase.co',
     anonKey:
@@ -31,11 +37,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final supabaseService = SupabaseService(
+      'https://oicgtegeayqbqvzoousx.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pY2d0ZWdlYXlxYnF2em9vdXN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM4MTUyNTYsImV4cCI6MjAyOTM5MTI1Nn0.fyhjKUZqSBNuVWZNg5aXQUtH07I6iG-PWQKQrEiphPM',
+    );
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => ProviderFirma()),
         ChangeNotifierProvider(create: (context) => ProviderParticipantes()),
         ChangeNotifierProvider(create: (context) => providerParticipanteId()),
+        ChangeNotifierProvider(
+            create: (context) =>
+                ProviderEventos(supabaseService: supabaseService))
       ],
       child: MaterialApp.router(
         routerConfig: GoRouter(initialLocation: '/inicio', routes: [

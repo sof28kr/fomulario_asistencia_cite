@@ -1,4 +1,5 @@
 import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
+import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -20,6 +21,7 @@ class _listadoEventosState extends State<listadoEventos> {
   @override
   Widget build(BuildContext context) {
     final colores = Theme.of(context).extension<AppColors>();
+    final providerEventos = Provider.of<ProviderEventos>(context);
 
     return Scaffold(
       body: SafeArea(
@@ -39,7 +41,8 @@ class _listadoEventosState extends State<listadoEventos> {
                 const bannerPersonalizado(),
                 //textxfields del formulario
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -222,6 +225,21 @@ class _listadoEventosState extends State<listadoEventos> {
                       const SizedBox(
                         height: 50,
                       ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          await providerEventos.fetchEventByName(
+                              'primer', context);
+                        },
+                        child: Text('Buscar Evento'),
+                      ),
+                      SizedBox(height: 20),
+                      Text('Nombre: ${providerEventos.provNombre}'),
+                      Text('Inicio: ${providerEventos.provInicio}'),
+                      Text('Final: ${providerEventos.provFinal}'),
+                      Text('Departamento: ${providerEventos.provDepartamento}'),
+                      Text('Provincia: ${providerEventos.provProvincia}'),
+                      Text('Distrito: ${providerEventos.provDistrito}'),
+
                       // Cuerpo de los form fields
                     ],
                   ),
