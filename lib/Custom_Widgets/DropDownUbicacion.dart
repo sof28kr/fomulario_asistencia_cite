@@ -71,24 +71,31 @@ class _DropdownExampleState extends State<DropdownExample> {
   Widget _buildDropdownButton(String? value, List<String> items, String hint,
       Function(String?) onChanged) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 0),
+      margin: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
       width: double.infinity,
       child: DropdownButtonFormField<String>(
         value: value,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(color: Color(0xff2A3439), width: 1),
           ),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-          contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+          contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
         ),
-        hint: Text(hint),
+        hint: Text('\t$hint'),
         onChanged: items.isEmpty ? null : onChanged,
         items: items.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,
-            child: Text(value),
+            child: Text(
+              '\t$value',
+              style: TextStyle(
+                color: Color(0xff2A3439),
+                fontFamily: 'Lato',
+                fontWeight: FontWeight.normal,
+              ),
+            ),
           );
         }).toList(),
       ),

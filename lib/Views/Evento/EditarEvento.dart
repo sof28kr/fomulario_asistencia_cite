@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
-import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
+import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
+
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -21,14 +22,6 @@ class _EditarEventoState extends State<EditarEvento> {
   final participantesStream = Supabase.instance.client
       .from('neoParticipantes')
       .stream(primaryKey: ['id']);
-
-  String nombre = '';
-  String dni = '';
-  String telefono = '';
-  String direccion = '';
-  String email = '';
-  String RUC = '';
-  String firma = "";
 
   bool isBase64String(String str) {
     try {
@@ -98,7 +91,8 @@ class _EditarEventoState extends State<EditarEvento> {
                 const bannerPersonalizado(),
                 //textxfields del formulario
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

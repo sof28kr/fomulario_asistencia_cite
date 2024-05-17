@@ -21,7 +21,7 @@ class ProviderEventos extends ChangeNotifier {
     required this.supabaseService,
   });
 
-  void changeProvParticipanteId({
+  void changeProviderEvento({
     required String newprovNombre,
     required String newprovInicio,
     required String newprovFinal,

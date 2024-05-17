@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'dart:ui';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
+
 import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
@@ -109,7 +110,8 @@ class IngresoFirma extends StatelessWidget {
         base64Image = "";
 
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) => const FormularioParticipantes()));
+            builder: (BuildContext context) =>
+                const FormularioParticipantes()));
 
         // 'uint8List' contiene los bytes de la imagen
       } else {

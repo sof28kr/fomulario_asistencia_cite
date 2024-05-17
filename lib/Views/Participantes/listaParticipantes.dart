@@ -1,4 +1,4 @@
-import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
+import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -39,7 +39,8 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                 const bannerPersonalizado(),
                 //textxfields del formulario
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

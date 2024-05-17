@@ -27,6 +27,8 @@ class EventModel {
     );
   }
 
+  get supabase => null;
+
   Map<String, dynamic> toMap() {
     return {
       'nombre': nombre,
@@ -36,5 +38,11 @@ class EventModel {
       'provincia': provincia,
       'distrito': distrito,
     };
+  }
+
+  Future<void> eliminarParticipante(
+    int participanteId,
+  ) async {
+    await supabase.from("neoParticipantes").delete().eq("id", participanteId);
   }
 }

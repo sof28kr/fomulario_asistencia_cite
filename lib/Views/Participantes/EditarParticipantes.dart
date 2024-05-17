@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
-import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
+import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
+
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -98,7 +99,8 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                 const bannerPersonalizado(),
                 //textxfields del formulario
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -129,7 +131,6 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                               )),
                         ),
                       ),
-                      
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: TextFormField(

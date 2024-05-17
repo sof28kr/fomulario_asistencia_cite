@@ -19,46 +19,67 @@ class FormularioEvento extends StatefulWidget {
 class _FormularioEventoState extends State<FormularioEvento> {
   final supabase = Supabase.instance.client;
 
-  TextEditingController dateInput = TextEditingController();
-
   final TextEditingController controllerInputNombreEvento =
       TextEditingController();
   final TextEditingController controllerInputServicio = TextEditingController();
   final TextEditingController controllerInputInicio = TextEditingController();
   final TextEditingController controllerInputCierre = TextEditingController();
+  String selectedDepartment = '';
+  String selectedProvince = '';
+  String selectedDistrict = '';
 
   final TextEditingController _fechaController = TextEditingController();
 
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _inicioController = TextEditingController();
-  final TextEditingController _finalController = TextEditingController();
-  final TextEditingController _departamentoController = TextEditingController();
-  final TextEditingController _provinciaController = TextEditingController();
-  final TextEditingController _distritoController = TextEditingController();
-
   //variables controladoras
-  DateTime? selectedDate;
-  DateTime _date = DateTime.now();
-  var doa;
-  late String dep;
+  DateTime? selectedStartDate;
+  DateTime? selectedEndDate;
 
-  datePicker(titulo, TextEditingController controller) async {
-    selectedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
-      helpText: titulo.toUpperCase(),
-    );
-    if (selectedDate != null && selectedDate != _date) {
-      setState(() {
-        _date = selectedDate!;
-        // doa es el string con la fecha
-        doa = DateFormat('dd-MM-yyyy').format(_date);
-        controller.text = doa;
-      });
+  Future<void> datePicker(
+      String title, TextEditingController controller) async {
+    DateTime initialDate = DateTime.now();
+    if (controller == controllerInputCierre && selectedStartDate != null) {
+      initialDate = selectedStartDate!;
     }
-    return doa;
+
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: (controller == controllerInputInicio)
+          ? DateTime.now()
+          : selectedStartDate ?? DateTime.now(),
+      lastDate: DateTime(2101),
+    );
+
+    if (pickedDate != null) {
+      if (controller == controllerInputInicio) {
+        if (pickedDate.isAfter(DateTime.now())) {
+          setState(() {
+            selectedStartDate = pickedDate;
+            controller.text = pickedDate.toLocal().toString().split(' ')[0];
+          });
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+                content: Text('La fecha de inicio debe ser hoy o posterior.')),
+          );
+        }
+      } else if (controller == controllerInputCierre) {
+        if (selectedStartDate != null &&
+                pickedDate.isAfter(selectedStartDate!) ||
+            pickedDate.isAtSameMomentAs(selectedStartDate!)) {
+          setState(() {
+            selectedEndDate = pickedDate;
+            controller.text = pickedDate.toLocal().toString().split(' ')[0];
+          });
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+                content: Text(
+                    'La fecha de fin debe ser el mismo día o después de la fecha de inicio.')),
+          );
+        }
+      }
+    }
   }
 
   @override
@@ -107,39 +128,11 @@ class _FormularioEventoState extends State<FormularioEvento> {
                           ),
                         ),
 
-                        TextField(
-                          controller: _nameController,
-                          decoration: InputDecoration(labelText: 'Nombre'),
-                        ),
-                        TextField(
-                          controller: _inicioController,
-                          decoration:
-                              InputDecoration(labelText: 'Fecha de Inicio'),
-                        ),
-                        TextField(
-                          controller: _finalController,
-                          decoration:
-                              InputDecoration(labelText: 'Fecha de Final'),
-                        ),
-                        TextField(
-                          controller: _departamentoController,
-                          decoration:
-                              InputDecoration(labelText: 'Departamento'),
-                        ),
-                        TextField(
-                          controller: _provinciaController,
-                          decoration: InputDecoration(labelText: 'Provincia'),
-                        ),
-                        TextField(
-                          controller: _distritoController,
-                          decoration: InputDecoration(labelText: 'Distrito'),
-                        ),
-
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           child: TextField(
-                            controller: controllerInputServicio,
-                            keyboardType: TextInputType.number,
+                            controller: controllerInputNombreEvento,
+                            keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               hintText: 'Nombre del Evento',
                               labelText: 'Ingrese el nombre del evento',
@@ -155,7 +148,7 @@ class _FormularioEventoState extends State<FormularioEvento> {
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           child: TextField(
                             controller: controllerInputServicio,
-                            keyboardType: TextInputType.number,
+                            keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               hintText: 'Tipo de Servicio',
                               labelText: 'Ingrese el tipo de servicio',
@@ -168,60 +161,27 @@ class _FormularioEventoState extends State<FormularioEvento> {
                         ),
 
                         // Agrega el TextField con el DatePicker
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15),
-                          child: Column(
-                            children: [
-                              //alineacion incluso si mas arriba en el arbol hay un center
-                              const Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text("fecha de inicio",
-                                      textAlign: TextAlign.left)),
-                              TextFormField(
-                                onTap: () {
-                                  setState(() {
-                                    datePicker(
-                                        "Ingrese la fecha de inicio del evento",
-                                        controllerInputInicio);
-                                  });
-                                },
-                                controller: controllerInputInicio,
-                                decoration: InputDecoration(
-                                  hintText: doa,
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15)),
-                                  labelText: "fecha de inicio del evento",
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           child: Column(
                             children: [
                               const Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text("fecha de fin del evento",
+                                child: Text("Fecha de inicio",
                                     textAlign: TextAlign.left),
                               ),
                               TextFormField(
-                                onTap: () {
-                                  setState(() {
-                                    datePicker(
-                                        "Ingrese la fecha de fin del evento",
-                                        controllerInputCierre);
-                                  });
+                                onTap: () async {
+                                  await datePicker(
+                                      "Ingrese la fecha de inicio del evento",
+                                      controllerInputInicio);
                                 },
+                                controller: controllerInputInicio,
                                 decoration: InputDecoration(
-                                  hintText: (doa.toString()),
+                                  hintText: 'Seleccionar fecha de inicio',
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(15)),
-                                  labelText: "fecha de cierre",
+                                  labelText: "Fecha de inicio del evento",
                                   floatingLabelBehavior:
                                       FloatingLabelBehavior.never,
                                 ),
@@ -229,40 +189,82 @@ class _FormularioEventoState extends State<FormularioEvento> {
                             ],
                           ),
                         ),
-
-                        const SizedBox(height: 50),
-                        DropdownExample(
-                          onDepartmentChanged: (department) {
-                            print('Departamento seleccionado: $department');
-                          },
-                          onProvinceChanged: (province) {
-                            print('Provincia seleccionada: $province');
-                          },
-                          onDistrictChanged: (district) {
-                            print('Distrito seleccionado: $district');
-                          },
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: Column(
+                            children: [
+                              const Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text("Fecha de fin del evento",
+                                    textAlign: TextAlign.left),
+                              ),
+                              TextFormField(
+                                onTap: () async {
+                                  await datePicker(
+                                      "Ingrese la fecha de fin del evento",
+                                      controllerInputCierre);
+                                },
+                                controller: controllerInputCierre,
+                                decoration: InputDecoration(
+                                  hintText: 'Seleccionar fecha de fin',
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15)),
+                                  labelText: "Fecha de cierre",
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.never,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text('Ubicacion del evento',
+                                  textAlign: TextAlign.left),
+                            ),
+                            DropdownExample(
+                              onDepartmentChanged: (department) {
+                                setState(() {
+                                  selectedDepartment = department!;
+                                });
+                              },
+                              onProvinceChanged: (province) {
+                                setState(() {
+                                  selectedProvince = province!;
+                                });
+                              },
+                              onDistrictChanged: (district) {
+                                setState(() {
+                                  selectedDistrict = district!;
+                                });
+                              },
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 50),
 
-                        ElevatedButton(
-                            onPressed: () {
-                              context.push('/prueba');
-                              ;
-                            },
-                            child: Text('prueba')),
-
                         PrettyBorderButton(
-                          label: '  Registrar Participacion   ',
+                          label: '  Registrar Evento   ',
                           onPressed: () {
-                            providerEventos.changeProvParticipanteId(
-                              newprovNombre: _nameController.text,
-                              newprovInicio: _inicioController.text,
-                              newprovFinal: _finalController.text,
-                              newprovDepartamento: _departamentoController.text,
-                              newprovProvincia: _provinciaController.text,
-                              newprovDistrito: _distritoController.text,
+                            providerEventos.changeProviderEvento(
+                              newprovNombre: controllerInputNombreEvento.text,
+                              newprovInicio: controllerInputInicio.text,
+                              newprovFinal: controllerInputCierre.text,
+                              newprovDepartamento: selectedDepartment,
+                              newprovProvincia: selectedProvince,
+                              newprovDistrito: selectedDistrict,
                             );
+                            context.push('/listaEventos');
                             providerEventos.saveEventToSupabase(context);
+
+                            controllerInputNombreEvento.clear();
+                            controllerInputInicio.clear();
+                            controllerInputCierre.clear();
+                            selectedDepartment = '';
+                            selectedProvince = '';
+                            selectedDistrict = '';
                           },
                           labelStyle: const TextStyle(fontSize: 20),
                           bgColor: const Color(0xffC4ACCD),
@@ -270,15 +272,15 @@ class _FormularioEventoState extends State<FormularioEvento> {
                           borderWidth: s3,
                         ),
                         const SizedBox(
-                          height: 100,
+                          height: 50,
                         ),
 
                         PrettySlideUnderlineButton(
-                          label: 'Ver Listado de Participantes',
+                          label: 'Ver Listado de Eventos',
                           labelStyle:
                               TextStyle(fontSize: 16, color: colores.c3),
                           onPressed: () {
-                            context.push('/listaParticipantes');
+                            context.push('/listaEventos');
                           },
                           secondSlideColor: colores.c1,
                         ),

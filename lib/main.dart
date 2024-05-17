@@ -1,6 +1,6 @@
 import 'package:fomulario_asistencia_cite/Conexion/supabaseEvento.dart';
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
-import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
+import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
 import 'package:fomulario_asistencia_cite/Views/Evento/EditarEvento.dart';

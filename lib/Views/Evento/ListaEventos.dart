@@ -1,7 +1,8 @@
-import 'package:fomulario_asistencia_cite/Models/ProviderParticipanteId.dart';
+import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:fomulario_asistencia_cite/Conexion/supabaseEvento.dart';
 
 class listadoEventos extends StatefulWidget {
   const listadoEventos({super.key});
@@ -17,6 +18,9 @@ class _listadoEventosState extends State<listadoEventos> {
   final participantesStream = Supabase.instance.client
       .from('neoParticipantes')
       .stream(primaryKey: ['id']);
+
+  final eventosStream =
+      Supabase.instance.client.from('eventos').stream(primaryKey: ['id']);
 
   @override
   Widget build(BuildContext context) {
@@ -60,37 +64,36 @@ class _listadoEventosState extends State<listadoEventos> {
                       ),
 
                       StreamBuilder<List<Map<String, dynamic>>>(
-                          stream: participantesStream,
+                          stream: eventosStream,
                           builder: (context, snapshot) {
                             if (!snapshot.hasData) {
                               return const Center(
                                 child: CircularProgressIndicator(),
                               );
                             }
-                            final Participantes = snapshot.data!;
+                            final Eventos = snapshot.data!;
 
                             return ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: Participantes.length,
+                                itemCount: Eventos.length,
                                 itemBuilder: (context, index) {
-                                  final participante = Participantes[index];
-                                  var participanteId = participante['id'];
-                                  var participanteIdnombre =
-                                      participante['nombre'] ?? 'no hay nombre';
-                                  var participanteIdDNI =
-                                      participante['DNI'] ?? 0;
-                                  var participanteIdDireccion =
-                                      participante['direccion'] ??
-                                          'no hya direccion';
-                                  var participanteIdTelefono =
-                                      participante['telefono'] ?? 0;
-                                  var participanteIdCorreo =
-                                      participante['correo'] ?? 'no hay correo';
-                                  var participanteIdRuc =
-                                      participante['ruc'] ?? 0;
-                                  var participanteIdFirma =
-                                      participante['firma'] ?? 'no hay firma';
+                                  final evento = Eventos[index];
+
+                                  var nombreEvento =
+                                      evento['nombre'] ?? 'no hay nombre';
+                                  var inicioEvento = evento['inicio'] ??
+                                      'no hay fecha de inicio';
+                                  var finalizacionEvento = evento[
+                                      'finalizacion' ??
+                                          'no hay fecha de finalizacion'];
+                                  var departamentoEvento = evento[
+                                      'departamento' ??
+                                          'no hay departamento registrado'];
+                                  var provinciaEvento = evento['provincia' ??
+                                      'no hay provincia registrada'];
+                                  var distritoEvento = evento['distrito' ??
+                                      'no hay distrito registrado'];
 
                                   return Card(
                                     child: ListTile(
@@ -98,11 +101,11 @@ class _listadoEventosState extends State<listadoEventos> {
                                       onTap: () {
                                         // hacer click en el listtile
                                       },
-                                      title: Text(participante['nombre'] ??
+                                      title: Text(evento['nombre'] ??
                                           'No registro nombre'),
                                       subtitle: Text(
-                                          participante['DNI'].toString() ??
-                                              'No registro Dni'),
+                                          evento['inicio'].toString() ??
+                                              'No hay fecha de inicio'),
                                       //trailing: Text(participante['created_at']
                                       //.toString() ??
                                       //'No hay fecha registrada'),
@@ -111,50 +114,24 @@ class _listadoEventosState extends State<listadoEventos> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           IconButton(
-                                              onPressed: () {
+                                              onPressed: () async {
                                                 context.push(
                                                     '/editarParticipantes');
-                                                participanteId =
-                                                    participante['id'];
-                                                participanteIdnombre =
-                                                    participante['nombre'] ??
-                                                        'no hay';
-                                                participanteIdDNI =
-                                                    participante['DNI'] ?? 0;
-                                                participanteIdDireccion =
-                                                    participante['direccion'] ??
-                                                        'no hay';
-                                                participanteIdTelefono =
-                                                    participante['telefono'] ??
-                                                        0;
-                                                participanteIdCorreo =
-                                                    participante['correo'] ??
-                                                        'no hay';
-                                                participanteIdRuc =
-                                                    participante['ruc'] ?? 0;
-                                                participanteIdFirma =
-                                                    participante['firma'] ??
-                                                        'no hay';
-                                                context
-                                                    .read<
-                                                        providerParticipanteId>()
-                                                    .changeProvParticipanteId(
-                                                        newprovParticipanteId:
-                                                            participanteId,
-                                                        newprovDNIid:
-                                                            participanteIdDNI,
-                                                        newprovnombreid:
-                                                            participanteIdnombre,
-                                                        newprovdireccionid:
-                                                            participanteIdDireccion,
-                                                        newprovcorreoid:
-                                                            participanteIdCorreo,
-                                                        newprovfirmaid:
-                                                            participanteIdFirma,
-                                                        newprovrucid:
-                                                            participanteIdRuc,
-                                                        newprovtelefonoid:
-                                                            participanteIdTelefono);
+
+                                                nombreEvento = evento['nombre'];
+                                                inicioEvento = evento['inicio'];
+                                                finalizacionEvento =
+                                                    evento['finalizacion'];
+                                                departamentoEvento =
+                                                    evento['departamento'];
+                                                provinciaEvento =
+                                                    evento['provincia'];
+                                                distritoEvento =
+                                                    evento['distrito'];
+
+                                                await providerEventos
+                                                    .fetchEventByName(
+                                                        nombreEvento, context);
                                               },
                                               icon: const Icon(Icons.edit)),
                                           IconButton(
@@ -193,8 +170,8 @@ class _listadoEventosState extends State<listadoEventos> {
                                                           );
                                                         });
                                                 if (deleteConfirmed) {
-                                                  await eliminarParticipante(
-                                                      participanteId);
+                                                  await eliminarEvento(
+                                                      nombreEvento);
                                                 }
                                               },
                                               icon: const Icon(Icons.delete))
@@ -215,8 +192,7 @@ class _listadoEventosState extends State<listadoEventos> {
                       ),
                       PrettyBorderButton(
                         label: '  Nuevo Evento   ',
-                        onPressed: () =>
-                            context.push('/formularioParticipantes'),
+                        onPressed: () => context.push('/formularioEventos'),
                         labelStyle: const TextStyle(fontSize: 20),
                         bgColor: const Color(0xffC4ACCD),
                         borderColor: const Color(0xff6C3082),
@@ -233,6 +209,7 @@ class _listadoEventosState extends State<listadoEventos> {
                         child: Text('Buscar Evento'),
                       ),
                       SizedBox(height: 20),
+
                       Text('Nombre: ${providerEventos.provNombre}'),
                       Text('Inicio: ${providerEventos.provInicio}'),
                       Text('Final: ${providerEventos.provFinal}'),
@@ -252,29 +229,9 @@ class _listadoEventosState extends State<listadoEventos> {
     );
   }
 
-  //Widget _visualizarDatos() {
-  //final providerParticipantes = context.read<ProviderParticipantes>();
-  //final providerFirma = context.read<ProviderFirma>();
-
-  //return Column(
-  //children: [
-  //Text('visualizando'),
-  //Text(context.watch<ProviderParticipantes>().dni),
-  //Text(context.watch<ProviderParticipantes>().nombre),
-  //Text(context.watch<ProviderParticipantes>().telefono),
-  //Text(context.watch<ProviderParticipantes>().direccion),
-  //Text(context.watch<ProviderParticipantes>().email),
-  //Text(context.watch<ProviderParticipantes>().RUC),
-  //Text(context.watch<ProviderFirma>().firmaString),
-
-  // mostrar la firma obtenida
-  //],
-  //);
-  //}
-
-  Future<void> eliminarParticipante(
-    int participanteId,
+  Future<void> eliminarEvento(
+    String nombreEvento,
   ) async {
-    await supabase.from("neoParticipantes").delete().eq("id", participanteId);
+    await supabase.from("eventos").delete().eq("nombre", nombreEvento);
   }
 }
