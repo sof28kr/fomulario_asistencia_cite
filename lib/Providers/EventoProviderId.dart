@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fomulario_asistencia_cite/Conexion/supabaseEvento.dart';
 import 'package:fomulario_asistencia_cite/Models/eventModel.dart';
 
-class ProviderEventos extends ChangeNotifier {
+class ProviderEventosId extends ChangeNotifier {
+  int provId;
   String provNombre;
   String provInicio;
   String provFinal;
@@ -12,7 +13,8 @@ class ProviderEventos extends ChangeNotifier {
   String provServicio;
   final SupabaseService supabaseService;
 
-  ProviderEventos({
+  ProviderEventosId({
+    this.provId = 0,
     this.provNombre = 'No hay nombre registrado',
     this.provInicio = 'No hay fecha de inicio registrada',
     this.provFinal = 'No hay fecha de final registrada',
@@ -23,7 +25,8 @@ class ProviderEventos extends ChangeNotifier {
     required this.supabaseService,
   });
 
-  void changeProviderEvento({
+  void changeProviderEventoId({
+    required int newprovId,
     required String newprovNombre,
     required String newprovInicio,
     required String newprovFinal,
@@ -32,6 +35,7 @@ class ProviderEventos extends ChangeNotifier {
     required String newprovDistrito,
     required String newprovServicio,
   }) {
+    provId = newprovId;
     provNombre = newprovNombre;
     provInicio = newprovInicio;
     provFinal = newprovFinal;
@@ -43,7 +47,7 @@ class ProviderEventos extends ChangeNotifier {
   }
 
   // llevar loda datos a supabase
-  Future<void> saveEventToSupabase(BuildContext context) async {
+  Future<void> saveEventToSupabaseId(BuildContext context) async {
     final event = EventModel(
       nombre: provNombre,
       inicio: provInicio,
@@ -59,7 +63,7 @@ class ProviderEventos extends ChangeNotifier {
     }
   }
 
-  Future<void> fetchEventByName(String name, BuildContext context) async {
+  Future<void> fetchEventByNameId(String name, BuildContext context) async {
     final event = await supabaseService.fetchEventByName(name);
     if (event == null) {
       _showErrorDialog(context, 'No se encontró el evento.');
@@ -81,6 +85,7 @@ class ProviderEventos extends ChangeNotifier {
       _showErrorDialog(context, 'No se encontró el evento.');
       return;
     }
+
     provNombre = event.nombre;
     provInicio = event.inicio;
     provFinal = event.finalizacion;

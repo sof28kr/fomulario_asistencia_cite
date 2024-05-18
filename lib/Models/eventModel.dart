@@ -6,6 +6,7 @@ class EventModel {
   final String departamento;
   final String provincia;
   final String distrito;
+  final String servicio;
 
   EventModel({
     required this.nombre,
@@ -14,6 +15,7 @@ class EventModel {
     required this.departamento,
     required this.provincia,
     required this.distrito,
+    required this.servicio,
   });
 
   factory EventModel.fromMap(Map<String, dynamic> map) {
@@ -24,6 +26,7 @@ class EventModel {
       departamento: map['departamento'],
       provincia: map['provincia'],
       distrito: map['distrito'],
+      servicio: map['servicio'],
     );
   }
 
@@ -37,12 +40,13 @@ class EventModel {
       'departamento': departamento,
       'provincia': provincia,
       'distrito': distrito,
+      'servicio': servicio,
     };
   }
 
-  Future<void> eliminarParticipante(
-    int participanteId,
+  Future<void> eliminarEvento(
+    int nombreEvento,
   ) async {
-    await supabase.from("neoParticipantes").delete().eq("id", participanteId);
+    await supabase.from("eventos").delete().eq("nombre", nombreEvento);
   }
 }

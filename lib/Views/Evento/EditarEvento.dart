@@ -1,8 +1,7 @@
-import 'dart:convert';
 
-import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
-import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
-import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
+
+import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
+import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
 
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -19,58 +18,31 @@ class _EditarEventoState extends State<EditarEvento> {
 
   //variables a moverse:
 
-  final participantesStream = Supabase.instance.client
-      .from('neoParticipantes')
-      .stream(primaryKey: ['id']);
+  final eventoStream =
+      Supabase.instance.client.from('eventos').stream(primaryKey: ['id']);
 
-  bool isBase64String(String str) {
-    try {
-      base64Decode(str);
-      return true;
-    } catch (_) {
-      return false;
-    }
-  }
+  String nombre = '';
+  String inicio = '';
+  String finalizacion = '';
+  String departamento = '';
+  String provincia = '';
+  String distrito = '';
+  String firma = "";
+
+  // jalar los valores del provider 
+  
+
+
 
   @override
   Widget build(BuildContext context) {
-    final identificacion =
-        context.watch<providerParticipanteId>().provParticipanteId;
-    final identificacionDNI = context.watch<providerParticipanteId>().provDNIid;
-    final identificacionnombre =
-        context.watch<providerParticipanteId>().provnombreid;
-    final identificaciontelefono =
-        context.watch<providerParticipanteId>().provtelefonoid;
-    final identificaciondireccion =
-        context.watch<providerParticipanteId>().provdireccionid;
-    final identificacioncorreo =
-        context.watch<providerParticipanteId>().provcorreoid;
-    final identificacionruc = context.watch<providerParticipanteId>().provrucid;
-
-    // inicializando controladores
-
-    final TextEditingController controllerInputDni =
-        TextEditingController(text: identificacionDNI.toString());
-    final TextEditingController controllerInputNombre =
-        TextEditingController(text: identificacionnombre);
-    final TextEditingController controllerInputTelefono = TextEditingController(
-        text: identificaciontelefono
-            .toString()); // Controlador asociado a texto Email donde se escribe
-    final TextEditingController controllerInputDireccion =
-        TextEditingController(text: identificaciondireccion);
-    final TextEditingController controllerInputEmail = TextEditingController(
-        text:
-            identificacioncorreo); // Controlador asociado a texto Email donde se escribe
-    final TextEditingController controllerInputRuc =
-        TextEditingController(text: identificacionruc.toString());
-
     final colores = Theme.of(context).extension<AppColors>();
-    var indexParticipante =
-        context.watch<providerParticipanteId>().provParticipanteId;
-    // context es como un lago de valores en el modelo
-    //value es un valor que podemos jalar
-    //el tipo de consumer es segun el modelo que tenemos
-    //en este caos el consumer esta como <providerParticipanteId>
+
+    final indentificacion = context.watch<ProviderEventosId>().provId;
+
+
+    final TextEditingController controllerInputNombreEvento = TextEditingController(text: )
+
     return Scaffold(
       //luego el scafold es que escucha y recive los cambios
 
@@ -97,8 +69,8 @@ class _EditarEventoState extends State<EditarEvento> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(context
-                          .watch<providerParticipanteId>()
-                          .provParticipanteId
+                          .watch<ProviderEventos>()
+                          .provNombre
                           .toString()),
                       Text(
                         'Editar Datos del Evento',
@@ -110,172 +82,165 @@ class _EditarEventoState extends State<EditarEvento> {
                             color: colores!.c1),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
-                          controller: controllerInputDni,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              hintText: 'DNI',
-                              labelText: 'Ingrese su DNI',
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: TextField(
+                            controller: controllerInputNombreEvento,
+                            keyboardType: TextInputType.text,
+                            decoration: InputDecoration(
+                              hintText: 'Nombre del Evento',
+                              labelText: 'Ingrese el nombre del evento',
                               suffixIcon: const Icon(Icons.badge),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
-                              )),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      autocompletar(),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: TextFormField(
-                          controller: controllerInputNombre,
-                          keyboardType: TextInputType.name,
-                          decoration: InputDecoration(
-                              hintText: 'Nombre Completo',
-                              labelText: 'nombres y apellidos',
+
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: TextField(
+                            controller: controllerInputServicio,
+                            keyboardType: TextInputType.text,
+                            decoration: InputDecoration(
+                              hintText: 'Tipo de Servicio',
+                              labelText: 'Ingrese el tipo de servicio',
                               suffixIcon: const Icon(Icons.badge),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
-                              )),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
-                          controller: controllerInputTelefono,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              hintText: 'Telefono',
-                              labelText: 'Telefono fijo o celular',
-                              suffixIcon: const Icon(Icons.phone),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              )),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
-                          controller: controllerInputDireccion,
-                          keyboardType: TextInputType.name,
-                          decoration: InputDecoration(
-                              hintText: 'Direccion',
-                              labelText: 'La direccion de su residencia',
-                              suffixIcon: const Icon(Icons.badge),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              )),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
-                          controller: controllerInputEmail,
-                          keyboardType: TextInputType.name,
-                          decoration: InputDecoration(
-                              hintText: 'Correo Electronico',
-                              labelText: 'xyz@gmail.com',
-                              suffixIcon: const Icon(Icons.mail),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              )),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        child: TextField(
-                          controller: controllerInputRuc,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              hintText: 'Ruc',
-                              labelText: 'Ingrese el numero de su RUC',
-                              suffixIcon: const Icon(Icons.badge),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              )),
-                        ),
-                      ),
-                      const subirFirma(),
-                      Container(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        child: isBase64String(context
-                                .watch<providerParticipanteId>()
-                                .provfirmaid)
-                            ? Expanded(
-                                child: AspectRatio(
-                                  aspectRatio: 2,
-                                  child: Image.memory(
-                                    base64Decode(context
-                                        .watch<providerParticipanteId>()
-                                        .provfirmaid),
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                              )
-                            : const Text(
-                                'No hay firma disponible',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
+
+                        // Agrega el TextField con el DatePicker
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: Column(
+                            children: [
+                              const Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text("Fecha de inicio",
+                                    textAlign: TextAlign.left),
+                              ),
+                              TextFormField(
+                                onTap: () async {
+                                  await datePicker(
+                                      "Ingrese la fecha de inicio del evento",
+                                      controllerInputInicio);
+                                },
+                                controller: controllerInputInicio,
+                                decoration: InputDecoration(
+                                  hintText: 'Seleccionar fecha de inicio',
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15)),
+                                  labelText: "Fecha de inicio del evento",
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.never,
                                 ),
                               ),
-                      ),
-                      const SizedBox(height: 50),
-                      PrettyBorderButton(
-                        label: '  Editar Participacion   ',
-                        onPressed: () async {
-                          final firmaString =
-                              context.read<ProviderFirma>().firmaString;
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: Column(
+                            children: [
+                              const Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text("Fecha de fin del evento",
+                                    textAlign: TextAlign.left),
+                              ),
+                              TextFormField(
+                                onTap: () async {
+                                  await datePicker(
+                                      "Ingrese la fecha de fin del evento",
+                                      controllerInputCierre);
+                                },
+                                controller: controllerInputCierre,
+                                decoration: InputDecoration(
+                                  hintText: 'Seleccionar fecha de fin',
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15)),
+                                  labelText: "Fecha de cierre",
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.never,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text('Ubicacion del evento',
+                                  textAlign: TextAlign.left),
+                            ),
+                            DropdownExample(
+                              onDepartmentChanged: (department) {
+                                setState(() {
+                                  selectedDepartment = department!;
+                                });
+                              },
+                              onProvinceChanged: (province) {
+                                setState(() {
+                                  selectedProvince = province!;
+                                });
+                              },
+                              onDistrictChanged: (district) {
+                                setState(() {
+                                  selectedDistrict = district!;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 50),
 
-                          context
-                              .read<ProviderParticipantes>()
-                              .changeParticipantes(
-                                  newdni: controllerInputDni.text,
-                                  newnombre: controllerInputNombre.text,
-                                  newtelefono: controllerInputTelefono.text,
-                                  newdireccion: controllerInputDireccion.text,
-                                  newemail: controllerInputEmail.text,
-                                  newRUC: controllerInputRuc.text);
+                        PrettyBorderButton(
+                          label: '  Registrar Evento   ',
+                          onPressed: () {
+                            providerEventos.changeProviderEvento(
+                              newprovServicio: controllerInputServicio.text,
+                              newprovNombre: controllerInputNombreEvento.text,
+                              newprovInicio: controllerInputInicio.text,
+                              newprovFinal: controllerInputCierre.text,
+                              newprovDepartamento: selectedDepartment,
+                              newprovProvincia: selectedProvince,
+                              newprovDistrito: selectedDistrict,
+                            );
+                            context.push('/listaEventos');
+                            providerEventos.saveEventToSupabase(context);
 
-                          await updateParticipante(
-                            indexParticipante,
-                            controllerInputDni.text,
-                            controllerInputNombre.text,
-                            controllerInputTelefono.text,
-                            controllerInputDireccion.text,
-                            controllerInputEmail.text,
-                            controllerInputRuc.text,
-                            context.read<ProviderFirma>().firmaString,
-                          );
+                            controllerInputNombreEvento.clear();
+                            controllerInputInicio.clear();
+                            controllerInputCierre.clear();
+                            selectedDepartment = '';
+                            selectedProvince = '';
+                            selectedDistrict = '';
+                            controllerInputServicio.clear();
+                          },
+                          labelStyle: const TextStyle(fontSize: 20),
+                          bgColor: const Color(0xffC4ACCD),
+                          borderColor: const Color(0xff6C3082),
+                          borderWidth: s3,
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
 
-                          controllerInputDni.clear();
-                          controllerInputNombre.clear();
-                          controllerInputTelefono.clear();
-                          controllerInputDireccion.clear();
-                          controllerInputEmail.clear();
-                          controllerInputRuc.clear();
-                          context.read<ProviderFirma>().resetFirmaString();
-
-                          context.push('/listaParticipantes');
-                        },
-                        labelStyle: const TextStyle(fontSize: 20),
-                        bgColor: const Color(0xffC4ACCD),
-                        borderColor: const Color(0xff6C3082),
-                        borderWidth: s3,
-                      ),
-                      const SizedBox(
-                        height: 100,
-                      ),
-                      PrettySlideUnderlineButton(
-                        label: 'Ver Listado de Participantes',
-                        labelStyle: TextStyle(fontSize: 16, color: colores.c3),
-                        onPressed: () {
-                          context.push('/listaParticipantes');
-                        },
-                        secondSlideColor: colores.c1,
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
+                        PrettySlideUnderlineButton(
+                          label: 'Ver Listado de Eventos',
+                          labelStyle:
+                              TextStyle(fontSize: 16, color: colores.c3),
+                          onPressed: () {
+                            context.push('/listaEventos');
+                          },
+                          secondSlideColor: colores.c1,
+                        ),
+                        const SizedBox(
+                          height: 50,
                     ],
                   ),
                 ),

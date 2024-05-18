@@ -1,8 +1,7 @@
-import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
+import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:fomulario_asistencia_cite/Conexion/supabaseEvento.dart';
 
 class listadoEventos extends StatefulWidget {
   const listadoEventos({super.key});
@@ -64,123 +63,145 @@ class _listadoEventosState extends State<listadoEventos> {
                       ),
 
                       StreamBuilder<List<Map<String, dynamic>>>(
-                          stream: eventosStream,
-                          builder: (context, snapshot) {
-                            if (!snapshot.hasData) {
-                              return const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }
-                            final Eventos = snapshot.data!;
+                        stream: eventosStream,
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                          // Obtener los eventos del snapshot
+                          final eventos = snapshot.data!;
+                          // Limitar a los últimos 10 eventos, o mostrar todos si hay menos de 10
+                          final eventosLimitados = (eventos.length > 10)
+                              ? eventos.sublist(eventos.length - 10)
+                              : eventos;
 
-                            return ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: Eventos.length,
-                                itemBuilder: (context, index) {
-                                  final evento = Eventos[index];
+                          return ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: eventosLimitados.length,
+                            itemBuilder: (context, index) {
+                              final evento = eventosLimitados[index];
 
-                                  var nombreEvento =
-                                      evento['nombre'] ?? 'no hay nombre';
-                                  var inicioEvento = evento['inicio'] ??
-                                      'no hay fecha de inicio';
-                                  var finalizacionEvento = evento[
-                                      'finalizacion' ??
-                                          'no hay fecha de finalizacion'];
-                                  var departamentoEvento = evento[
-                                      'departamento' ??
-                                          'no hay departamento registrado'];
-                                  var provinciaEvento = evento['provincia' ??
-                                      'no hay provincia registrada'];
-                                  var distritoEvento = evento['distrito' ??
-                                      'no hay distrito registrado'];
+                              var idEvento = evento['id'];
 
-                                  return Card(
-                                    child: ListTile(
-                                      tileColor: colores.c6,
-                                      onTap: () {
-                                        // hacer click en el listtile
-                                      },
-                                      title: Text(evento['nombre'] ??
-                                          'No registro nombre'),
-                                      subtitle: Text(
-                                          evento['inicio'].toString() ??
-                                              'No hay fecha de inicio'),
-                                      //trailing: Text(participante['created_at']
-                                      //.toString() ??
-                                      //'No hay fecha registrada'),
+                              var nombreEvento =
+                                  evento['nombre'] ?? 'no hay nombre';
+                              var servicioEvento =
+                                  evento['servicio'] ?? 'no hay tipo';
+                              var inicioEvento =
+                                  evento['inicio'] ?? 'no hay fecha de inicio';
+                              var finalizacionEvento = evento['finalizacion'] ??
+                                  'no hay fecha de finalizacion';
+                              var departamentoEvento = evento['departamento'] ??
+                                  'no hay departamento registrado';
+                              var provinciaEvento = evento['provincia'] ??
+                                  'no hay provincia registrada';
+                              var distritoEvento = evento['distrito'] ??
+                                  'no hay distrito registrado';
 
-                                      trailing: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          IconButton(
-                                              onPressed: () async {
-                                                context.push(
-                                                    '/editarParticipantes');
+                              return Card(
+                                child: ListTile(
+                                  tileColor: colores.c6,
+                                  onTap: () {
+                                    // hacer click en el listtile
+                                  },
+                                  title: Text(
+                                      evento['nombre'] ?? 'No registro nombre'),
+                                  subtitle: Text(evento['inicio'].toString() ??
+                                      'No hay fecha de inicio'),
+                                  trailing: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.list_alt)),
+                                      IconButton(
+                                        onPressed: () async {
+                                          context.push('/editarEventos');
 
-                                                nombreEvento = evento['nombre'];
-                                                inicioEvento = evento['inicio'];
-                                                finalizacionEvento =
-                                                    evento['finalizacion'];
-                                                departamentoEvento =
-                                                    evento['departamento'];
-                                                provinciaEvento =
-                                                    evento['provincia'];
-                                                distritoEvento =
-                                                    evento['distrito'];
+                                          servicioEvento = evento['servicio'];
+                                          idEvento = evento['id'];
+                                          nombreEvento = evento['nombre'];
+                                          inicioEvento = evento['inicio'];
+                                          finalizacionEvento =
+                                              evento['finalizacion'];
+                                          departamentoEvento =
+                                              evento['departamento'];
+                                          provinciaEvento = evento['provincia'];
+                                          distritoEvento = evento['distrito'];
 
-                                                await providerEventos
-                                                    .fetchEventByName(
-                                                        nombreEvento, context);
-                                              },
-                                              icon: const Icon(Icons.edit)),
-                                          IconButton(
-                                              onPressed: () async {
-                                                // implementar metodo para eliminacion
+                                          context
+                                              .read<ProviderEventosId>()
+                                              .changeProviderEventoId(
+                                                newprovId: idEvento,
+                                                newprovNombre: nombreEvento,
+                                                newprovInicio: inicioEvento,
+                                                newprovFinal: inicioEvento,
+                                                newprovDepartamento:
+                                                    departamentoEvento,
+                                                newprovDistrito: distritoEvento,
+                                                newprovProvincia:
+                                                    provinciaEvento,
+                                                newprovServicio: servicioEvento,
+                                              );
 
-                                                bool deleteConfirmed =
-                                                    await showDialog(
-                                                        context: context,
-                                                        builder: (context) {
-                                                          return AlertDialog(
-                                                            title: const Text(
-                                                                'Eliminar Registro del Participantes'),
-                                                            content: const Text(
-                                                                'Seguro que desea eliminar el registro del participante?'),
-                                                            actions: [
-                                                              TextButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    Navigator.pop(
-                                                                        context,
-                                                                        false);
-                                                                  },
-                                                                  child: const Text(
-                                                                      'Cancelar')),
-                                                              TextButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    Navigator.pop(
-                                                                        context,
-                                                                        true);
-                                                                  },
-                                                                  child: const Text(
-                                                                      'Eliminar registro')),
-                                                            ],
-                                                          );
-                                                        });
-                                                if (deleteConfirmed) {
-                                                  await eliminarEvento(
-                                                      nombreEvento);
-                                                }
-                                              },
-                                              icon: const Icon(Icons.delete))
-                                        ],
+                                          await providerEventos.fetchEventById(
+                                              idEvento, context);
+                                        },
+                                        icon: const Icon(Icons.edit),
                                       ),
-                                    ),
-                                  );
-                                });
-                          }),
+                                      IconButton(
+                                        onPressed: () async {
+                                          // implementar metodo para eliminacion
+
+                                          bool deleteConfirmed =
+                                              await showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                title: const Text(
+                                                    'Eliminar Registro del Evento'),
+                                                content: const Text(
+                                                    'Seguro que desea eliminar el registro del evento?'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(
+                                                          context, false);
+                                                    },
+                                                    child:
+                                                        const Text('Cancelar'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(
+                                                          context, true);
+                                                    },
+                                                    child: const Text(
+                                                        'Eliminar Evento'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+
+                                          if (deleteConfirmed) {
+                                            await eliminarEvento(
+                                                nombreEvento, idEvento);
+                                          }
+                                        },
+                                        icon: const Icon(Icons.delete),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
 
                       const SizedBox(
                         height: 50,
@@ -201,21 +222,6 @@ class _listadoEventosState extends State<listadoEventos> {
                       const SizedBox(
                         height: 50,
                       ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          await providerEventos.fetchEventByName(
-                              'primer', context);
-                        },
-                        child: Text('Buscar Evento'),
-                      ),
-                      SizedBox(height: 20),
-
-                      Text('Nombre: ${providerEventos.provNombre}'),
-                      Text('Inicio: ${providerEventos.provInicio}'),
-                      Text('Final: ${providerEventos.provFinal}'),
-                      Text('Departamento: ${providerEventos.provDepartamento}'),
-                      Text('Provincia: ${providerEventos.provProvincia}'),
-                      Text('Distrito: ${providerEventos.provDistrito}'),
 
                       // Cuerpo de los form fields
                     ],
@@ -229,9 +235,10 @@ class _listadoEventosState extends State<listadoEventos> {
     );
   }
 
-  Future<void> eliminarEvento(
-    String nombreEvento,
-  ) async {
-    await supabase.from("eventos").delete().eq("nombre", nombreEvento);
+  Future<void> eliminarEvento(String nombreEvento, int idEvento) async {
+    await supabase
+        .from("eventos")
+        .delete()
+        .match({"nombre": nombreEvento, "id": idEvento});
   }
 }

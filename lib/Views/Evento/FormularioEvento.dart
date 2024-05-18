@@ -7,8 +7,6 @@ import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
 
-import 'package:intl/intl.dart';
-
 class FormularioEvento extends StatefulWidget {
   const FormularioEvento({super.key});
 
@@ -24,6 +22,7 @@ class _FormularioEventoState extends State<FormularioEvento> {
   final TextEditingController controllerInputServicio = TextEditingController();
   final TextEditingController controllerInputInicio = TextEditingController();
   final TextEditingController controllerInputCierre = TextEditingController();
+
   String selectedDepartment = '';
   String selectedProvince = '';
   String selectedDistrict = '';
@@ -52,7 +51,8 @@ class _FormularioEventoState extends State<FormularioEvento> {
 
     if (pickedDate != null) {
       if (controller == controllerInputInicio) {
-        if (pickedDate.isAfter(DateTime.now())) {
+        if (pickedDate
+            .isAfter(DateTime.now().subtract(const Duration(days: 1)))) {
           setState(() {
             selectedStartDate = pickedDate;
             controller.text = pickedDate.toLocal().toString().split(' ')[0];
@@ -64,18 +64,24 @@ class _FormularioEventoState extends State<FormularioEvento> {
           );
         }
       } else if (controller == controllerInputCierre) {
-        if (selectedStartDate != null &&
-                pickedDate.isAfter(selectedStartDate!) ||
-            pickedDate.isAtSameMomentAs(selectedStartDate!)) {
-          setState(() {
-            selectedEndDate = pickedDate;
-            controller.text = pickedDate.toLocal().toString().split(' ')[0];
-          });
+        if (selectedStartDate != null) {
+          if (pickedDate.isAtSameMomentAs(selectedStartDate!) ||
+              pickedDate.isAfter(selectedStartDate!)) {
+            setState(() {
+              selectedEndDate = pickedDate;
+              controller.text = pickedDate.toLocal().toString().split(' ')[0];
+            });
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                  content: Text(
+                      'La fecha de fin debe ser el mismo día o después de la fecha de inicio.')),
+            );
+          }
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-                content: Text(
-                    'La fecha de fin debe ser el mismo día o después de la fecha de inicio.')),
+                content: Text('Debe seleccionar la fecha de inicio primero.')),
           );
         }
       }
@@ -249,6 +255,7 @@ class _FormularioEventoState extends State<FormularioEvento> {
                           label: '  Registrar Evento   ',
                           onPressed: () {
                             providerEventos.changeProviderEvento(
+                              newprovServicio: controllerInputServicio.text,
                               newprovNombre: controllerInputNombreEvento.text,
                               newprovInicio: controllerInputInicio.text,
                               newprovFinal: controllerInputCierre.text,
@@ -265,6 +272,7 @@ class _FormularioEventoState extends State<FormularioEvento> {
                             selectedDepartment = '';
                             selectedProvince = '';
                             selectedDistrict = '';
+                            controllerInputServicio.clear();
                           },
                           labelStyle: const TextStyle(fontSize: 20),
                           bgColor: const Color(0xffC4ACCD),
