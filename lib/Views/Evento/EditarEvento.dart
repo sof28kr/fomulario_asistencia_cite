@@ -1,5 +1,6 @@
 
 
+import 'package:fomulario_asistencia_cite/Custom_Widgets/DropDownUbicacion.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
 
@@ -16,6 +17,11 @@ class EditarEvento extends StatefulWidget {
 class _EditarEventoState extends State<EditarEvento> {
   final supabase = Supabase.instance.client;
 
+final TextEditingController _fechaController = TextEditingController();
+
+  //variables controladoras
+  DateTime? selectedStartDate;
+  DateTime? selectedEndDate;
   //variables a moverse:
 
   final eventoStream =
@@ -30,18 +36,88 @@ class _EditarEventoState extends State<EditarEvento> {
   String firma = "";
 
   // jalar los valores del provider 
-  
-
-
-
+ 
   @override
   Widget build(BuildContext context) {
     final colores = Theme.of(context).extension<AppColors>();
 
+    // jala los datos del provider eventos id
+
     final indentificacion = context.watch<ProviderEventosId>().provId;
+    final nombreEvento = context.watch<ProviderEventosId>().provNombre;
+    final servicioEvento = context.watch<ProviderEventosId>().provServicio;
+    final inicioEvento = context.watch<ProviderEventosId>().provInicio;
+    final finalEvento = context.watch<ProviderEventosId>().provFinal;
+    final departamentoEvento = context.watch<ProviderEventosId>().provDepartamento;
+    final provinciaEvento = context.watch<ProviderEventosId>().provProvincia;
+    final distritoEvento = context.watch<ProviderEventosId>().provDistrito;
 
+    final TextEditingController controllerInputNombreEvento = TextEditingController(text: nombreEvento);
+    final TextEditingController controllerInputServicio = TextEditingController(text: servicioEvento);
+    final TextEditingController controllerInputInicio = TextEditingController(text: inicioEvento);
+    final TextEditingController controllerInputCierre = TextEditingController(text: finalEvento);
+    final TextEditingController controllerInputDepartamento = TextEditingController(text: departamentoEvento);
+    final TextEditingController controllerInputProvincia = TextEditingController(text: provinciaEvento);
+    final TextEditingController controllerInputDistrito = TextEditingController(text: distritoEvento);
 
-    final TextEditingController controllerInputNombreEvento = TextEditingController(text: )
+    String selectedDepartment = departamentoEvento;
+    String selectedProvince = provinciaEvento;
+    String selectedDistrict = distritoEvento;
+
+  Future<void> datePicker(
+      String title, TextEditingController controller) async {
+    DateTime initialDate = DateTime.now();
+    if (controller == controllerInputCierre && selectedStartDate != null) {
+      initialDate = selectedStartDate!;
+    }
+
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: (controller == controllerInputInicio)
+          ? DateTime.now()
+          : selectedStartDate ?? DateTime.now(),
+      lastDate: DateTime(2101),
+    );
+
+    if (pickedDate != null) {
+      if (controller == controllerInputInicio) {
+        if (pickedDate
+            .isAfter(DateTime.now().subtract(const Duration(days: 1)))) {
+          setState(() {
+            selectedStartDate = pickedDate;
+            controller.text = pickedDate.toLocal().toString().split(' ')[0];
+          });
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+                content: Text('La fecha de inicio debe ser hoy o posterior.')),
+          );
+        }
+      } else if (controller == controllerInputCierre) {
+        if (selectedStartDate != null) {
+          if (pickedDate.isAtSameMomentAs(selectedStartDate!) ||
+              pickedDate.isAfter(selectedStartDate!)) {
+            setState(() {
+              selectedEndDate = pickedDate;
+              controller.text = pickedDate.toLocal().toString().split(' ')[0];
+            });
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                  content: Text(
+                      'La fecha de fin debe ser el mismo día o después de la fecha de inicio.')),
+            );
+          }
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+                content: Text('Debe seleccionar la fecha de inicio primero.')),
+          );
+        }
+      }
+    }
+  }
 
     return Scaffold(
       //luego el scafold es que escucha y recive los cambios
@@ -201,15 +277,7 @@ class _EditarEventoState extends State<EditarEvento> {
                         PrettyBorderButton(
                           label: '  Registrar Evento   ',
                           onPressed: () {
-                            providerEventos.changeProviderEvento(
-                              newprovServicio: controllerInputServicio.text,
-                              newprovNombre: controllerInputNombreEvento.text,
-                              newprovInicio: controllerInputInicio.text,
-                              newprovFinal: controllerInputCierre.text,
-                              newprovDepartamento: selectedDepartment,
-                              newprovProvincia: selectedProvince,
-                              newprovDistrito: selectedDistrict,
-                            );
+
                             context.push('/listaEventos');
                             providerEventos.saveEventToSupabase(context);
 

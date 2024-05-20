@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fomulario_asistencia_cite/Conexion/supabaseEvento.dart';
 import 'package:fomulario_asistencia_cite/Models/eventModel.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProviderEventosId extends ChangeNotifier {
+
+  final supabase = Supabase.instance.client;
+
   int provId;
   String provNombre;
   String provInicio;
@@ -110,5 +114,31 @@ class ProviderEventosId extends ChangeNotifier {
         ],
       ),
     );
+  }
+  
+  Future<void> updateEvento(
+    int provId,
+    String provNombre,
+    String provInicio,
+    String provFinal,
+    String provDepartamento,
+    String provProvincia,
+    String provDistrito,
+    String provServicio,
+
+  ) async {
+    var telefono =
+        updatetelefono.isNotEmpty ? int.tryParse(updatetelefono) : null;
+    var ruc = updateruc.isNotEmpty ? int.tryParse(updateruc) : null;
+    var dniverif = updatedni.isNotEmpty ? int.tryParse(updatedni) : null;
+    await supabase.from("neoParticipantes").update({
+      'DNI': dniverif,
+      'nombre': updatenombre,
+      'telefono': telefono,
+      'direccion': updatedireccion,
+      'correo': updateemail,
+      'ruc': ruc,
+      'firma': updatefirma,
+    }).eq("id", participanteId);
   }
 }
