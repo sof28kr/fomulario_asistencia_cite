@@ -14,17 +14,12 @@ class _listadoEventosState extends State<listadoEventos> {
   //variables a moverse:
   final supabase = Supabase.instance.client;
 
-  final participantesStream = Supabase.instance.client
-      .from('neoParticipantes')
-      .stream(primaryKey: ['id']);
-
   final eventosStream =
       Supabase.instance.client.from('eventos').stream(primaryKey: ['id']);
 
   @override
   Widget build(BuildContext context) {
     final colores = Theme.of(context).extension<AppColors>();
-    final providerEventos = Provider.of<ProviderEventos>(context);
 
     return Scaffold(
       body: SafeArea(
@@ -118,19 +113,25 @@ class _listadoEventosState extends State<listadoEventos> {
                                           onPressed: () {},
                                           icon: Icon(Icons.list_alt)),
                                       IconButton(
-                                        onPressed: () async {
+                                        onPressed: () {
                                           context.push('/editarEventos');
-
-                                          servicioEvento = evento['servicio'];
                                           idEvento = evento['id'];
-                                          nombreEvento = evento['nombre'];
-                                          inicioEvento = evento['inicio'];
+                                          servicioEvento =
+                                              evento['servicio'] ?? 'no hay';
+                                          nombreEvento =
+                                              evento['nombre'] ?? 'no hay';
+                                          inicioEvento =
+                                              evento['inicio'] ?? 'no hay';
                                           finalizacionEvento =
-                                              evento['finalizacion'];
+                                              evento['finalizacion'] ??
+                                                  'no hay';
                                           departamentoEvento =
-                                              evento['departamento'];
-                                          provinciaEvento = evento['provincia'];
-                                          distritoEvento = evento['distrito'];
+                                              evento['departamento'] ??
+                                                  'no hay';
+                                          provinciaEvento =
+                                              evento['provincia'] ?? 'no hay';
+                                          distritoEvento =
+                                              evento['distrito'] ?? 'no hay';
 
                                           context
                                               .read<ProviderEventosId>()
@@ -138,7 +139,8 @@ class _listadoEventosState extends State<listadoEventos> {
                                                 newprovId: idEvento,
                                                 newprovNombre: nombreEvento,
                                                 newprovInicio: inicioEvento,
-                                                newprovFinal: inicioEvento,
+                                                newprovFinal:
+                                                    finalizacionEvento,
                                                 newprovDepartamento:
                                                     departamentoEvento,
                                                 newprovDistrito: distritoEvento,
@@ -146,9 +148,6 @@ class _listadoEventosState extends State<listadoEventos> {
                                                     provinciaEvento,
                                                 newprovServicio: servicioEvento,
                                               );
-
-                                          await providerEventos.fetchEventById(
-                                              idEvento, context);
                                         },
                                         icon: const Icon(Icons.edit),
                                       ),

@@ -1,5 +1,6 @@
 import 'package:fomulario_asistencia_cite/Conexion/supabaseEvento.dart';
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
+import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
 import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
@@ -48,7 +49,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => providerParticipanteId()),
         ChangeNotifierProvider(
             create: (context) =>
-                ProviderEventos(supabaseService: supabaseService))
+                ProviderEventos(supabaseService: supabaseService)),
+        ChangeNotifierProvider(
+            create: (context) =>
+                ProviderEventosId(supabaseService: supabaseService))
       ],
       child: MaterialApp.router(
         routerConfig: GoRouter(initialLocation: '/inicio', routes: [

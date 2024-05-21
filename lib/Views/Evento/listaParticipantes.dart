@@ -2,14 +2,14 @@ import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart'
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class listadoParticipantes extends StatefulWidget {
-  const listadoParticipantes({super.key});
+class listadoPartiEvento extends StatefulWidget {
+  const listadoPartiEvento({super.key});
 
   @override
-  State<listadoParticipantes> createState() => _listadoParticipantesState();
+  State<listadoPartiEvento> createState() => _listadoPartiEventoState();
 }
 
-class _listadoParticipantesState extends State<listadoParticipantes> {
+class _listadoPartiEventoState extends State<listadoPartiEvento> {
   //variables a moverse:
   final supabase = Supabase.instance.client;
 
