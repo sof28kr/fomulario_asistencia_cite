@@ -21,4 +21,10 @@ class SupabaseService {
     final PostgrestMap response =
         await _client.from('eventos').select().eq('id', id).single();
   }
+  Future<String?> updateEvent(EventModel event, id) async {
+  final response = await _client
+      .from('eventos')
+      .update(event.toMap())
+      .eq('id', id);
+}
 }

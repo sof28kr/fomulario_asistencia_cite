@@ -99,6 +99,7 @@ class _EditarEvento2State extends State<EditarEvento2> {
   Widget build(BuildContext context) {
     final providerEventos = Provider.of<ProviderEventos>(context);
     final colores = Theme.of(context).extension<AppColors>();
+    var indexEvento = context.watch<ProviderEventosId>().provId;
 
     return Scaffold(
       body: SafeArea(
@@ -124,7 +125,7 @@ class _EditarEvento2State extends State<EditarEvento2> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Ingreso de Datos del Evento',
+                          'Evento2',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Lato',
@@ -264,7 +265,8 @@ class _EditarEvento2State extends State<EditarEvento2> {
                               newprovDistrito: selectedDistrict,
                             );
                             context.push('/listaEventos');
-                            providerEventos.saveEventToSupabase(context);
+
+                            providerEventos.updateEventInSupabase(context, indexEvento );
 
                             controllerInputNombreEvento.clear();
                             controllerInputInicio.clear();

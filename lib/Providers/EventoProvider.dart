@@ -109,7 +109,6 @@ class ProviderEventos extends ChangeNotifier {
 
   Future<void> updateEventInSupabase(BuildContext context, int eventId) async {
   final event = EventModel(
-    id: eventId, // Asegúrate de tener el id del evento que deseas actualizar
     nombre: provNombre,
     inicio: provInicio,
     finalizacion: provFinal,
@@ -118,7 +117,7 @@ class ProviderEventos extends ChangeNotifier {
     distrito: provDistrito,
     servicio: provServicio,
   );
-  final errorMessage = await supabaseService.updateEvent(event);
+  final errorMessage = await supabaseService.updateEvent(event, eventId);
   if (errorMessage != null) {
     _showErrorDialog(context, errorMessage);
   }

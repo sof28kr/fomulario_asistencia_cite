@@ -114,7 +114,7 @@ class _listadoEventosState extends State<listadoEventos> {
                                           icon: Icon(Icons.list_alt)),
                                       IconButton(
                                         onPressed: () {
-                                          context.push('/editarEventos');
+                                          
                                           idEvento = evento['id'];
                                           servicioEvento =
                                               evento['servicio'] ?? 'no hay';
@@ -148,6 +148,7 @@ class _listadoEventosState extends State<listadoEventos> {
                                                     provinciaEvento,
                                                 newprovServicio: servicioEvento,
                                               );
+                                          context.push('/editarEventos2');
                                         },
                                         icon: const Icon(Icons.edit),
                                       ),
