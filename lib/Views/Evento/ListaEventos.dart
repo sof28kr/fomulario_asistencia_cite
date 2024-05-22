@@ -111,7 +111,7 @@ class _listadoEventosState extends State<listadoEventos> {
                                     children: [
                                       IconButton(
                                           onPressed: () {},
-                                          icon: Icon(Icons.list_alt)),
+                                          icon: const Icon(Icons.list_alt)),
                                       IconButton(
                                         onPressed: () {
                                           

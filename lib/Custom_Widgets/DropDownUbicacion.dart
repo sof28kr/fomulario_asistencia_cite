@@ -6,7 +6,7 @@ class DropdownExample extends StatefulWidget {
   final ValueChanged<String?> onProvinceChanged;
   final ValueChanged<String?> onDistrictChanged;
 
-  DropdownExample({
+  const DropdownExample({super.key, 
     required this.onDepartmentChanged,
     required this.onProvinceChanged,
     required this.onDistrictChanged,
@@ -71,17 +71,17 @@ class _DropdownExampleState extends State<DropdownExample> {
   Widget _buildDropdownButton(String? value, List<String> items, String hint,
       Function(String?) onChanged) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
       width: double.infinity,
       child: DropdownButtonFormField<String>(
         value: value,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: Color(0xff2A3439), width: 1),
+            borderSide: const BorderSide(color: Color(0xff2A3439), width: 1),
           ),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-          contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
         ),
         hint: Text('\t$hint'),
         onChanged: items.isEmpty ? null : onChanged,
@@ -90,7 +90,7 @@ class _DropdownExampleState extends State<DropdownExample> {
             value: value,
             child: Text(
               '\t$value',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0xff2A3439),
                 fontFamily: 'Lato',
                 fontWeight: FontWeight.normal,

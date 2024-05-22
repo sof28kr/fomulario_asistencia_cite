@@ -10,21 +10,25 @@ class SupabaseService {
 
   Future<String?> insertEvent(EventModel event) async {
     final response = await _client.from('eventos').insert(event.toMap());
+    return null;
   }
 
   Future<EventModel?> fetchEventByName(String name) async {
     final PostgrestMap response =
         await _client.from('eventos').select().eq('nombre', name).single();
+    return null;
   }
 
   Future<EventModel?> fetchEventById(int id) async {
     final PostgrestMap response =
         await _client.from('eventos').select().eq('id', id).single();
+    return null;
   }
   Future<String?> updateEvent(EventModel event, id) async {
   final response = await _client
       .from('eventos')
       .update(event.toMap())
       .eq('id', id);
+  return null;
 }
 }

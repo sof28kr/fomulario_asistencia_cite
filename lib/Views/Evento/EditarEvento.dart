@@ -90,7 +90,7 @@ class _EditarEventoState extends State<EditarEvento> {
             });
           } else {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
+              const SnackBar(
                   content:
                       Text('La fecha de inicio debe ser hoy o posterior.')),
             );
@@ -105,14 +105,14 @@ class _EditarEventoState extends State<EditarEvento> {
               });
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
+                const SnackBar(
                     content: Text(
                         'La fecha de fin debe ser el mismo día o después de la fecha de inicio.')),
               );
             }
           } else {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
+              const SnackBar(
                   content:
                       Text('Debe seleccionar la fecha de inicio primero.')),
             );
@@ -246,7 +246,7 @@ class _EditarEventoState extends State<EditarEvento> {
                       ),
                       Column(
                         children: [
-                          Align(
+                          const Align(
                             alignment: Alignment.centerLeft,
                             child: Text('Ubicacion del evento',
                                 textAlign: TextAlign.left),
