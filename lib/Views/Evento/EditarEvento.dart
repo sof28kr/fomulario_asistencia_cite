@@ -56,13 +56,13 @@ class _EditarEventoState extends State<EditarEvento> {
     final TextEditingController controllerInputServicio =
         TextEditingController(text: servicioEvento);
     final TextEditingController controllerInputInicio =
-        TextEditingController(text: inicioEvento);
+        TextEditingController();
     final TextEditingController controllerInputCierre =
-        TextEditingController(text: finalEvento);
+        TextEditingController();
 
-    String selectedDepartment = departamentoEvento;
-    String selectedProvince = provinciaEvento;
-    String selectedDistrict = distritoEvento;
+    String selectedDepartment ='';
+    String selectedProvince = '';
+    String selectedDistrict = '';
 
     Future<void> datePicker(
         String title, TextEditingController controller) async {

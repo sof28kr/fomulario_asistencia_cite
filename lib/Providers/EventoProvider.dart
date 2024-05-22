@@ -106,4 +106,21 @@ class ProviderEventos extends ChangeNotifier {
       ),
     );
   }
+
+  Future<void> updateEventInSupabase(BuildContext context, int eventId) async {
+  final event = EventModel(
+    id: eventId, // Asegúrate de tener el id del evento que deseas actualizar
+    nombre: provNombre,
+    inicio: provInicio,
+    finalizacion: provFinal,
+    departamento: provDepartamento,
+    provincia: provProvincia,
+    distrito: provDistrito,
+    servicio: provServicio,
+  );
+  final errorMessage = await supabaseService.updateEvent(event);
+  if (errorMessage != null) {
+    _showErrorDialog(context, errorMessage);
+  }
+}
 }
