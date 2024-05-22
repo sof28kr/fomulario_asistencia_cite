@@ -80,7 +80,8 @@ class Welcome extends StatelessWidget {
                   borderColor: const Color(0xff6C3082),
                   borderWidth: s4,
                 ), 
-                const SizedBox(height: 50)
+                const SizedBox(height: 50),
+                ElevatedButton(onPressed: () => context.push('/listaFiltrada'), child: Text("list"))
               ],
             ),
           ),

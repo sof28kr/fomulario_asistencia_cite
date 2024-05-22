@@ -6,6 +6,7 @@ import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
 import 'package:fomulario_asistencia_cite/Views/Evento/EditarEvento.dart';
 import 'package:fomulario_asistencia_cite/Views/Evento/EditarEvento2.dart';
+import 'package:fomulario_asistencia_cite/Views/Evento/ListaPartiEventos.dart';
 import 'package:fomulario_asistencia_cite/Views/Participantes/EditarParticipantes.dart';
 import 'package:fomulario_asistencia_cite/Views/Evento/FormularioEvento.dart';
 import 'package:fomulario_asistencia_cite/Views/Evento/ListaEventos.dart';
@@ -93,6 +94,10 @@ class MyApp extends StatelessWidget {
           GoRoute(
               path: '/editarEventos2',
               builder: (context, state) => const EditarEvento2()),
+          GoRoute(
+              path: '/listaFiltrada',
+              builder: (context, state) => const ListaPartiEventos()),
+
         ]),
         title: 'Flutter Demo',
         theme: ThemeData(extensions: const [

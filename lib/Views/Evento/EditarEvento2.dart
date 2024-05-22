@@ -17,9 +17,6 @@ class EditarEvento2 extends StatefulWidget {
 
 class _EditarEvento2State extends State<EditarEvento2> {
 
-  final TextEditingController controllerInputNombreEvento =
-      TextEditingController();
-  final TextEditingController controllerInputServicio = TextEditingController();
   final TextEditingController controllerInputInicio = TextEditingController();
   final TextEditingController controllerInputCierre = TextEditingController();
 
@@ -90,7 +87,6 @@ class _EditarEvento2State extends State<EditarEvento2> {
 
   @override
   void dispose() {
-    controllerInputServicio.dispose();
     _fechaController.dispose();
     super.dispose();
   }
@@ -102,6 +98,24 @@ class _EditarEvento2State extends State<EditarEvento2> {
     var indexEvento = context.watch<ProviderEventosId>().provId;
 
     final nombreEvento = context.watch<ProviderEventosId>().provNombre;
+    final servicioEvento = context.watch<ProviderEventosId>().provServicio;
+    final inicioEvento = context.watch<ProviderEventosId>().provInicio;
+    final finalEvento = context.watch<ProviderEventosId>().provFinal;
+    final departamentoEvento =
+        context.watch<ProviderEventosId>().provDepartamento;
+    final provinciaEvento = context.watch<ProviderEventosId>().provProvincia;
+    final distritoEvento = context.watch<ProviderEventosId>().provDistrito;
+
+    final TextEditingController controllerInputNombreEvento =
+        TextEditingController(text: nombreEvento);
+    final TextEditingController controllerInputServicio =
+        TextEditingController(text: servicioEvento);
+    final TextEditingController controllerInputInicio =
+        TextEditingController();
+    final TextEditingController controllerInputCierre =
+        TextEditingController();
+
+    
     
 
     return Scaffold(
