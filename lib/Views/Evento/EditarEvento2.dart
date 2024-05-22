@@ -101,6 +101,9 @@ class _EditarEvento2State extends State<EditarEvento2> {
     final colores = Theme.of(context).extension<AppColors>();
     var indexEvento = context.watch<ProviderEventosId>().provId;
 
+    final nombreEvento = context.watch<ProviderEventosId>().provNombre;
+    
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -125,7 +128,7 @@ class _EditarEvento2State extends State<EditarEvento2> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Evento2',
+                          nombreEvento,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Lato',
@@ -135,6 +138,8 @@ class _EditarEvento2State extends State<EditarEvento2> {
                           ),
                         ),
 
+                        SizedBox(height: 50,),
+
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           child: TextField(
@@ -142,7 +147,7 @@ class _EditarEvento2State extends State<EditarEvento2> {
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               hintText: 'Nombre del Evento',
-                              labelText: 'Ingrese el nombre del evento',
+                              labelText: nombreEvento,
                               suffixIcon: const Icon(Icons.badge),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
@@ -253,7 +258,7 @@ class _EditarEvento2State extends State<EditarEvento2> {
                         const SizedBox(height: 50),
 
                         PrettyBorderButton(
-                          label: '  Registrar Evento   ',
+                          label: '  Editar Evento   ',
                           onPressed: () {
                             providerEventos.changeProviderEvento(
                               newprovServicio: controllerInputServicio.text,
