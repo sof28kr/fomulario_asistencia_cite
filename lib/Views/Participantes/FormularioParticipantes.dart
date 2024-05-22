@@ -17,6 +17,35 @@ class FormularioParticipantes extends StatefulWidget {
 class _FormularioParticipantesState extends State<FormularioParticipantes> {
   final supabase = Supabase.instance.client;
   String firmaSearch = '';
+  //variable para el dropdown eventos
+  List<Map<String, dynamic>> options = [];
+  String? selectedOption;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchOptions();
+  }
+
+  Future<void> fetchOptions() async {
+    try {
+      final response = await supabase
+          .from('eventos')
+          .select('id, nombre')
+          .order('created_at', ascending: false)
+          .limit(10);
+
+      final data = response as List<Map<String, dynamic>>;
+      setState(() {
+        options = data;
+        if (options.isNotEmpty) {
+          selectedOption = options.first['id'].toString();
+        }
+      });
+    } catch (error) {
+      print('Error fetching data: $error');
+    }
+  }
 
   //variables a moverse:
 
@@ -112,6 +141,28 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
             child: Column(
               children: [
                 const bannerPersonalizado(),
+
+                Center(
+                  child: options.isEmpty
+                      ? CircularProgressIndicator()
+                      : DropdownButton<String>(
+                          hint: Text('Select an option'),
+                          value: selectedOption,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              selectedOption = newValue;
+                            });
+                            print('Selected ID: $newValue');
+                          },
+                          items: options.map((option) {
+                            return DropdownMenuItem<String>(
+                              value: option['id'].toString(),
+                              child: Text(option['nombre']),
+                            );
+                          }).toList(),
+                        ),
+                ),
+
                 //textxfields del formulario
                 Padding(
                   padding:
@@ -317,6 +368,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                             'correo': controllerInputEmail.text,
                             'ruc': rucInt,
                             'firma': context.read<ProviderFirma>().firmaString,
+                            'evento': selectedOption.toString(),
                           });
 
                           controllerInputDni.clear();

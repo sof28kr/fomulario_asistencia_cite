@@ -11,6 +11,7 @@ import 'package:fomulario_asistencia_cite/Views/Participantes/EditarParticipante
 import 'package:fomulario_asistencia_cite/Views/Evento/FormularioEvento.dart';
 import 'package:fomulario_asistencia_cite/Views/Evento/ListaEventos.dart';
 import 'package:fomulario_asistencia_cite/Views/Participantes/listaParticipantes.dart';
+import 'package:fomulario_asistencia_cite/Views/Participantes/prueba.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -97,7 +98,7 @@ class MyApp extends StatelessWidget {
           GoRoute(
               path: '/listaFiltrada',
               builder: (context, state) => const ListaPartiEventos()),
-
+          GoRoute(path: '/prueba', builder: (context, state) => prueba()),
         ]),
         title: 'Flutter Demo',
         theme: ThemeData(extensions: const [

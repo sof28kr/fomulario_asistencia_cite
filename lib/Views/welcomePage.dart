@@ -28,7 +28,8 @@ class Welcome extends StatelessWidget {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                  child:
+                      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                     IconButton(
                       onPressed: () {},
                       icon: const Icon(
@@ -39,7 +40,7 @@ class Welcome extends StatelessWidget {
                   ]),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 100), 
+                  padding: const EdgeInsets.only(top: 100),
                   child: Container(
                     width: 300,
                     height: 50,
@@ -79,9 +80,11 @@ class Welcome extends StatelessWidget {
                   bgColor: const Color(0xffC4ACCD),
                   borderColor: const Color(0xff6C3082),
                   borderWidth: s4,
-                ), 
+                ),
                 const SizedBox(height: 50),
-                ElevatedButton(onPressed: () => context.push('/listaFiltrada'), child: Text("list"))
+                ElevatedButton(
+                    onPressed: () => context.push('/prueba'),
+                    child: Text("list"))
               ],
             ),
           ),
