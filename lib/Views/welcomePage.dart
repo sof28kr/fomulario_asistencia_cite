@@ -75,16 +75,13 @@ class Welcome extends StatelessWidget {
                 ),
                 PrettyBorderButton(
                   label: '   Eventos   ',
-                  onPressed: () => context.push('/formularioEventos'),
+                  onPressed: () => context.push('/listaEventos'),
                   labelStyle: const TextStyle(fontSize: 20),
                   bgColor: const Color(0xffC4ACCD),
                   borderColor: const Color(0xff6C3082),
                   borderWidth: s4,
                 ),
                 const SizedBox(height: 50),
-                ElevatedButton(
-                    onPressed: () => context.push('/prueba'),
-                    child: Text("list"))
               ],
             ),
           ),

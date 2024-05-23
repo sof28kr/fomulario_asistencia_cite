@@ -17,6 +17,7 @@ class _pruebaState extends State<prueba> {
     fetchOptions();
   }
 
+  //optiene las opciones de la base datos
   Future<void> fetchOptions() async {
     try {
       final response = await supabase
@@ -29,6 +30,7 @@ class _pruebaState extends State<prueba> {
       setState(() {
         options = data;
         if (options.isNotEmpty) {
+          //coloca el evento mas recientemente creado por default
           selectedOption = options.first['id'].toString();
         }
       });
@@ -47,7 +49,7 @@ class _pruebaState extends State<prueba> {
         child: options.isEmpty
             ? CircularProgressIndicator()
             : DropdownButton<String>(
-                hint: Text('Select an option'),
+                hint: Text('Seleccione una opcion'),
                 value: selectedOption,
                 onChanged: (String? newValue) {
                   setState(() {

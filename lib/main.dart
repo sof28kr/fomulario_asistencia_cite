@@ -59,13 +59,13 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         routerConfig: GoRouter(initialLocation: '/inicio', routes: [
+          //pagina de inicio
           GoRoute(
             path: '/inicio',
             builder: (context, state) => const Welcome(),
           ),
 
           //rutas participante
-
           GoRoute(
             path: '/formularioParticipantes',
             builder: (context, state) => const FormularioParticipantes(),
@@ -98,6 +98,8 @@ class MyApp extends StatelessWidget {
           GoRoute(
               path: '/listaFiltrada',
               builder: (context, state) => const ListaPartiEventos()),
+
+          //prueba
           GoRoute(path: '/prueba', builder: (context, state) => prueba()),
         ]),
         title: 'Flutter Demo',

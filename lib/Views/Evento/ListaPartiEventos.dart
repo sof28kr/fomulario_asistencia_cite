@@ -16,6 +16,34 @@ class _ListaPartiEventosState extends State<ListaPartiEventos> {
   final participantesStream = Supabase.instance.client
       .from('neoParticipantes')
       .stream(primaryKey: ['id']);
+  List<Map<String, dynamic>> eventos = [];
+  String? selectedEvento;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchEventos();
+  }
+
+  Future<void> fetchEventos() async {
+    try {
+      final response = await supabase
+          .from('eventos')
+          .select('id, nombre')
+          .order('created_at', ascending: false)
+          .limit(10);
+
+      final data = response as List<Map<String, dynamic>>;
+      setState(() {
+        eventos = data;
+        if (eventos.isNotEmpty) {
+          selectedEvento = eventos.first['id'].toString();
+        }
+      });
+    } catch (error) {
+      print('Error fetching data: $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +84,27 @@ class _ListaPartiEventosState extends State<ListaPartiEventos> {
                       const SizedBox(
                         height: 50,
                       ),
+                      eventos.isEmpty
+                          ? CircularProgressIndicator()
+                          : DropdownButton<String>(
+                              hint: Text('Select an event'),
+                              value: selectedEvento,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedEvento = newValue;
+                                });
+                              },
+                              items: eventos.map((evento) {
+                                return DropdownMenuItem<String>(
+                                  value: evento['id'].toString(),
+                                  child: Text(evento['nombre']),
+                                );
+                              }).toList(),
+                            ),
+
+                      const SizedBox(
+                        height: 50,
+                      ),
 
                       StreamBuilder<List<Map<String, dynamic>>>(
                           stream: participantesStream,
@@ -67,14 +116,19 @@ class _ListaPartiEventosState extends State<ListaPartiEventos> {
                             }
                             final Participantes = snapshot.data!;
 
-                             final participantesConEvento2 = Participantes.where((participante) => participante['evento'] == 17.toString()).toList();
+                            final participantesConEventoSeleccionado =
+                                Participantes.where((participante) =>
+                                    participante['evento'] ==
+                                    selectedEvento).toList();
 
                             return ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: participantesConEvento2.length,
+                                itemCount:
+                                    participantesConEventoSeleccionado.length,
                                 itemBuilder: (context, index) {
-                                  final participante = Participantes[index];
+                                  final participante =
+                                      participantesConEventoSeleccionado[index];
                                   var participanteId = participante['id'];
                                   var participanteIdnombre =
                                       participante['nombre'] ?? 'no hay nombre';

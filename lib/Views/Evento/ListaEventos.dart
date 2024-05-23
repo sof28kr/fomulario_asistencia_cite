@@ -109,12 +109,15 @@ class _listadoEventosState extends State<listadoEventos> {
                                   trailing: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
+                                      //boton para mostrar los participantes de un evento
                                       IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            idEvento = evento['id'];
+                                            context.push('/listaFiltrada');
+                                          },
                                           icon: const Icon(Icons.list_alt)),
                                       IconButton(
                                         onPressed: () {
-                                          
                                           idEvento = evento['id'];
                                           servicioEvento =
                                               evento['servicio'] ?? 'no hay';

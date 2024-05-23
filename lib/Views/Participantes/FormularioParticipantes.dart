@@ -5,6 +5,7 @@ import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
 
 class FormularioParticipantes extends StatefulWidget {
   const FormularioParticipantes({super.key});
@@ -24,10 +25,11 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
   @override
   void initState() {
     super.initState();
-    fetchOptions();
+    final identificacion = context.read<ProviderEventosId>().provId;
+    fetchOptions(identificacion);
   }
 
-  Future<void> fetchOptions() async {
+  Future<void> fetchOptions(int specificId) async {
     try {
       final response = await supabase
           .from('eventos')
@@ -39,7 +41,10 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
       setState(() {
         options = data;
         if (options.isNotEmpty) {
-          selectedOption = options.first['id'].toString();
+          selectedOption = options
+              .firstWhere((option) => option['id'].toString() == specificId,
+                  orElse: () => options.first)['id']
+              .toString();
         }
       });
     } catch (error) {
@@ -379,7 +384,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                           controllerInputRuc.clear();
                           context.read<ProviderFirma>().resetFirmaString();
 
-                          context.push('/listaParticipantes');
+                          context.push('/listaFiltrada');
                         },
                         labelStyle: const TextStyle(fontSize: 20),
                         bgColor: const Color(0xffC4ACCD),
@@ -393,7 +398,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                         label: 'Ver Listado de Participantes',
                         labelStyle: TextStyle(fontSize: 16, color: colores.c3),
                         onPressed: () {
-                          context.push('/listaParticipantes');
+                          context.push('/listaFiltrada');
                         },
                         secondSlideColor: colores.c1,
                       ),
