@@ -1,28 +1,22 @@
+import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:fomulario_asistencia_cite/Conexion/supabaseEvento.dart';
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
 import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
-import 'package:fomulario_asistencia_cite/Views/Evento/EditarEvento.dart';
 import 'package:fomulario_asistencia_cite/Views/Evento/EditarEvento2.dart';
-import 'package:fomulario_asistencia_cite/Views/Evento/ListaPartiEventos.dart';
+import 'package:fomulario_asistencia_cite/Views/Participantes/ListaPartiEventos.dart';
+import 'package:fomulario_asistencia_cite/Views/Evento/SubListaEventos.dart';
 import 'package:fomulario_asistencia_cite/Views/Participantes/EditarParticipantes.dart';
 import 'package:fomulario_asistencia_cite/Views/Evento/FormularioEvento.dart';
 import 'package:fomulario_asistencia_cite/Views/Evento/ListaEventos.dart';
-import 'package:fomulario_asistencia_cite/Views/Participantes/listaParticipantes.dart';
-import 'package:fomulario_asistencia_cite/Views/Participantes/prueba.dart';
-import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final supabaseService = SupabaseService(
-    'https://oicgtegeayqbqvzoousx.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pY2d0ZWdlYXlxYnF2em9vdXN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM4MTUyNTYsImV4cCI6MjAyOTM5MTI1Nn0.fyhjKUZqSBNuVWZNg5aXQUtH07I6iG-PWQKQrEiphPM',
-  );
   await Supabase.initialize(
     url: 'https://oicgtegeayqbqvzoousx.supabase.co',
     anonKey:
@@ -75,8 +69,8 @@ class MyApp extends StatelessWidget {
             builder: (context, state) => IngresoFirma(),
           ),
           GoRoute(
-              path: '/listaParticipantes',
-              builder: (context, state) => const listadoParticipantes()),
+              path: '/listaFiltrada',
+              builder: (context, state) => const ListaPartiEventos()),
           GoRoute(
               path: '/editarParticipantes',
               builder: (context, state) => const EditarParticipantes()),
@@ -90,17 +84,11 @@ class MyApp extends StatelessWidget {
               path: '/listaEventos',
               builder: (context, state) => const listadoEventos()),
           GoRoute(
-              path: '/editarEventos',
-              builder: (context, state) => const EditarEvento()),
-          GoRoute(
               path: '/editarEventos2',
               builder: (context, state) => const EditarEvento2()),
           GoRoute(
-              path: '/listaFiltrada',
-              builder: (context, state) => const ListaPartiEventos()),
-
-          //prueba
-          GoRoute(path: '/prueba', builder: (context, state) => prueba()),
+              path: '/listaFiltrada2',
+              builder: (context, state) => SubListaEventos()),
         ]),
         title: 'Flutter Demo',
         theme: ThemeData(extensions: const [

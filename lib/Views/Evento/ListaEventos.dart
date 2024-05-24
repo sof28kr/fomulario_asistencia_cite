@@ -113,7 +113,25 @@ class _listadoEventosState extends State<listadoEventos> {
                                       IconButton(
                                           onPressed: () {
                                             idEvento = evento['id'];
-                                            context.push('/listaFiltrada');
+                                            context
+                                                .read<ProviderEventosId>()
+                                                .changeProviderEventoId(
+                                                  newprovId: idEvento,
+                                                  newprovNombre: nombreEvento,
+                                                  newprovInicio: inicioEvento,
+                                                  newprovFinal:
+                                                      finalizacionEvento,
+                                                  newprovDepartamento:
+                                                      departamentoEvento,
+                                                  newprovDistrito:
+                                                      distritoEvento,
+                                                  newprovProvincia:
+                                                      provinciaEvento,
+                                                  newprovServicio:
+                                                      servicioEvento,
+                                                );
+
+                                            context.push('/listaFiltrada2');
                                           },
                                           icon: const Icon(Icons.list_alt)),
                                       IconButton(

@@ -104,10 +104,7 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(context
-                          .watch<providerParticipanteId>()
-                          .provParticipanteId
-                          .toString()),
+                      SizedBox(height: 30),
                       Text(
                         'Editar Datos del Participante',
                         textAlign: TextAlign.center,
@@ -117,6 +114,7 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                             fontWeight: FontWeight.w400,
                             color: colores!.c1),
                       ),
+                      SizedBox(height: 30),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: TextField(

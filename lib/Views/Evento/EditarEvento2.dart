@@ -1,11 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:fomulario_asistencia_cite/Custom_Widgets/DropDownUbicacion.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
-
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
-
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
 
 class EditarEvento2 extends StatefulWidget {
@@ -16,7 +11,6 @@ class EditarEvento2 extends StatefulWidget {
 }
 
 class _EditarEvento2State extends State<EditarEvento2> {
-
   final TextEditingController controllerInputInicio = TextEditingController();
   final TextEditingController controllerInputCierre = TextEditingController();
 
@@ -110,13 +104,8 @@ class _EditarEvento2State extends State<EditarEvento2> {
         TextEditingController(text: nombreEvento);
     final TextEditingController controllerInputServicio =
         TextEditingController(text: servicioEvento);
-    final TextEditingController controllerInputInicio =
-        TextEditingController();
-    final TextEditingController controllerInputCierre =
-        TextEditingController();
-
-    
-    
+    final TextEditingController controllerInputInicio = TextEditingController();
+    final TextEditingController controllerInputCierre = TextEditingController();
 
     return Scaffold(
       body: SafeArea(
@@ -152,7 +141,9 @@ class _EditarEvento2State extends State<EditarEvento2> {
                           ),
                         ),
 
-                        SizedBox(height: 50,),
+                        SizedBox(
+                          height: 50,
+                        ),
 
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 15),
@@ -285,7 +276,8 @@ class _EditarEvento2State extends State<EditarEvento2> {
                             );
                             context.push('/listaEventos');
 
-                            providerEventos.updateEventInSupabase(context, indexEvento );
+                            providerEventos.updateEventInSupabase(
+                                context, indexEvento);
 
                             controllerInputNombreEvento.clear();
                             controllerInputInicio.clear();

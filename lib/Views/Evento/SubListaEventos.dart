@@ -1,15 +1,16 @@
+import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
 import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class listadoParticipantes extends StatefulWidget {
-  const listadoParticipantes({super.key});
+class SubListaEventos extends StatefulWidget {
+  const SubListaEventos({super.key});
 
   @override
-  State<listadoParticipantes> createState() => _listadoParticipantesState();
+  State<SubListaEventos> createState() => _SubListaEventosState();
 }
 
-class _listadoParticipantesState extends State<listadoParticipantes> {
+class _SubListaEventosState extends State<SubListaEventos> {
   //variables a moverse:
   final supabase = Supabase.instance.client;
 
@@ -18,8 +19,15 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
       .stream(primaryKey: ['id']);
 
   @override
+  void initState() {
+    super.initState();
+    //traer el valor inicial
+  }
+
+  @override
   Widget build(BuildContext context) {
     final colores = Theme.of(context).extension<AppColors>();
+    String valor = context.read<ProviderEventosId>().provId.toString();
 
     return Scaffold(
       body: SafeArea(
@@ -57,6 +65,10 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                         height: 50,
                       ),
 
+                      const SizedBox(
+                        height: 50,
+                      ),
+
                       StreamBuilder<List<Map<String, dynamic>>>(
                           stream: participantesStream,
                           builder: (context, snapshot) {
@@ -67,12 +79,18 @@ class _listadoParticipantesState extends State<listadoParticipantes> {
                             }
                             final Participantes = snapshot.data!;
 
+                            final participantesConEventoSeleccionado =
+                                Participantes.where((participante) =>
+                                    participante['evento'] == valor).toList();
+
                             return ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: Participantes.length,
+                                itemCount:
+                                    participantesConEventoSeleccionado.length,
                                 itemBuilder: (context, index) {
-                                  final participante = Participantes[index];
+                                  final participante =
+                                      participantesConEventoSeleccionado[index];
                                   var participanteId = participante['id'];
                                   var participanteIdnombre =
                                       participante['nombre'] ?? 'no hay nombre';
