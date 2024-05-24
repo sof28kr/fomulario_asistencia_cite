@@ -254,25 +254,45 @@ class _FormularioEventoState extends State<FormularioEvento> {
                         PrettyBorderButton(
                           label: '  Registrar Evento   ',
                           onPressed: () {
-                            providerEventos.changeProviderEvento(
-                              newprovServicio: controllerInputServicio.text,
-                              newprovNombre: controllerInputNombreEvento.text,
-                              newprovInicio: controllerInputInicio.text,
-                              newprovFinal: controllerInputCierre.text,
-                              newprovDepartamento: selectedDepartment,
-                              newprovProvincia: selectedProvince,
-                              newprovDistrito: selectedDistrict,
-                            );
-                            context.push('/listaEventos');
-                            providerEventos.saveEventToSupabase(context);
+                            final nombre = controllerInputNombreEvento.text;
+                            if (nombre == "") {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text("Registro nulo"),
+                                      content: Text(
+                                          "Se requiere al menos el valor del nombre del evento para su registro"),
+                                      actions: <Widget>[
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text("Ok"))
+                                      ],
+                                    );
+                                  });
+                            } else {
+                              providerEventos.changeProviderEvento(
+                                newprovServicio: controllerInputServicio.text,
+                                newprovNombre: controllerInputNombreEvento.text,
+                                newprovInicio: controllerInputInicio.text,
+                                newprovFinal: controllerInputCierre.text,
+                                newprovDepartamento: selectedDepartment,
+                                newprovProvincia: selectedProvince,
+                                newprovDistrito: selectedDistrict,
+                              );
+                              context.push('/listaEventos');
+                              providerEventos.saveEventToSupabase(context);
 
-                            controllerInputNombreEvento.clear();
-                            controllerInputInicio.clear();
-                            controllerInputCierre.clear();
-                            selectedDepartment = '';
-                            selectedProvince = '';
-                            selectedDistrict = '';
-                            controllerInputServicio.clear();
+                              controllerInputNombreEvento.clear();
+                              controllerInputInicio.clear();
+                              controllerInputCierre.clear();
+                              selectedDepartment = '';
+                              selectedProvince = '';
+                              selectedDistrict = '';
+                              controllerInputServicio.clear();
+                            }
                           },
                           labelStyle: const TextStyle(fontSize: 20),
                           bgColor: const Color(0xffC4ACCD),

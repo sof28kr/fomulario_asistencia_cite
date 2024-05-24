@@ -146,25 +146,35 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
             child: Column(
               children: [
                 const bannerPersonalizado(),
-
+                Text(
+                  'Seleciones un evento:',
+                ),
                 Center(
                   child: options.isEmpty
                       ? CircularProgressIndicator()
-                      : DropdownButton<String>(
-                          hint: Text('Select an option'),
-                          value: selectedOption,
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              selectedOption = newValue;
-                            });
-                            print('Selected ID: $newValue');
-                          },
-                          items: options.map((option) {
-                            return DropdownMenuItem<String>(
-                              value: option['id'].toString(),
-                              child: Text(option['nombre']),
-                            );
-                          }).toList(),
+                      : Container(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            border:
+                                Border.all(color: Color(0xff2A3439), width: 1),
+                          ),
+                          child: DropdownButton<String>(
+                            hint: Text('Select an option'),
+                            value: selectedOption,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedOption = newValue;
+                              });
+                              print('Selected ID: $newValue');
+                            },
+                            items: options.map((option) {
+                              return DropdownMenuItem<String>(
+                                value: option['id'].toString(),
+                                child: Text(option['nombre']),
+                              );
+                            }).toList(),
+                          ),
                         ),
                 ),
 
@@ -205,7 +215,26 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                           label: '  Autocompletar  ',
                           onPressed: () {
                             final userdniSearch = controllerInputDni.text;
-                            getInitialInfo(userdniSearch);
+                            if (userdniSearch == "") {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text("Primero ingrese un valor"),
+                                      content: Text(
+                                          "Se requiere un valor de DNI a ser buscado"),
+                                      actions: <Widget>[
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text("Ok"))
+                                      ],
+                                    );
+                                  });
+                            } else {
+                              getInitialInfo(userdniSearch);
+                            }
                             // fin de la funcion autocompletar
                           },
                           labelStyle: const TextStyle(fontSize: 16),
@@ -343,48 +372,69 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                       PrettyBorderButton(
                         label: '  Registrar Participacion   ',
                         onPressed: () async {
-                          final firmaString =
-                              context.read<ProviderFirma>().firmaString;
+                          final nombre = controllerInputDni.text;
+                          if (nombre == "") {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text("Registro nulo"),
+                                    content: Text(
+                                        "Se requiere al menos el valor del nombre y apellidos del participante para su registro"),
+                                    actions: <Widget>[
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text("Ok"))
+                                    ],
+                                  );
+                                });
+                          } else {
+                            final firmaString =
+                                context.read<ProviderFirma>().firmaString;
 
-                          context
-                              .read<ProviderParticipantes>()
-                              .changeParticipantes(
-                                  newdni: controllerInputDni.text,
-                                  newnombre: controllerInputNombre.text,
-                                  newtelefono: controllerInputTelefono.text,
-                                  newdireccion: controllerInputDireccion.text,
-                                  newemail: controllerInputEmail.text,
-                                  newRUC: controllerInputRuc.text);
+                            context
+                                .read<ProviderParticipantes>()
+                                .changeParticipantes(
+                                    newdni: controllerInputDni.text,
+                                    newnombre: controllerInputNombre.text,
+                                    newtelefono: controllerInputTelefono.text,
+                                    newdireccion: controllerInputDireccion.text,
+                                    newemail: controllerInputEmail.text,
+                                    newRUC: controllerInputRuc.text);
 
-                          int dniInt =
-                              int.tryParse(controllerInputDni.text) ?? 0;
-                          int telefonoInt =
-                              int.tryParse(controllerInputTelefono.text) ?? 0;
-                          int rucInt =
-                              int.tryParse(controllerInputRuc.text) ?? 0;
+                            int dniInt =
+                                int.tryParse(controllerInputDni.text) ?? 0;
+                            int telefonoInt =
+                                int.tryParse(controllerInputTelefono.text) ?? 0;
+                            int rucInt =
+                                int.tryParse(controllerInputRuc.text) ?? 0;
 
-                          await Supabase.instance.client
-                              .from("neoParticipantes")
-                              .insert({
-                            'DNI': dniInt,
-                            'nombre': controllerInputNombre.text,
-                            'direccion': controllerInputDireccion.text,
-                            'telefono': telefonoInt,
-                            'correo': controllerInputEmail.text,
-                            'ruc': rucInt,
-                            'firma': context.read<ProviderFirma>().firmaString,
-                            'evento': selectedOption.toString(),
-                          });
+                            await Supabase.instance.client
+                                .from("neoParticipantes")
+                                .insert({
+                              'DNI': dniInt,
+                              'nombre': controllerInputNombre.text,
+                              'direccion': controllerInputDireccion.text,
+                              'telefono': telefonoInt,
+                              'correo': controllerInputEmail.text,
+                              'ruc': rucInt,
+                              'firma':
+                                  context.read<ProviderFirma>().firmaString,
+                              'evento': selectedOption.toString(),
+                            });
 
-                          controllerInputDni.clear();
-                          controllerInputNombre.clear();
-                          controllerInputTelefono.clear();
-                          controllerInputDireccion.clear();
-                          controllerInputEmail.clear();
-                          controllerInputRuc.clear();
-                          context.read<ProviderFirma>().resetFirmaString();
+                            controllerInputDni.clear();
+                            controllerInputNombre.clear();
+                            controllerInputTelefono.clear();
+                            controllerInputDireccion.clear();
+                            controllerInputEmail.clear();
+                            controllerInputRuc.clear();
+                            context.read<ProviderFirma>().resetFirmaString();
 
-                          context.push('/listaFiltrada');
+                            context.push('/listaFiltrada');
+                          }
                         },
                         labelStyle: const TextStyle(fontSize: 20),
                         bgColor: const Color(0xffC4ACCD),

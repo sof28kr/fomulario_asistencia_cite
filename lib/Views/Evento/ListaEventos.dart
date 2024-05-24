@@ -72,6 +72,20 @@ class _listadoEventosState extends State<listadoEventos> {
                               ? eventos.sublist(eventos.length - 10)
                               : eventos;
 
+                          if (eventosLimitados.isEmpty) {
+                            return Center(
+                              child: Text(
+                                'Aun no hay eventos registrados',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: colores.c1),
+                              ),
+                            );
+                          }
+
                           return ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
@@ -185,7 +199,7 @@ class _listadoEventosState extends State<listadoEventos> {
                                                 title: const Text(
                                                     'Eliminar Registro del Evento'),
                                                 content: const Text(
-                                                    'Seguro que desea eliminar el registro del evento?'),
+                                                    'Seguro que desea eliminar el registro del evento? \n\nEsta accion tambien eliminara los registros de los participantes a este evento'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () {
@@ -211,6 +225,8 @@ class _listadoEventosState extends State<listadoEventos> {
                                           if (deleteConfirmed) {
                                             await eliminarEvento(
                                                 nombreEvento, idEvento);
+                                            await eliminarParticipantesPorEvento(
+                                                idEvento.toString());
                                           }
                                         },
                                         icon: const Icon(Icons.delete),
@@ -261,5 +277,11 @@ class _listadoEventosState extends State<listadoEventos> {
         .from("eventos")
         .delete()
         .match({"nombre": nombreEvento, "id": idEvento});
+  }
+
+  Future<void> eliminarParticipantesPorEvento(
+    String eventoValor,
+  ) async {
+    await supabase.from("neoParticipantes").delete().eq("evento", eventoValor);
   }
 }

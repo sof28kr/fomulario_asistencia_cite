@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:fomulario_asistencia_cite/Custom_Widgets/DropDownUbicacion.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
-import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProvider.dart';
+import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
 class EditarEvento2 extends StatefulWidget {
   const EditarEvento2({super.key});
@@ -11,18 +13,40 @@ class EditarEvento2 extends StatefulWidget {
 }
 
 class _EditarEvento2State extends State<EditarEvento2> {
+  final TextEditingController controllerInputNombreEvento =
+      TextEditingController();
+  final TextEditingController controllerInputServicio = TextEditingController();
   final TextEditingController controllerInputInicio = TextEditingController();
   final TextEditingController controllerInputCierre = TextEditingController();
 
   String selectedDepartment = '';
   String selectedProvince = '';
   String selectedDistrict = '';
-
-  final TextEditingController _fechaController = TextEditingController();
-
-  //variables controladoras
   DateTime? selectedStartDate;
   DateTime? selectedEndDate;
+
+  @override
+  void initState() {
+    super.initState();
+    // Inicializar los controladores con los valores del Provider
+    final providerEventosId = context.read<ProviderEventosId>();
+    controllerInputNombreEvento.text = providerEventosId.provNombre;
+    controllerInputServicio.text = providerEventosId.provServicio;
+    controllerInputInicio.text = providerEventosId.provInicio;
+    controllerInputCierre.text = providerEventosId.provFinal;
+    selectedDepartment = providerEventosId.provDepartamento;
+    selectedProvince = providerEventosId.provProvincia;
+    selectedDistrict = providerEventosId.provDistrito;
+  }
+
+  @override
+  void dispose() {
+    controllerInputNombreEvento.dispose();
+    controllerInputServicio.dispose();
+    controllerInputInicio.dispose();
+    controllerInputCierre.dispose();
+    super.dispose();
+  }
 
   Future<void> datePicker(
       String title, TextEditingController controller) async {
@@ -80,32 +104,10 @@ class _EditarEvento2State extends State<EditarEvento2> {
   }
 
   @override
-  void dispose() {
-    _fechaController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final providerEventos = Provider.of<ProviderEventos>(context);
     final colores = Theme.of(context).extension<AppColors>();
     var indexEvento = context.watch<ProviderEventosId>().provId;
-
-    final nombreEvento = context.watch<ProviderEventosId>().provNombre;
-    final servicioEvento = context.watch<ProviderEventosId>().provServicio;
-    final inicioEvento = context.watch<ProviderEventosId>().provInicio;
-    final finalEvento = context.watch<ProviderEventosId>().provFinal;
-    final departamentoEvento =
-        context.watch<ProviderEventosId>().provDepartamento;
-    final provinciaEvento = context.watch<ProviderEventosId>().provProvincia;
-    final distritoEvento = context.watch<ProviderEventosId>().provDistrito;
-
-    final TextEditingController controllerInputNombreEvento =
-        TextEditingController(text: nombreEvento);
-    final TextEditingController controllerInputServicio =
-        TextEditingController(text: servicioEvento);
-    final TextEditingController controllerInputInicio = TextEditingController();
-    final TextEditingController controllerInputCierre = TextEditingController();
 
     return Scaffold(
       body: SafeArea(
@@ -131,7 +133,7 @@ class _EditarEvento2State extends State<EditarEvento2> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          nombreEvento,
+                          'Editar Evento',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Lato',
@@ -140,11 +142,9 @@ class _EditarEvento2State extends State<EditarEvento2> {
                             color: colores!.c1,
                           ),
                         ),
-
-                        SizedBox(
+                        const SizedBox(
                           height: 50,
                         ),
-
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           child: TextField(
@@ -152,7 +152,7 @@ class _EditarEvento2State extends State<EditarEvento2> {
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               hintText: 'Nombre del Evento',
-                              labelText: nombreEvento,
+                              labelText: 'Nombre del Evento',
                               suffixIcon: const Icon(Icons.badge),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.0),
@@ -160,7 +160,6 @@ class _EditarEvento2State extends State<EditarEvento2> {
                             ),
                           ),
                         ),
-
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           child: TextField(
@@ -176,7 +175,6 @@ class _EditarEvento2State extends State<EditarEvento2> {
                             ),
                           ),
                         ),
-
                         // Agrega el TextField con el DatePicker
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 15),
@@ -261,7 +259,6 @@ class _EditarEvento2State extends State<EditarEvento2> {
                           ],
                         ),
                         const SizedBox(height: 50),
-
                         PrettyBorderButton(
                           label: '  Editar Evento   ',
                           onPressed: () {
@@ -275,10 +272,9 @@ class _EditarEvento2State extends State<EditarEvento2> {
                               newprovDistrito: selectedDistrict,
                             );
                             context.push('/listaEventos');
-
                             providerEventos.updateEventInSupabase(
                                 context, indexEvento);
-
+                            // Limpiar los controladores y las selecciones
                             controllerInputNombreEvento.clear();
                             controllerInputInicio.clear();
                             controllerInputCierre.clear();
@@ -295,7 +291,6 @@ class _EditarEvento2State extends State<EditarEvento2> {
                         const SizedBox(
                           height: 50,
                         ),
-
                         PrettySlideUnderlineButton(
                           label: 'Ver Listado de Eventos',
                           labelStyle:

@@ -84,22 +84,36 @@ class _ListaPartiEventosState extends State<ListaPartiEventos> {
                       const SizedBox(
                         height: 50,
                       ),
+
+                      Text(
+                        'Seleciones un evento:',
+                      ),
                       eventos.isEmpty
                           ? CircularProgressIndicator()
-                          : DropdownButton<String>(
-                              hint: Text('Select an event'),
-                              value: selectedEvento,
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  selectedEvento = newValue;
-                                });
-                              },
-                              items: eventos.map((evento) {
-                                return DropdownMenuItem<String>(
-                                  value: evento['id'].toString(),
-                                  child: Text(evento['nombre']),
-                                );
-                              }).toList(),
+                          : Container(
+                              padding: EdgeInsets.symmetric(horizontal: 16),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                    color: Color(0xff2A3439), width: 1),
+                              ),
+                              child: DropdownButton<String>(
+                                hint: Text('Select an event'),
+                                value: selectedEvento,
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedEvento = newValue;
+                                  });
+                                },
+                                items: eventos.map((evento) {
+                                  return DropdownMenuItem<String>(
+                                    value: evento['id'].toString(),
+                                    child: Text(
+                                      evento['nombre'],
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
                             ),
 
                       const SizedBox(
@@ -120,6 +134,20 @@ class _ListaPartiEventosState extends State<ListaPartiEventos> {
                                 Participantes.where((participante) =>
                                     participante['evento'] ==
                                     selectedEvento).toList();
+
+                            if (participantesConEventoSeleccionado.isEmpty) {
+                              return Center(
+                                child: Text(
+                                  'Aun no hay participantes \nregistrados en este evento',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontFamily: 'Lato',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                      color: colores.c1),
+                                ),
+                              );
+                            }
 
                             return ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),

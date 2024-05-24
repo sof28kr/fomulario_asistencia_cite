@@ -83,6 +83,20 @@ class _SubListaEventosState extends State<SubListaEventos> {
                                 Participantes.where((participante) =>
                                     participante['evento'] == valor).toList();
 
+                            if (participantesConEventoSeleccionado.isEmpty) {
+                              return Center(
+                                child: Text(
+                                  'Aun no hay participantes \nregistrados en este evento',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontFamily: 'Lato',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                      color: colores.c1),
+                                ),
+                              );
+                            }
+
                             return ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
