@@ -91,6 +91,7 @@ class MyApp extends StatelessWidget {
               builder: (context, state) => SubListaEventos()),
         ]),
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(extensions: const [
           AppColors(
             c1: Color(0xff2A3439),

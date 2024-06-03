@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fomulario_asistencia_cite/Views/Views.dart';
 
 class bannerPersonalizado extends StatefulWidget {
   const bannerPersonalizado({super.key});
@@ -12,7 +13,7 @@ class _bannerPersonalizadoState extends State<bannerPersonalizado> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Container(
           width: 140,
           height: 40,
@@ -20,6 +21,20 @@ class _bannerPersonalizadoState extends State<bannerPersonalizado> {
               image: DecorationImage(
                   image: AssetImage('assets/CITEtex-Cusco.png'),
                   fit: BoxFit.cover)),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+          child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+            IconButton(
+              onPressed: () {
+                context.push('/inicio');
+              },
+              icon: const Icon(
+                Icons.home_outlined,
+                size: 40,
+              ),
+            )
+          ]),
         ),
       ]),
     );

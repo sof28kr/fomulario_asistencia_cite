@@ -146,6 +146,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
             child: Column(
               children: [
                 const bannerPersonalizado(),
+
                 Text(
                   'Seleciones un evento:',
                 ),
