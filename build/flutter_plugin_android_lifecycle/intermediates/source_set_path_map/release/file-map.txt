@@ -1,0 +1,12 @@
+io.flutter.plugins.flutter_plugin_android_lifecycle-core-1.6.0-0 /Users/ventura/.gradle/caches/transforms-3/15402821ea2944ffc54f69018041622f/transformed/core-1.6.0/res
+io.flutter.plugins.flutter_plugin_android_lifecycle-jetified-annotation-experimental-1.1.0-1 /Users/ventura/.gradle/caches/transforms-3/2a88de73cbd3497323f3288a8389c479/transformed/jetified-annotation-experimental-1.1.0/res
+io.flutter.plugins.flutter_plugin_android_lifecycle-jetified-window-1.0.0-beta04-2 /Users/ventura/.gradle/caches/transforms-3/a0b61f734f7e3b0967c304c99cf0edaf/transformed/jetified-window-1.0.0-beta04/res
+io.flutter.plugins.flutter_plugin_android_lifecycle-jetified-window-java-1.0.0-beta04-3 /Users/ventura/.gradle/caches/transforms-3/fc9b3b54cb20b9cf7a981de6a99236b4/transformed/jetified-window-java-1.0.0-beta04/res
+io.flutter.plugins.flutter_plugin_android_lifecycle-main-4 /Users/ventura/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.20/android/src/main/res
+io.flutter.plugins.flutter_plugin_android_lifecycle-release-5 /Users/ventura/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.20/android/src/release/res
+io.flutter.plugins.flutter_plugin_android_lifecycle-pngs-6 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/generated/res/pngs/release
+io.flutter.plugins.flutter_plugin_android_lifecycle-resValues-7 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/generated/res/resValues/release
+io.flutter.plugins.flutter_plugin_android_lifecycle-rs-8 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/generated/res/rs/release
+io.flutter.plugins.flutter_plugin_android_lifecycle-mergeReleaseResources-9 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/intermediates/incremental/release/mergeReleaseResources/merged.dir
+io.flutter.plugins.flutter_plugin_android_lifecycle-mergeReleaseResources-10 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+io.flutter.plugins.flutter_plugin_android_lifecycle-merged_res-11 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/intermediates/merged_res/release

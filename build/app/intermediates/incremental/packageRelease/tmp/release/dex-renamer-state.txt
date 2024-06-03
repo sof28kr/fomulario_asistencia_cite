@@ -1,0 +1,4 @@
+#Fri May 31 19:50:44 PET 2024
+base.0=/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
