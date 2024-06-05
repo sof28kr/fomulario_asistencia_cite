@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -27,4 +27,17 @@ subprojects {
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
+}
+configurations.all {
+    resolutionStrategy {
+        force 'androidx.core:core-ktx:1.10.1'
+        force 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+        force 'androidx.lifecycle:lifecycle-livedata-core-ktx:2.6.1'
+        force 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+        force 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1'
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.0'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-common:1.8.0'
+    }
 }

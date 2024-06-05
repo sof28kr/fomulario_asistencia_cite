@@ -1,7 +1,7 @@
-com.llfbandit.app_links-core-1.6.0-0 /Users/ventura/.gradle/caches/transforms-3/15402821ea2944ffc54f69018041622f/transformed/core-1.6.0/res
-com.llfbandit.app_links-jetified-annotation-experimental-1.1.0-1 /Users/ventura/.gradle/caches/transforms-3/2a88de73cbd3497323f3288a8389c479/transformed/jetified-annotation-experimental-1.1.0/res
-com.llfbandit.app_links-jetified-window-1.0.0-beta04-2 /Users/ventura/.gradle/caches/transforms-3/a0b61f734f7e3b0967c304c99cf0edaf/transformed/jetified-window-1.0.0-beta04/res
-com.llfbandit.app_links-jetified-window-java-1.0.0-beta04-3 /Users/ventura/.gradle/caches/transforms-3/fc9b3b54cb20b9cf7a981de6a99236b4/transformed/jetified-window-java-1.0.0-beta04/res
+com.llfbandit.app_links-jetified-annotation-experimental-1.1.0-0 /Users/ventura/.gradle/caches/transforms-3/14e8a015ff2e73476f3d135d36cca642/transformed/jetified-annotation-experimental-1.1.0/res
+com.llfbandit.app_links-jetified-window-1.0.0-beta04-1 /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/res
+com.llfbandit.app_links-jetified-window-java-1.0.0-beta04-2 /Users/ventura/.gradle/caches/transforms-3/4d8333527f04eacf72d45bd8568c1e49/transformed/jetified-window-java-1.0.0-beta04/res
+com.llfbandit.app_links-core-1.6.0-3 /Users/ventura/.gradle/caches/transforms-3/de52a2656095d0b9b15a5072f1a49b5b/transformed/core-1.6.0/res
 com.llfbandit.app_links-main-4 /Users/ventura/.pub-cache/hosted/pub.dev/app_links-6.1.1/android/src/main/res
 com.llfbandit.app_links-release-5 /Users/ventura/.pub-cache/hosted/pub.dev/app_links-6.1.1/android/src/release/res
 com.llfbandit.app_links-pngs-6 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/app_links/generated/res/pngs/release

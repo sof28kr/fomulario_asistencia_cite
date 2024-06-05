@@ -3,8 +3,8 @@
 # min_api: 21
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: 6654085
-# pg_map_hash: SHA-256 66540858990cc73ce3c574ecf15d48c29081c5c373af39cf8729fdf664bcb04a
+# pg_map_id: 5588108
+# pg_map_hash: SHA-256 558810857a17c1f0269b611a973fbb3cccf776ccd3205041534d6ebaac328f0c
 android.app.AppComponentFactory -> android.app.AppComponentFactory:
 # {"id":"com.android.tools.r8.synthesized"}
     void <clinit>() -> <clinit>
@@ -1712,6 +1712,7 @@ androidx.lifecycle.Lifecycle$Event -> androidx.lifecycle.d$a:
 androidx.lifecycle.Lifecycle$Event$Companion -> androidx.lifecycle.d$a$a:
     androidx.lifecycle.Lifecycle$Event downFrom(androidx.lifecycle.Lifecycle$State) -> a
     androidx.lifecycle.Lifecycle$Event upFrom(androidx.lifecycle.Lifecycle$State) -> b
+    androidx.lifecycle.Lifecycle$Event upTo(androidx.lifecycle.Lifecycle$State) -> c
 androidx.lifecycle.Lifecycle$Event$Companion$WhenMappings -> androidx.lifecycle.d$a$a$a:
     int[] $EnumSwitchMapping$0 -> a
 androidx.lifecycle.Lifecycle$Event$WhenMappings -> androidx.lifecycle.d$a$b:
@@ -1732,12 +1733,13 @@ androidx.lifecycle.LifecycleCoroutineScopeImpl -> androidx.lifecycle.LifecycleCo
     void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
     kotlin.coroutines.CoroutineContext getCoroutineContext() -> g
     androidx.lifecycle.Lifecycle getLifecycle$lifecycle_common() -> i
-androidx.lifecycle.LifecycleEventObserver -> androidx.lifecycle.f:
+androidx.lifecycle.LifecycleDestroyedException -> androidx.lifecycle.f:
+androidx.lifecycle.LifecycleEventObserver -> androidx.lifecycle.g:
     void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
-androidx.lifecycle.LifecycleObserver -> androidx.lifecycle.g:
-androidx.lifecycle.LifecycleOwner -> androidx.lifecycle.h:
+androidx.lifecycle.LifecycleObserver -> androidx.lifecycle.h:
+androidx.lifecycle.LifecycleOwner -> androidx.lifecycle.i:
     androidx.lifecycle.Lifecycle getLifecycle() -> a
-androidx.lifecycle.LifecycleRegistry -> androidx.lifecycle.i:
+androidx.lifecycle.LifecycleRegistry -> androidx.lifecycle.j:
     androidx.arch.core.internal.FastSafeIterableMap observerMap -> c
     androidx.lifecycle.LifecycleRegistry$Companion Companion -> j
     androidx.lifecycle.Lifecycle$State state -> d
@@ -1762,16 +1764,16 @@ androidx.lifecycle.LifecycleRegistry -> androidx.lifecycle.i:
     void pushParentState(androidx.lifecycle.Lifecycle$State) -> m
     void setCurrentState(androidx.lifecycle.Lifecycle$State) -> n
     void sync() -> o
-androidx.lifecycle.LifecycleRegistry$Companion -> androidx.lifecycle.i$a:
+androidx.lifecycle.LifecycleRegistry$Companion -> androidx.lifecycle.j$a:
     androidx.lifecycle.Lifecycle$State min$lifecycle_runtime_release(androidx.lifecycle.Lifecycle$State,androidx.lifecycle.Lifecycle$State) -> a
-androidx.lifecycle.LifecycleRegistry$ObserverWithState -> androidx.lifecycle.i$b:
+androidx.lifecycle.LifecycleRegistry$ObserverWithState -> androidx.lifecycle.j$b:
     androidx.lifecycle.Lifecycle$State state -> a
     androidx.lifecycle.LifecycleEventObserver lifecycleObserver -> b
     void dispatchEvent(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> a
     androidx.lifecycle.Lifecycle$State getState() -> b
-androidx.lifecycle.LifecycleRegistryOwner -> androidx.lifecycle.j:
+androidx.lifecycle.LifecycleRegistryOwner -> androidx.lifecycle.k:
     androidx.lifecycle.LifecycleRegistry getLifecycle() -> a
-androidx.lifecycle.Lifecycling -> androidx.lifecycle.k:
+androidx.lifecycle.Lifecycling -> androidx.lifecycle.l:
     androidx.lifecycle.Lifecycling INSTANCE -> a
     java.util.Map callbackCache -> b
     java.util.Map classToAdapters -> c
@@ -1818,18 +1820,37 @@ androidx.lifecycle.LiveData$ObserverWrapper -> androidx.lifecycle.LiveData$b:
     void activeStateChanged(boolean) -> g
     void detachObserver() -> i
     boolean shouldBeActive() -> j
-androidx.lifecycle.MethodCallsLogger -> androidx.lifecycle.l:
+androidx.lifecycle.MethodCallsLogger -> androidx.lifecycle.m:
     java.util.Map calledMethods -> a
-androidx.lifecycle.MutableLiveData -> androidx.lifecycle.m:
+androidx.lifecycle.MutableLiveData -> androidx.lifecycle.n:
     void setValue(java.lang.Object) -> h
-androidx.lifecycle.Observer -> androidx.lifecycle.n:
+androidx.lifecycle.Observer -> androidx.lifecycle.o:
     void onChanged(java.lang.Object) -> a
-androidx.lifecycle.OnLifecycleEvent -> androidx.lifecycle.o:
+androidx.lifecycle.OnLifecycleEvent -> androidx.lifecycle.p:
 androidx.lifecycle.ReflectiveGenericLifecycleObserver -> androidx.lifecycle.ReflectiveGenericLifecycleObserver:
     java.lang.Object mWrapped -> d
     androidx.lifecycle.ClassesInfoCache$CallbackInfo mInfo -> e
     void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
-androidx.lifecycle.ReportFragment -> androidx.lifecycle.p:
+androidx.lifecycle.RepeatOnLifecycleKt$repeatOnLifecycle$3$1$1$1 -> androidx.lifecycle.RepeatOnLifecycleKt$repeatOnLifecycle$3$1$1$1:
+    kotlin.jvm.internal.Ref$ObjectRef $launchedJob -> e
+    kotlinx.coroutines.CoroutineScope $$this$coroutineScope -> f
+    kotlin.jvm.functions.Function2 $block -> j
+    androidx.lifecycle.Lifecycle$Event $cancelWorkEvent -> g
+    kotlinx.coroutines.sync.Mutex $mutex -> i
+    androidx.lifecycle.Lifecycle$Event $startWorkEvent -> d
+    kotlinx.coroutines.CancellableContinuation $cont -> h
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+androidx.lifecycle.RepeatOnLifecycleKt$repeatOnLifecycle$3$1$1$1$1 -> androidx.lifecycle.RepeatOnLifecycleKt$repeatOnLifecycle$3$1$1$1$a:
+    kotlin.jvm.functions.Function2 $block -> h
+    java.lang.Object L$0 -> d
+    kotlinx.coroutines.sync.Mutex $mutex -> g
+    java.lang.Object L$1 -> e
+    int label -> f
+androidx.lifecycle.RepeatOnLifecycleKt$repeatOnLifecycle$3$1$1$1$1$1$1 -> androidx.lifecycle.RepeatOnLifecycleKt$repeatOnLifecycle$3$1$1$1$a$a:
+    kotlin.jvm.functions.Function2 $block -> f
+    java.lang.Object L$0 -> e
+    int label -> d
+androidx.lifecycle.ReportFragment -> androidx.lifecycle.q:
     androidx.lifecycle.ReportFragment$Companion Companion -> b
     androidx.lifecycle.ReportFragment$ActivityInitializationListener processListener -> a
     void dispatch(androidx.lifecycle.Lifecycle$Event) -> a
@@ -1837,22 +1858,22 @@ androidx.lifecycle.ReportFragment -> androidx.lifecycle.p:
     void dispatchResume(androidx.lifecycle.ReportFragment$ActivityInitializationListener) -> c
     void dispatchStart(androidx.lifecycle.ReportFragment$ActivityInitializationListener) -> d
     void injectIfNeededIn(android.app.Activity) -> e
-androidx.lifecycle.ReportFragment$ActivityInitializationListener -> androidx.lifecycle.p$a:
+androidx.lifecycle.ReportFragment$ActivityInitializationListener -> androidx.lifecycle.q$a:
     void onCreate() -> a
     void onResume() -> b
     void onStart() -> c
-androidx.lifecycle.ReportFragment$Companion -> androidx.lifecycle.p$b:
+androidx.lifecycle.ReportFragment$Companion -> androidx.lifecycle.q$b:
     void dispatch$lifecycle_runtime_release(android.app.Activity,androidx.lifecycle.Lifecycle$Event) -> a
     void injectIfNeededIn(android.app.Activity) -> b
-androidx.lifecycle.ReportFragment$LifecycleCallbacks -> androidx.lifecycle.p$c:
-androidx.lifecycle.ReportFragment$LifecycleCallbacks$Companion -> androidx.lifecycle.p$c$a:
+androidx.lifecycle.ReportFragment$LifecycleCallbacks -> androidx.lifecycle.q$c:
+androidx.lifecycle.ReportFragment$LifecycleCallbacks$Companion -> androidx.lifecycle.q$c$a:
     void registerIn(android.app.Activity) -> a
-androidx.lifecycle.ReportFragment$LifecycleCallbacks$Companion$$ExternalSyntheticApiModelOutline0 -> androidx.lifecycle.q:
+androidx.lifecycle.ReportFragment$LifecycleCallbacks$Companion$$ExternalSyntheticApiModelOutline0 -> androidx.lifecycle.r:
 # {"id":"sourceFile","fileName":"R8$$SyntheticClass"}
 # {"id":"com.android.tools.r8.synthesized"}
     void androidx.lifecycle.ReportFragment$LifecycleCallbacks$Companion$$InternalSyntheticApiModelOutline$1$697f715c7301ae348f7ba2ab082eb37b64d67d01fe586b84528231ac2d1ce45b$0.m(android.app.Activity,android.app.Application$ActivityLifecycleCallbacks) -> a
       # {"id":"com.android.tools.r8.synthesized"}
-androidx.lifecycle.SavedStateHandle -> androidx.lifecycle.s:
+androidx.lifecycle.SavedStateHandle -> androidx.lifecycle.t:
     java.util.Map regular -> a
     java.util.Map savedStateProviders -> b
     androidx.lifecycle.SavedStateHandle$Companion Companion -> f
@@ -1866,7 +1887,7 @@ androidx.lifecycle.SavedStateHandle -> androidx.lifecycle.s:
     androidx.savedstate.SavedStateRegistry$SavedStateProvider savedStateProvider() -> c
     android.os.Bundle savedStateProvider$lambda$0(androidx.lifecycle.SavedStateHandle) -> d
     void set(java.lang.String,java.lang.Object) -> e
-androidx.lifecycle.SavedStateHandle$$ExternalSyntheticLambda0 -> androidx.lifecycle.r:
+androidx.lifecycle.SavedStateHandle$$ExternalSyntheticLambda0 -> androidx.lifecycle.s:
 # {"id":"sourceFile","fileName":"R8$$SyntheticClass"}
 # {"id":"com.android.tools.r8.synthesized"}
     androidx.lifecycle.SavedStateHandle androidx.lifecycle.SavedStateHandle$$InternalSyntheticLambda$2$c70f9b22894bb1b1031013e177ef365df1be52e75941faf11fc45a5cc464eb9e$0.f$0 -> a
@@ -1874,7 +1895,7 @@ androidx.lifecycle.SavedStateHandle$$ExternalSyntheticLambda0 -> androidx.lifecy
       # {"id":"com.android.tools.r8.synthesized"}
     android.os.Bundle androidx.lifecycle.SavedStateHandle$$InternalSyntheticLambda$2$c70f9b22894bb1b1031013e177ef365df1be52e75941faf11fc45a5cc464eb9e$0.saveState() -> a
       # {"id":"com.android.tools.r8.synthesized"}
-androidx.lifecycle.SavedStateHandle$Companion -> androidx.lifecycle.s$a:
+androidx.lifecycle.SavedStateHandle$Companion -> androidx.lifecycle.t$a:
     boolean validateValue(java.lang.Object) -> a
 androidx.lifecycle.SavedStateHandleAttacher -> androidx.lifecycle.SavedStateHandleAttacher:
     androidx.lifecycle.SavedStateHandlesProvider provider -> d
@@ -1886,19 +1907,19 @@ androidx.lifecycle.SavedStateHandleController -> androidx.lifecycle.SavedStateHa
     void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
     void attachToLifecycle(androidx.savedstate.SavedStateRegistry,androidx.lifecycle.Lifecycle) -> g
     boolean isAttached() -> i
-androidx.lifecycle.SavedStateHandleSupport -> androidx.lifecycle.t:
+androidx.lifecycle.SavedStateHandleSupport -> androidx.lifecycle.u:
     androidx.lifecycle.viewmodel.CreationExtras$Key DEFAULT_ARGS_KEY -> c
     androidx.lifecycle.viewmodel.CreationExtras$Key VIEW_MODEL_STORE_OWNER_KEY -> b
     androidx.lifecycle.viewmodel.CreationExtras$Key SAVED_STATE_REGISTRY_OWNER_KEY -> a
     void enableSavedStateHandles(androidx.savedstate.SavedStateRegistryOwner) -> a
     androidx.lifecycle.SavedStateHandlesVM getSavedStateHandlesVM(androidx.lifecycle.ViewModelStoreOwner) -> b
-androidx.lifecycle.SavedStateHandleSupport$DEFAULT_ARGS_KEY$1 -> androidx.lifecycle.t$a:
-androidx.lifecycle.SavedStateHandleSupport$SAVED_STATE_REGISTRY_OWNER_KEY$1 -> androidx.lifecycle.t$b:
-androidx.lifecycle.SavedStateHandleSupport$VIEW_MODEL_STORE_OWNER_KEY$1 -> androidx.lifecycle.t$c:
-androidx.lifecycle.SavedStateHandleSupport$savedStateHandlesVM$1$1 -> androidx.lifecycle.t$d:
+androidx.lifecycle.SavedStateHandleSupport$DEFAULT_ARGS_KEY$1 -> androidx.lifecycle.u$a:
+androidx.lifecycle.SavedStateHandleSupport$SAVED_STATE_REGISTRY_OWNER_KEY$1 -> androidx.lifecycle.u$b:
+androidx.lifecycle.SavedStateHandleSupport$VIEW_MODEL_STORE_OWNER_KEY$1 -> androidx.lifecycle.u$c:
+androidx.lifecycle.SavedStateHandleSupport$savedStateHandlesVM$1$1 -> androidx.lifecycle.u$d:
     androidx.lifecycle.SavedStateHandleSupport$savedStateHandlesVM$1$1 INSTANCE -> d
     androidx.lifecycle.SavedStateHandlesVM invoke(androidx.lifecycle.viewmodel.CreationExtras) -> a
-androidx.lifecycle.SavedStateHandlesProvider -> androidx.lifecycle.u:
+androidx.lifecycle.SavedStateHandlesProvider -> androidx.lifecycle.v:
     kotlin.Lazy viewModel$delegate -> d
     android.os.Bundle restoredState -> c
     boolean restored -> b
@@ -1906,16 +1927,16 @@ androidx.lifecycle.SavedStateHandlesProvider -> androidx.lifecycle.u:
     android.os.Bundle saveState() -> a
     androidx.lifecycle.SavedStateHandlesVM getViewModel() -> b
     void performRestore() -> c
-androidx.lifecycle.SavedStateHandlesProvider$viewModel$2 -> androidx.lifecycle.u$a:
+androidx.lifecycle.SavedStateHandlesProvider$viewModel$2 -> androidx.lifecycle.v$a:
     androidx.lifecycle.ViewModelStoreOwner $viewModelStoreOwner -> d
     androidx.lifecycle.SavedStateHandlesVM invoke() -> a
-androidx.lifecycle.SavedStateHandlesVM -> androidx.lifecycle.v:
+androidx.lifecycle.SavedStateHandlesVM -> androidx.lifecycle.w:
     java.util.Map handles -> d
     java.util.Map getHandles() -> e
 androidx.lifecycle.SingleGeneratedAdapterObserver -> androidx.lifecycle.SingleGeneratedAdapterObserver:
     androidx.lifecycle.GeneratedAdapter generatedAdapter -> d
     void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
-androidx.lifecycle.ViewModel -> androidx.lifecycle.w:
+androidx.lifecycle.ViewModel -> androidx.lifecycle.x:
     java.util.Map mBagOfTags -> a
     java.util.Set mCloseables -> b
     boolean mCleared -> c
@@ -1923,47 +1944,53 @@ androidx.lifecycle.ViewModel -> androidx.lifecycle.w:
     void closeWithRuntimeException(java.lang.Object) -> b
     java.lang.Object getTag(java.lang.String) -> c
     void onCleared() -> d
-androidx.lifecycle.ViewModelProvider -> androidx.lifecycle.x:
+androidx.lifecycle.ViewModelProvider -> androidx.lifecycle.y:
     androidx.lifecycle.ViewModelStore store -> a
     androidx.lifecycle.viewmodel.CreationExtras defaultCreationExtras -> c
     androidx.lifecycle.ViewModelProvider$Factory factory -> b
     androidx.lifecycle.ViewModel get(java.lang.String,java.lang.Class) -> a
-androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory -> androidx.lifecycle.x$a:
+androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory -> androidx.lifecycle.y$a:
     androidx.lifecycle.viewmodel.CreationExtras$Key APPLICATION_KEY -> d
     androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory$Companion Companion -> c
-androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory$Companion -> androidx.lifecycle.x$a$a:
-androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory$Companion$ApplicationKeyImpl -> androidx.lifecycle.x$a$a$a:
+androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory$Companion -> androidx.lifecycle.y$a$a:
+androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory$Companion$ApplicationKeyImpl -> androidx.lifecycle.y$a$a$a:
     androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory$Companion$ApplicationKeyImpl INSTANCE -> a
-androidx.lifecycle.ViewModelProvider$Factory -> androidx.lifecycle.x$b:
+androidx.lifecycle.ViewModelProvider$Factory -> androidx.lifecycle.y$b:
     androidx.lifecycle.ViewModel create(java.lang.Class) -> a
     androidx.lifecycle.ViewModel create(java.lang.Class,androidx.lifecycle.viewmodel.CreationExtras) -> b
-androidx.lifecycle.ViewModelProvider$Factory$-CC -> androidx.lifecycle.y:
+androidx.lifecycle.ViewModelProvider$Factory$-CC -> androidx.lifecycle.z:
 # {"id":"sourceFile","fileName":"R8$$SyntheticClass"}
 # {"id":"com.android.tools.r8.synthesized"}
     androidx.lifecycle.ViewModel $default$create(androidx.lifecycle.ViewModelProvider$Factory,java.lang.Class) -> a
       # {"id":"com.android.tools.r8.synthesized"}
-androidx.lifecycle.ViewModelProvider$NewInstanceFactory -> androidx.lifecycle.x$c:
+androidx.lifecycle.ViewModelProvider$NewInstanceFactory -> androidx.lifecycle.y$c:
     androidx.lifecycle.ViewModelProvider$NewInstanceFactory$Companion Companion -> a
     androidx.lifecycle.viewmodel.CreationExtras$Key VIEW_MODEL_KEY -> b
-androidx.lifecycle.ViewModelProvider$NewInstanceFactory$Companion -> androidx.lifecycle.x$c$a:
-androidx.lifecycle.ViewModelProvider$NewInstanceFactory$Companion$ViewModelKeyImpl -> androidx.lifecycle.x$c$a$a:
+androidx.lifecycle.ViewModelProvider$NewInstanceFactory$Companion -> androidx.lifecycle.y$c$a:
+androidx.lifecycle.ViewModelProvider$NewInstanceFactory$Companion$ViewModelKeyImpl -> androidx.lifecycle.y$c$a$a:
     androidx.lifecycle.ViewModelProvider$NewInstanceFactory$Companion$ViewModelKeyImpl INSTANCE -> a
-androidx.lifecycle.ViewModelProvider$OnRequeryFactory -> androidx.lifecycle.x$d:
+androidx.lifecycle.ViewModelProvider$OnRequeryFactory -> androidx.lifecycle.y$d:
     void onRequery(androidx.lifecycle.ViewModel) -> a
-androidx.lifecycle.ViewModelProviderGetKt -> androidx.lifecycle.z:
+androidx.lifecycle.ViewModelProviderGetKt -> androidx.lifecycle.a0:
     androidx.lifecycle.viewmodel.CreationExtras defaultCreationExtras(androidx.lifecycle.ViewModelStoreOwner) -> a
-androidx.lifecycle.ViewModelStore -> androidx.lifecycle.a0:
+androidx.lifecycle.ViewModelStore -> androidx.lifecycle.b0:
     java.util.Map map -> a
     void clear() -> a
     androidx.lifecycle.ViewModel get(java.lang.String) -> b
     java.util.Set keys() -> c
     void put(java.lang.String,androidx.lifecycle.ViewModel) -> d
-androidx.lifecycle.ViewModelStoreOwner -> androidx.lifecycle.b0:
+androidx.lifecycle.ViewModelStoreOwner -> androidx.lifecycle.c0:
     androidx.lifecycle.ViewModelStore getViewModelStore() -> d
-androidx.lifecycle.ViewTreeLifecycleOwner -> androidx.lifecycle.c0:
+androidx.lifecycle.ViewTreeLifecycleOwner -> androidx.lifecycle.d0:
     void set(android.view.View,androidx.lifecycle.LifecycleOwner) -> a
-androidx.lifecycle.ViewTreeViewModelStoreOwner -> androidx.lifecycle.d0:
+androidx.lifecycle.ViewTreeViewModelStoreOwner -> androidx.lifecycle.e0:
     void set(android.view.View,androidx.lifecycle.ViewModelStoreOwner) -> a
+androidx.lifecycle.WithLifecycleStateKt$suspendWithStateAtLeastUnchecked$2$observer$1 -> androidx.lifecycle.WithLifecycleStateKt$suspendWithStateAtLeastUnchecked$2$observer$1:
+    kotlinx.coroutines.CancellableContinuation $co -> f
+    kotlin.jvm.functions.Function0 $block -> g
+    androidx.lifecycle.Lifecycle$State $state -> d
+    androidx.lifecycle.Lifecycle $this_suspendWithStateAtLeastUnchecked -> e
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
 androidx.lifecycle.runtime.R$id -> j.a:
     int view_tree_lifecycle_owner -> a
 androidx.lifecycle.viewmodel.CreationExtras -> k.a:
@@ -7116,7 +7143,6 @@ kotlin.jvm.internal.PackageReference -> kotlin.jvm.internal.k:
     java.lang.String moduleName -> e
     java.lang.Class getJClass() -> b
 kotlin.jvm.internal.PropertyReference -> kotlin.jvm.internal.n:
-    boolean syntheticJavaProperty -> d
     kotlin.reflect.KProperty getReflected() -> b
 kotlin.jvm.internal.PropertyReference0 -> kotlin.jvm.internal.l:
 kotlin.jvm.internal.PropertyReference0Impl -> kotlin.jvm.internal.m:
@@ -7573,6 +7599,7 @@ kotlinx.coroutines.CoroutineScope -> d1.g0:
     kotlin.coroutines.CoroutineContext getCoroutineContext() -> g
 kotlinx.coroutines.CoroutineScopeKt -> d1.h0:
     kotlinx.coroutines.CoroutineScope CoroutineScope(kotlin.coroutines.CoroutineContext) -> a
+    java.lang.Object coroutineScope(kotlin.jvm.functions.Function2,kotlin.coroutines.Continuation) -> b
 kotlinx.coroutines.CoroutineStart -> d1.i0:
     kotlinx.coroutines.CoroutineStart UNDISPATCHED -> g
     kotlinx.coroutines.CoroutineStart[] $VALUES -> h
@@ -7883,6 +7910,7 @@ kotlinx.coroutines.JobSupportKt -> d1.t1:
     kotlinx.coroutines.internal.Symbol access$getSEALED$p() -> e
     kotlinx.coroutines.internal.Symbol access$getTOO_LATE_TO_CANCEL$p() -> f
     java.lang.Object boxIncomplete(java.lang.Object) -> g
+    java.lang.Object unboxState(java.lang.Object) -> h
 kotlinx.coroutines.LazyStandaloneCoroutine -> d1.u1:
     kotlin.coroutines.Continuation continuation -> f
     void onStart() -> k0
@@ -8423,6 +8451,7 @@ kotlinx.coroutines.intrinsics.CancellableKt -> i1.a:
     void startCoroutineCancellable$default(kotlin.jvm.functions.Function2,java.lang.Object,kotlin.coroutines.Continuation,kotlin.jvm.functions.Function1,int,java.lang.Object) -> d
 kotlinx.coroutines.intrinsics.UndispatchedKt -> i1.b:
     void startCoroutineUndispatched(kotlin.jvm.functions.Function2,java.lang.Object,kotlin.coroutines.Continuation) -> a
+    java.lang.Object startUndispatchedOrReturn(kotlinx.coroutines.internal.ScopeCoroutine,java.lang.Object,kotlin.jvm.functions.Function2) -> b
 kotlinx.coroutines.scheduling.CoroutineScheduler -> kotlinx.coroutines.scheduling.a:
     java.lang.String schedulerName -> g
     kotlinx.coroutines.scheduling.GlobalQueue globalBlockingQueue -> i
@@ -8563,6 +8592,9 @@ kotlinx.coroutines.scheduling.WorkQueue$$ExternalSyntheticBackportWithForwarding
 # {"id":"com.android.tools.r8.synthesized"}
     boolean kotlinx.coroutines.scheduling.WorkQueue$$InternalSyntheticBackportWithForwarding$1$fea41a45c8396694b734bf6713722fe4232fc4db1f67f3f538fe971a17baaead$0.m(java.util.concurrent.atomic.AtomicReferenceArray,int,java.lang.Object,java.lang.Object) -> a
       # {"id":"com.android.tools.r8.synthesized"}
-org.microg.safeparcel.SafeParcelReader -> j1.a:
+kotlinx.coroutines.sync.Mutex -> j1.a:
+    void unlock(java.lang.Object) -> a
+    java.lang.Object lock(java.lang.Object,kotlin.coroutines.Continuation) -> b
+org.microg.safeparcel.SafeParcelReader -> k1.a:
     int readSize(android.os.Parcel,int) -> a
     java.lang.String readString(android.os.Parcel,int) -> b

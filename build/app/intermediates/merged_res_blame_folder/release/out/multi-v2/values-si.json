@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.fomulario_asistencia_cite.app-mergeReleaseResources-21:/values-si/values-si.xml",
+            "outputFile": "com.example.fomulario_asistencia_cite.app-mergeReleaseResources-24:/values-si/values-si.xml",
             "map": [
                 {
-                    "source": "/Users/ventura/.gradle/caches/transforms-3/56e17cf11a30c7da5f03d4659c7ec399/transformed/browser-1.5.0/res/values-si/values-si.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,163,270,386",
-                        "endColumns": "107,106,115,104",
-                        "endOffsets": "158,265,381,486"
-                    },
-                    "to": {
-                        "startLines": "9,10,11,12",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "787,895,1002,1118",
-                        "endColumns": "107,106,115,104",
-                        "endOffsets": "890,997,1113,1218"
-                    }
-                },
-                {
-                    "source": "/Users/ventura/.gradle/caches/transforms-3/8c5fa261c18d131df2c5d4213aa1bb9c/transformed/core-1.10.1/res/values-si/values-si.xml",
+                    "source": "/Users/ventura/.gradle/caches/transforms-3/ea1296b1b8a87c23c725d8242771a153/transformed/core-1.10.1/res/values-si/values-si.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -35,6 +18,23 @@
                         "startOffsets": "55,157,260,365,470,569,673,1223",
                         "endColumns": "101,102,104,104,98,103,113,100",
                         "endOffsets": "152,255,360,465,564,668,782,1319"
+                    }
+                },
+                {
+                    "source": "/Users/ventura/.gradle/caches/transforms-3/de8d615cb2883f805aa4f68c8351d79a/transformed/browser-1.5.0/res/values-si/values-si.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,163,270,386",
+                        "endColumns": "107,106,115,104",
+                        "endOffsets": "158,265,381,486"
+                    },
+                    "to": {
+                        "startLines": "9,10,11,12",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "787,895,1002,1118",
+                        "endColumns": "107,106,115,104",
+                        "endOffsets": "890,997,1113,1218"
                     }
                 }
             ]

@@ -348,7 +348,9 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         child: isBase64String(
                                 context.watch<ProviderFirma>().firmaString)
-                            ? Expanded(
+                            ? SizedBox(
+                                width: double
+                                    .infinity, // Ocupa todo el ancho disponible
                                 child: AspectRatio(
                                   aspectRatio: 2,
                                   child: Image.memory(
@@ -367,8 +369,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                                 ),
                               ),
                       ),
-
-                      const SizedBox(height: 50),
+                      SizedBox(height: 50),
 
                       PrettyBorderButton(
                         label: '  Registrar Participacion   ',

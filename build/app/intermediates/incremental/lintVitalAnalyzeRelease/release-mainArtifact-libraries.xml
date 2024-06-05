@@ -5,9 +5,9 @@
       resolved="__local_aars__:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/app/intermediates/flutter/release/libs.jar:unspecified"/>
   <library
       name="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/android@@:app_links::release"
-      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/app_links/.transforms/37ae8bb25e6f52f835b4abe4a4bce04f/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/app_links/.transforms/37ae8bb25e6f52f835b4abe4a4bce04f/transformed/out/jars/libs/R.jar"
+      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/app_links/.transforms/33083a765d10c585ceff25947e50cfef/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/app_links/.transforms/33083a765d10c585ceff25947e50cfef/transformed/out/jars/libs/R.jar"
       resolved="com.llfbandit.app_links:app_links:unspecified"
-      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/app_links/.transforms/37ae8bb25e6f52f835b4abe4a4bce04f/transformed/out"
+      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/app_links/.transforms/33083a765d10c585ceff25947e50cfef/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -18,9 +18,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/android@@:flutter_plugin_android_lifecycle::release"
-      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/.transforms/a5378662cf9aa8625216c79af819e27c/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/.transforms/a5378662cf9aa8625216c79af819e27c/transformed/out/jars/libs/R.jar"
+      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/.transforms/43d61642cabbc5f5780ac4469f648162/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/.transforms/43d61642cabbc5f5780ac4469f648162/transformed/out/jars/libs/R.jar"
       resolved="io.flutter.plugins.flutter_plugin_android_lifecycle:flutter_plugin_android_lifecycle:unspecified"
-      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/.transforms/a5378662cf9aa8625216c79af819e27c/transformed/out"
+      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/.transforms/43d61642cabbc5f5780ac4469f648162/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -31,9 +31,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/android@@:image_picker_android::release"
-      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/image_picker_android/.transforms/bfde4e124142821e868517b8a9326eeb/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/image_picker_android/.transforms/bfde4e124142821e868517b8a9326eeb/transformed/out/jars/libs/R.jar"
+      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/image_picker_android/.transforms/e49dfe8b859d4a3ef1dd193dd5b2e859/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/image_picker_android/.transforms/e49dfe8b859d4a3ef1dd193dd5b2e859/transformed/out/jars/libs/R.jar"
       resolved="io.flutter.plugins.imagepicker:image_picker_android:unspecified"
-      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/image_picker_android/.transforms/bfde4e124142821e868517b8a9326eeb/transformed/out"
+      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/image_picker_android/.transforms/e49dfe8b859d4a3ef1dd193dd5b2e859/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -44,9 +44,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/android@@:path_provider_android::release"
-      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/path_provider_android/.transforms/06eb08ffa22dbbf2f5e8395bfef8b8b8/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/path_provider_android/.transforms/06eb08ffa22dbbf2f5e8395bfef8b8b8/transformed/out/jars/libs/R.jar"
+      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/path_provider_android/.transforms/21334824e3e9f8169910391b22aeceda/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/path_provider_android/.transforms/21334824e3e9f8169910391b22aeceda/transformed/out/jars/libs/R.jar"
       resolved="io.flutter.plugins.pathprovider:path_provider_android:unspecified"
-      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/path_provider_android/.transforms/06eb08ffa22dbbf2f5e8395bfef8b8b8/transformed/out"
+      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/path_provider_android/.transforms/21334824e3e9f8169910391b22aeceda/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -57,9 +57,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/android@@:shared_preferences_android::release"
-      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/shared_preferences_android/.transforms/a35629d1b1eac1276279ff1d28d206f3/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/shared_preferences_android/.transforms/a35629d1b1eac1276279ff1d28d206f3/transformed/out/jars/libs/R.jar"
+      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/shared_preferences_android/.transforms/9aaf8ac556bf192ec4805f4108e88ce3/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/shared_preferences_android/.transforms/9aaf8ac556bf192ec4805f4108e88ce3/transformed/out/jars/libs/R.jar"
       resolved="io.flutter.plugins.sharedpreferences:shared_preferences_android:unspecified"
-      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/shared_preferences_android/.transforms/a35629d1b1eac1276279ff1d28d206f3/transformed/out"
+      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/shared_preferences_android/.transforms/9aaf8ac556bf192ec4805f4108e88ce3/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -70,9 +70,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/android@@:url_launcher_android::release"
-      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/.transforms/d0440f683f52f3cadbf5f65099053a71/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/.transforms/d0440f683f52f3cadbf5f65099053a71/transformed/out/jars/libs/R.jar"
+      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/.transforms/00fd3e05702f009e071c6a755e1faece/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/.transforms/00fd3e05702f009e071c6a755e1faece/transformed/out/jars/libs/R.jar"
       resolved="io.flutter.plugins.urllauncher:url_launcher_android:unspecified"
-      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/.transforms/d0440f683f52f3cadbf5f65099053a71/transformed/out"
+      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/.transforms/00fd3e05702f009e071c6a755e1faece/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -87,9 +87,9 @@
       resolved="io.flutter:flutter_embedding_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a"/>
   <library
       name="androidx.fragment:fragment:1.1.0@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/f6d9459c7df44fbe90d175dc87154123/transformed/fragment-1.1.0/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/dc7f3607884cf4f6432dbf890d652d81/transformed/fragment-1.1.0/jars/classes.jar"
       resolved="androidx.fragment:fragment:1.1.0"
-      folder="/Users/ventura/.gradle/caches/transforms-3/f6d9459c7df44fbe90d175dc87154123/transformed/fragment-1.1.0"
+      folder="/Users/ventura/.gradle/caches/transforms-3/dc7f3607884cf4f6432dbf890d652d81/transformed/fragment-1.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -100,9 +100,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.viewpager:viewpager:1.0.0@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/663d153699c3664b18b0d31c9a4847f2/transformed/viewpager-1.0.0/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/3e62a2841744ef7c5867b4d635384280/transformed/viewpager-1.0.0/jars/classes.jar"
       resolved="androidx.viewpager:viewpager:1.0.0"
-      folder="/Users/ventura/.gradle/caches/transforms-3/663d153699c3664b18b0d31c9a4847f2/transformed/viewpager-1.0.0"
+      folder="/Users/ventura/.gradle/caches/transforms-3/3e62a2841744ef7c5867b4d635384280/transformed/viewpager-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -113,9 +113,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.loader:loader:1.0.0@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/c3921b425ae7b9c62221f82b02180540/transformed/loader-1.0.0/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/529bb3f33a9f44fd4b78671ee087f202/transformed/loader-1.0.0/jars/classes.jar"
       resolved="androidx.loader:loader:1.0.0"
-      folder="/Users/ventura/.gradle/caches/transforms-3/c3921b425ae7b9c62221f82b02180540/transformed/loader-1.0.0"
+      folder="/Users/ventura/.gradle/caches/transforms-3/529bb3f33a9f44fd4b78671ee087f202/transformed/loader-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -126,9 +126,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.activity:activity:1.7.2@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/6eec39b0ba61353cd78fe986d03a9105/transformed/jetified-activity-1.7.2/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/b6abc9b636b7e22235108e01356a5ae0/transformed/jetified-activity-1.7.2/jars/classes.jar"
       resolved="androidx.activity:activity:1.7.2"
-      folder="/Users/ventura/.gradle/caches/transforms-3/6eec39b0ba61353cd78fe986d03a9105/transformed/jetified-activity-1.7.2"
+      folder="/Users/ventura/.gradle/caches/transforms-3/b6abc9b636b7e22235108e01356a5ae0/transformed/jetified-activity-1.7.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -139,74 +139,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.customview:customview:1.0.0@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/dd0e13c01a471b6968265c4731015392/transformed/customview-1.0.0/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/9b2088524d0f41e6a65d07050b56f0d8/transformed/customview-1.0.0/jars/classes.jar"
       resolved="androidx.customview:customview:1.0.0"
-      folder="/Users/ventura/.gradle/caches/transforms-3/dd0e13c01a471b6968265c4731015392/transformed/customview-1.0.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.lifecycle:lifecycle-livedata-core:2.6.1@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/73c0760ebc0331306a2a6dc324346cb7/transformed/lifecycle-livedata-core-2.6.1/jars/classes.jar"
-      resolved="androidx.lifecycle:lifecycle-livedata-core:2.6.1"
-      folder="/Users/ventura/.gradle/caches/transforms-3/73c0760ebc0331306a2a6dc324346cb7/transformed/lifecycle-livedata-core-2.6.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.lifecycle:lifecycle-livedata:2.6.1@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/bd5d70f1a650a816bdd4388ce316cc56/transformed/lifecycle-livedata-2.6.1/jars/classes.jar"
-      resolved="androidx.lifecycle:lifecycle-livedata:2.6.1"
-      folder="/Users/ventura/.gradle/caches/transforms-3/bd5d70f1a650a816bdd4388ce316cc56/transformed/lifecycle-livedata-2.6.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.lifecycle:lifecycle-viewmodel:2.6.1@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/96ab98c37c4f11636982e07ad6fcc484/transformed/lifecycle-viewmodel-2.6.1/jars/classes.jar"
-      resolved="androidx.lifecycle:lifecycle-viewmodel:2.6.1"
-      folder="/Users/ventura/.gradle/caches/transforms-3/96ab98c37c4f11636982e07ad6fcc484/transformed/lifecycle-viewmodel-2.6.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/cd3f52bc908b1e1bc2e19d7dbb73e4a8/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.1/jars/classes.jar"
-      resolved="androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1"
-      folder="/Users/ventura/.gradle/caches/transforms-3/cd3f52bc908b1e1bc2e19d7dbb73e4a8/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.core:core-ktx:1.10.1@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/5622111101d05df71e7c688cb462ea9e/transformed/jetified-core-ktx-1.10.1/jars/classes.jar"
-      resolved="androidx.core:core-ktx:1.10.1"
-      folder="/Users/ventura/.gradle/caches/transforms-3/5622111101d05df71e7c688cb462ea9e/transformed/jetified-core-ktx-1.10.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/9b2088524d0f41e6a65d07050b56f0d8/transformed/customview-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -217,9 +152,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.core:core:1.10.1@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/8c5fa261c18d131df2c5d4213aa1bb9c/transformed/core-1.10.1/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/ea1296b1b8a87c23c725d8242771a153/transformed/core-1.10.1/jars/classes.jar"
       resolved="androidx.core:core:1.10.1"
-      folder="/Users/ventura/.gradle/caches/transforms-3/8c5fa261c18d131df2c5d4213aa1bb9c/transformed/core-1.10.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/ea1296b1b8a87c23c725d8242771a153/transformed/core-1.10.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -229,10 +164,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.lifecycle:lifecycle-runtime:2.6.1@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/dbb43548d9b3db8331a7b1e1abe6b0f8/transformed/lifecycle-runtime-2.6.1/jars/classes.jar"
-      resolved="androidx.lifecycle:lifecycle-runtime:2.6.1"
-      folder="/Users/ventura/.gradle/caches/transforms-3/dbb43548d9b3db8331a7b1e1abe6b0f8/transformed/lifecycle-runtime-2.6.1"
+      name="androidx.lifecycle:lifecycle-livedata:2.6.1@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/5b7e6fa83f7caa59d9575fbdd8c01f1f/transformed/lifecycle-livedata-2.6.1/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-livedata:2.6.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/5b7e6fa83f7caa59d9575fbdd8c01f1f/transformed/lifecycle-livedata-2.6.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -250,87 +185,114 @@
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.6.1/10f354fdb64868baecd67128560c5a0d6312c495/lifecycle-common-2.6.1.jar"
       resolved="androidx.lifecycle:lifecycle-common:2.6.1"/>
   <library
+      name="androidx.lifecycle:lifecycle-viewmodel:2.6.1@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/5d4582a6ac4f28ae48c493d9df91b790/transformed/lifecycle-viewmodel-2.6.1/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-viewmodel:2.6.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/5d4582a6ac4f28ae48c493d9df91b790/transformed/lifecycle-viewmodel-2.6.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.lifecycle:lifecycle-livedata-core:2.6.1@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/2f28b5c05eb14311a9727477ba8c2dd1/transformed/lifecycle-livedata-core-2.6.1/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-livedata-core:2.6.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/2f28b5c05eb14311a9727477ba8c2dd1/transformed/lifecycle-livedata-core-2.6.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.lifecycle:lifecycle-runtime:2.6.1@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/ba476e7b5735c1d4b2f60e1b5cc8c5f7/transformed/lifecycle-runtime-2.6.1/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-runtime:2.6.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/ba476e7b5735c1d4b2f60e1b5cc8c5f7/transformed/lifecycle-runtime-2.6.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/09616dc3bce525f07448cdffe1ea13ea/transformed/jetified-lifecycle-viewmodel-ktx-2.6.1/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/09616dc3bce525f07448cdffe1ea13ea/transformed/jetified-lifecycle-viewmodel-ktx-2.6.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.lifecycle:lifecycle-livedata-core-ktx:2.6.1@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/aadb42b46396c4cf79721f16082294ba/transformed/jetified-lifecycle-livedata-core-ktx-2.6.1/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-livedata-core-ktx:2.6.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/aadb42b46396c4cf79721f16082294ba/transformed/jetified-lifecycle-livedata-core-ktx-2.6.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.lifecycle:lifecycle-runtime-ktx:2.6.1@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/b5ebb23d00ee63dabb7ce68d19697b52/transformed/jetified-lifecycle-runtime-ktx-2.6.1/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/b5ebb23d00ee63dabb7ce68d19697b52/transformed/jetified-lifecycle-runtime-ktx-2.6.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/953d45bef35c882e735fd366e11ec13f/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.1/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/953d45bef35c882e735fd366e11ec13f/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.core:core-ktx:1.10.1@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/7048a875960ef9c79ac42f841ddf0555/transformed/jetified-core-ktx-1.10.1/jars/classes.jar"
+      resolved="androidx.core:core-ktx:1.10.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/7048a875960ef9c79ac42f841ddf0555/transformed/jetified-core-ktx-1.10.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="androidx.window:window-java:1.0.0-beta04@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/fc9b3b54cb20b9cf7a981de6a99236b4/transformed/jetified-window-java-1.0.0-beta04/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/4d8333527f04eacf72d45bd8568c1e49/transformed/jetified-window-java-1.0.0-beta04/jars/classes.jar"
       resolved="androidx.window:window-java:1.0.0-beta04"
-      folder="/Users/ventura/.gradle/caches/transforms-3/fc9b3b54cb20b9cf7a981de6a99236b4/transformed/jetified-window-java-1.0.0-beta04"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.arch.core:core-runtime:2.2.0@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/9877f094b7bbabac9bbfedd83f26e23b/transformed/core-runtime-2.2.0/jars/classes.jar"
-      resolved="androidx.arch.core:core-runtime:2.2.0"
-      folder="/Users/ventura/.gradle/caches/transforms-3/9877f094b7bbabac9bbfedd83f26e23b/transformed/core-runtime-2.2.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.arch.core:core-common:2.2.0@jar"
-      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.2.0/5e1b8b81dfd5f52c56a8d53b18ca759c19a301f3/core-common-2.2.0.jar"
-      resolved="androidx.arch.core:core-common:2.2.0"/>
-  <library
-      name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/18d503570ef206cb50a8ba27a6a28443/transformed/versionedparcelable-1.1.1/jars/classes.jar"
-      resolved="androidx.versionedparcelable:versionedparcelable:1.1.1"
-      folder="/Users/ventura/.gradle/caches/transforms-3/18d503570ef206cb50a8ba27a6a28443/transformed/versionedparcelable-1.1.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.collection:collection:1.1.0@jar"
-      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar"
-      resolved="androidx.collection:collection:1.1.0"/>
-  <library
-      name="androidx.savedstate:savedstate:1.2.1@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/16184bc06d62715f97e2d1359083533b/transformed/jetified-savedstate-1.2.1/jars/classes.jar"
-      resolved="androidx.savedstate:savedstate:1.2.1"
-      folder="/Users/ventura/.gradle/caches/transforms-3/16184bc06d62715f97e2d1359083533b/transformed/jetified-savedstate-1.2.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.annotation:annotation-jvm:1.8.0@jar"
-      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation-jvm/1.8.0/b8a16fe526014b7941c1debaccaf9c5153692dbb/annotation-jvm-1.8.0.jar"
-      resolved="androidx.annotation:annotation-jvm:1.8.0"/>
-  <library
-      name="androidx.annotation:annotation-experimental:1.3.0@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/ada170a7598f2d7f238ce5f6e1bb91eb/transformed/jetified-annotation-experimental-1.3.0/jars/classes.jar"
-      resolved="androidx.annotation:annotation-experimental:1.3.0"
-      folder="/Users/ventura/.gradle/caches/transforms-3/ada170a7598f2d7f238ce5f6e1bb91eb/transformed/jetified-annotation-experimental-1.3.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.window:window:1.0.0-beta04@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/a0b61f734f7e3b0967c304c99cf0edaf/transformed/jetified-window-1.0.0-beta04/jars/classes.jar"
-      resolved="androidx.window:window:1.0.0-beta04"
-      folder="/Users/ventura/.gradle/caches/transforms-3/a0b61f734f7e3b0967c304c99cf0edaf/transformed/jetified-window-1.0.0-beta04"
+      folder="/Users/ventura/.gradle/caches/transforms-3/4d8333527f04eacf72d45bd8568c1e49/transformed/jetified-window-java-1.0.0-beta04"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -344,21 +306,102 @@
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.6.4/2c997cd1c0ef33f3e751d3831929aeff1390cb30/kotlinx-coroutines-core-jvm-1.6.4.jar"
       resolved="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4"/>
   <library
+      name="androidx.window:window:1.0.0-beta04@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/jars/classes.jar"
+      resolved="androidx.window:window:1.0.0-beta04"
+      folder="/Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4@jar"
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-android/1.6.4/f955fc8b2ad196e2f4429598440e15f7492eeb2b/kotlinx-coroutines-android-1.6.4.jar"
       resolved="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"/>
   <library
-      name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22@jar"
-      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.8.22/b25c86d47d6b962b9cf0f8c3f320c8a10eea3dd1/kotlin-stdlib-jdk8-1.8.22.jar"
-      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22"/>
+      name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0@jar"
+      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.8.0/ed04f49e186a116753ad70d34f0ac2925d1d8020/kotlin-stdlib-jdk8-1.8.0.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0"/>
   <library
-      name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22@jar"
-      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.8.22/4dabb8248310d833bb6a8b516024a91fd3d275c/kotlin-stdlib-jdk7-1.8.22.jar"
-      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22"/>
+      name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0@jar"
+      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.8.0/3c91271347f678c239607abb676d4032a7898427/kotlin-stdlib-jdk7-1.8.0.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0"/>
   <library
-      name="org.jetbrains.kotlin:kotlin-stdlib:1.8.22@jar"
-      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.8.22/636bf8b320e7627482771bbac9ed7246773c02bd/kotlin-stdlib-1.8.22.jar"
-      resolved="org.jetbrains.kotlin:kotlin-stdlib:1.8.22"/>
+      name="androidx.savedstate:savedstate:1.2.1@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/e8b61569ea5252a228f44efc50a3affa/transformed/jetified-savedstate-1.2.1/jars/classes.jar"
+      resolved="androidx.savedstate:savedstate:1.2.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/e8b61569ea5252a228f44efc50a3affa/transformed/jetified-savedstate-1.2.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/24b840a5cf1ef42f894f414493cf2390/transformed/versionedparcelable-1.1.1/jars/classes.jar"
+      resolved="androidx.versionedparcelable:versionedparcelable:1.1.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/24b840a5cf1ef42f894f414493cf2390/transformed/versionedparcelable-1.1.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.arch.core:core-runtime:2.2.0@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/f5b56a21ba4a95cd026c341333a603db/transformed/core-runtime-2.2.0/jars/classes.jar"
+      resolved="androidx.arch.core:core-runtime:2.2.0"
+      folder="/Users/ventura/.gradle/caches/transforms-3/f5b56a21ba4a95cd026c341333a603db/transformed/core-runtime-2.2.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.arch.core:core-common:2.2.0@jar"
+      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.2.0/5e1b8b81dfd5f52c56a8d53b18ca759c19a301f3/core-common-2.2.0.jar"
+      resolved="androidx.arch.core:core-common:2.2.0"/>
+  <library
+      name="androidx.collection:collection:1.1.0@jar"
+      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar"
+      resolved="androidx.collection:collection:1.1.0"/>
+  <library
+      name="androidx.annotation:annotation-jvm:1.8.0@jar"
+      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation-jvm/1.8.0/b8a16fe526014b7941c1debaccaf9c5153692dbb/annotation-jvm-1.8.0.jar"
+      resolved="androidx.annotation:annotation-jvm:1.8.0"/>
+  <library
+      name="androidx.annotation:annotation-experimental:1.3.0@aar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/5bc0939c5a6b9376591f3062b34f5ff4/transformed/jetified-annotation-experimental-1.3.0/jars/classes.jar"
+      resolved="androidx.annotation:annotation-experimental:1.3.0"
+      folder="/Users/ventura/.gradle/caches/transforms-3/5bc0939c5a6b9376591f3062b34f5ff4/transformed/jetified-annotation-experimental-1.3.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="org.jetbrains.kotlin:kotlin-stdlib:1.8.0@jar"
+      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.8.0/1796921c7a3e2e2665a83e6c8d33399336cd39bc/kotlin-stdlib-1.8.0.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib:1.8.0"/>
+  <library
+      name="org.jetbrains.kotlin:kotlin-stdlib-common:1.8.0@jar"
+      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.8.0/f7197e7cc76453ac59f8b0f8d5137cc600becd36/kotlin-stdlib-common-1.8.0.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib-common:1.8.0"/>
   <library
       name="io.flutter:armeabi_v7a_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a@jar"
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/io.flutter/armeabi_v7a_release/1.0.0-990f1ceac5d57225459df25e403afa437cad120a/1109d7c3d895852acb9b57d3d9349ae33f533e35/armeabi_v7a_release-1.0.0-990f1ceac5d57225459df25e403afa437cad120a.jar"
@@ -372,18 +415,14 @@
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/io.flutter/x86_64_release/1.0.0-990f1ceac5d57225459df25e403afa437cad120a/b980d7fbf42d713005dc426ce5b58ec173b963d0/x86_64_release-1.0.0-990f1ceac5d57225459df25e403afa437cad120a.jar"
       resolved="io.flutter:x86_64_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a"/>
   <library
-      name="org.jetbrains.kotlin:kotlin-stdlib-common:1.8.22@jar"
-      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.8.22/1a8e3601703ae14bb58757ea6b2d8e8e5935a586/kotlin-stdlib-common-1.8.22.jar"
-      resolved="org.jetbrains.kotlin:kotlin-stdlib-common:1.8.22"/>
-  <library
       name="org.jetbrains:annotations:13.0@jar"
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"
       resolved="org.jetbrains:annotations:13.0"/>
   <library
       name="androidx.tracing:tracing:1.0.0@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/8f58eca6e2bd54a0294e8ffba9bed879/transformed/jetified-tracing-1.0.0/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/b15ece291ca838f5872987503515a9b1/transformed/jetified-tracing-1.0.0/jars/classes.jar"
       resolved="androidx.tracing:tracing:1.0.0"
-      folder="/Users/ventura/.gradle/caches/transforms-3/8f58eca6e2bd54a0294e8ffba9bed879/transformed/jetified-tracing-1.0.0"
+      folder="/Users/ventura/.gradle/caches/transforms-3/b15ece291ca838f5872987503515a9b1/transformed/jetified-tracing-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -394,9 +433,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.browser:browser:1.5.0@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/56e17cf11a30c7da5f03d4659c7ec399/transformed/browser-1.5.0/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/de8d615cb2883f805aa4f68c8351d79a/transformed/browser-1.5.0/jars/classes.jar"
       resolved="androidx.browser:browser:1.5.0"
-      folder="/Users/ventura/.gradle/caches/transforms-3/56e17cf11a30c7da5f03d4659c7ec399/transformed/browser-1.5.0"
+      folder="/Users/ventura/.gradle/caches/transforms-3/de8d615cb2883f805aa4f68c8351d79a/transformed/browser-1.5.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -407,9 +446,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.exifinterface:exifinterface:1.3.7@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/ca148aae3c32d82bcf51aa2568ff4e29/transformed/exifinterface-1.3.7/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/8e65183acb6d449d346ac3ea213c949b/transformed/exifinterface-1.3.7/jars/classes.jar"
       resolved="androidx.exifinterface:exifinterface:1.3.7"
-      folder="/Users/ventura/.gradle/caches/transforms-3/ca148aae3c32d82bcf51aa2568ff4e29/transformed/exifinterface-1.3.7"
+      folder="/Users/ventura/.gradle/caches/transforms-3/8e65183acb6d449d346ac3ea213c949b/transformed/exifinterface-1.3.7"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -420,9 +459,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.profileinstaller:profileinstaller:1.3.0@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/8b4d4e3c546ec066e68bcedfb700f620/transformed/jetified-profileinstaller-1.3.0/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/jars/classes.jar"
       resolved="androidx.profileinstaller:profileinstaller:1.3.0"
-      folder="/Users/ventura/.gradle/caches/transforms-3/8b4d4e3c546ec066e68bcedfb700f620/transformed/jetified-profileinstaller-1.3.0"
+      folder="/Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -433,9 +472,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.startup:startup-runtime:1.1.1@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/6abc947b414d4589c4d91722df2ae401/transformed/jetified-startup-runtime-1.1.1/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/6ead1fa016498eb70520a8596abdbac0/transformed/jetified-startup-runtime-1.1.1/jars/classes.jar"
       resolved="androidx.startup:startup-runtime:1.1.1"
-      folder="/Users/ventura/.gradle/caches/transforms-3/6abc947b414d4589c4d91722df2ae401/transformed/jetified-startup-runtime-1.1.1"
+      folder="/Users/ventura/.gradle/caches/transforms-3/6ead1fa016498eb70520a8596abdbac0/transformed/jetified-startup-runtime-1.1.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -446,9 +485,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.interpolator:interpolator:1.0.0@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/b42b0c7f2810d015b39ccb7a0fd55ad0/transformed/interpolator-1.0.0/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/c8c499fe3ec099406515a99fd8402b58/transformed/interpolator-1.0.0/jars/classes.jar"
       resolved="androidx.interpolator:interpolator:1.0.0"
-      folder="/Users/ventura/.gradle/caches/transforms-3/b42b0c7f2810d015b39ccb7a0fd55ad0/transformed/interpolator-1.0.0"
+      folder="/Users/ventura/.gradle/caches/transforms-3/c8c499fe3ec099406515a99fd8402b58/transformed/interpolator-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -463,9 +502,9 @@
       resolved="androidx.concurrent:concurrent-futures:1.1.0"/>
   <library
       name="org.microg:safe-parcel:1.7.0@aar"
-      jars="/Users/ventura/.gradle/caches/transforms-3/2cd70cd712ab96403e94437233ee8d8e/transformed/jetified-safe-parcel-1.7.0/jars/classes.jar"
+      jars="/Users/ventura/.gradle/caches/transforms-3/013659b6adf2e285be94db3a8f740595/transformed/jetified-safe-parcel-1.7.0/jars/classes.jar"
       resolved="org.microg:safe-parcel:1.7.0"
-      folder="/Users/ventura/.gradle/caches/transforms-3/2cd70cd712ab96403e94437233ee8d8e/transformed/jetified-safe-parcel-1.7.0"
+      folder="/Users/ventura/.gradle/caches/transforms-3/013659b6adf2e285be94db3a8f740595/transformed/jetified-safe-parcel-1.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
