@@ -205,7 +205,8 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                         child: isBase64String(context
                                 .watch<providerParticipanteId>()
                                 .provfirmaid)
-                            ? Expanded(
+                            ? SizedBox(
+                                height: 200,
                                 child: AspectRatio(
                                   aspectRatio: 2,
                                   child: Image.memory(
