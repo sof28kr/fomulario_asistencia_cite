@@ -403,17 +403,9 @@
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.8.0/f7197e7cc76453ac59f8b0f8d5137cc600becd36/kotlin-stdlib-common-1.8.0.jar"
       resolved="org.jetbrains.kotlin:kotlin-stdlib-common:1.8.0"/>
   <library
-      name="io.flutter:armeabi_v7a_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a@jar"
-      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/io.flutter/armeabi_v7a_release/1.0.0-990f1ceac5d57225459df25e403afa437cad120a/1109d7c3d895852acb9b57d3d9349ae33f533e35/armeabi_v7a_release-1.0.0-990f1ceac5d57225459df25e403afa437cad120a.jar"
-      resolved="io.flutter:armeabi_v7a_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a"/>
-  <library
       name="io.flutter:arm64_v8a_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a@jar"
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/io.flutter/arm64_v8a_release/1.0.0-990f1ceac5d57225459df25e403afa437cad120a/7068e56e1496ab721bf87e075734554c7b8540e1/arm64_v8a_release-1.0.0-990f1ceac5d57225459df25e403afa437cad120a.jar"
       resolved="io.flutter:arm64_v8a_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a"/>
-  <library
-      name="io.flutter:x86_64_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a@jar"
-      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/io.flutter/x86_64_release/1.0.0-990f1ceac5d57225459df25e403afa437cad120a/b980d7fbf42d713005dc426ce5b58ec173b963d0/x86_64_release-1.0.0-990f1ceac5d57225459df25e403afa437cad120a.jar"
-      resolved="io.flutter:x86_64_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a"/>
   <library
       name="org.jetbrains:annotations:13.0@jar"
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"

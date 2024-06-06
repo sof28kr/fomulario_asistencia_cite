@@ -27,6 +27,15 @@ android {
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
+    signingConfigs {
+        release {
+            keyAlias 'your-key-alias'
+            keyPassword '123456'
+            storeFile file('/Users/ventura/Documents/sofia/fomulario_asistencia_cite/release-key.jks')
+            storePassword '123456'
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -49,8 +58,18 @@ android {
     }
 
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
-            signingConfig signingConfigs.debug // Esto debería ser reemplazado con tu configuración de firma para producción
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+           
         }
     }
 }

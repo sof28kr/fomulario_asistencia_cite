@@ -10920,7 +10920,7 @@ androidx.activity.ComponentActivity$ReportFullyDrawnExecutorApi1
 androidx.core.app.BundleCompat$BeforeApi18Impl
 androidx.core.view.MenuProvider$-CC
 androidx.fragment.app.Fragment$2:
-    final synthetic androidx.fragment.app.Fragment this$0
+    public final synthetic androidx.fragment.app.Fragment this$0
 androidx.fragment.app.Fragment
 androidx.lifecycle.DefaultLifecycleObserver$-CC
 androidx.lifecycle.HasDefaultViewModelProviderFactory$-CC
@@ -10929,7 +10929,7 @@ androidx.lifecycle.ViewModelProvider$Factory$-CC:
 androidx.lifecycle.ViewModelProvider$Factory$Companion
 androidx.lifecycle.ViewModelProvider$Factory:
     public static final androidx.lifecycle.ViewModelProvider$Factory$Companion Companion
-    static void <clinit>()
+    public static void <clinit>()
 androidx.lifecycle.ViewModelProvider$NewInstanceFactory:
     public synthetic androidx.lifecycle.ViewModel create(java.lang.Class,androidx.lifecycle.viewmodel.CreationExtras)
 androidx.startup.StartupLogger
@@ -10940,39 +10940,48 @@ io.flutter.Log:
     public static int INFO
     public static int VERBOSE
     public static int WARN
-    private static int logLevel
+    public static int logLevel
 io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineBroadcastReceiverPluginBinding
 io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineContentProviderPluginBinding
 io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineServicePluginBinding
 io.flutter.embedding.engine.FlutterEngineConnectionRegistry:
-    private io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineBroadcastReceiverPluginBinding broadcastReceiverPluginBinding
-    private io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineContentProviderPluginBinding contentProviderPluginBinding
-    private io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineServicePluginBinding servicePluginBinding
+    public io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineBroadcastReceiverPluginBinding broadcastReceiverPluginBinding
+    public io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineContentProviderPluginBinding contentProviderPluginBinding
+    public io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineServicePluginBinding servicePluginBinding
 io.flutter.embedding.engine.loader.ResourceExtractor:
-    void waitForCompletion()
+    public void waitForCompletion()
 io.flutter.embedding.engine.systemchannels.PlatformChannel$PlatformMessageHandler$-CC
 io.flutter.embedding.engine.systemchannels.SettingsChannel:
-    static final synthetic boolean $assertionsDisabled
+    public static final synthetic boolean $assertionsDisabled
 io.flutter.plugin.common.BinaryMessenger$-CC:
     public static io.flutter.plugin.common.BinaryMessenger$TaskQueue $default$makeBackgroundTaskQueue(io.flutter.plugin.common.BinaryMessenger,io.flutter.plugin.common.BinaryMessenger$TaskQueueOptions)
     public static void $default$setMessageHandler(io.flutter.plugin.common.BinaryMessenger,java.lang.String,io.flutter.plugin.common.BinaryMessenger$BinaryMessageHandler,io.flutter.plugin.common.BinaryMessenger$TaskQueue)
 io.flutter.plugin.platform.PlatformPlugin$PlatformPluginDelegate$-CC
 io.flutter.plugin.platform.PlatformView$-CC
 io.flutter.plugin.platform.VirtualDisplayController:
-    private static java.lang.String TAG
+    public static java.lang.String TAG
 io.flutter.plugins.urllauncher.UrlLauncher:
-    static final synthetic boolean $assertionsDisabled
-kotlin.collections.ArraysKt:
-    public static synthetic bridge java.util.List sortedWith(java.lang.Object[],java.util.Comparator)
+    public static final synthetic boolean $assertionsDisabled
+kotlin.ExceptionsKt
+kotlin.LazyKt
+kotlin.LazyKt__LazyKt
+kotlin.collections.ArraysKt
 kotlin.collections.ArraysKt___ArraysJvmKt:
     public static final void sortWith(java.lang.Object[],java.util.Comparator)
 kotlin.collections.ArraysKt___ArraysKt:
     public static final java.lang.Object[] sortedArrayWith(java.lang.Object[],java.util.Comparator)
-    public static java.util.List sortedWith(java.lang.Object[],java.util.Comparator)
+    public static final java.util.List sortedWith(java.lang.Object[],java.util.Comparator)
+kotlin.collections.CollectionsKt
+kotlin.collections.MapsKt
+kotlin.collections.MapsKt___MapsJvmKt
+kotlin.collections.MapsKt___MapsKt
+kotlin.collections.SetsKt
+kotlin.collections.SetsKt___SetsKt
 kotlin.comparisons.ComparisonsKt
 kotlin.comparisons.ComparisonsKt__ComparisonsKt
 kotlin.comparisons.ComparisonsKt___ComparisonsJvmKt
 kotlin.comparisons.ComparisonsKt___ComparisonsKt
+kotlin.coroutines.intrinsics.IntrinsicsKt
 kotlin.coroutines.jvm.internal.CoroutineStackFrame:
     public abstract java.lang.StackTraceElement getStackTraceElement()
 kotlin.jvm.JvmClassMappingKt:
@@ -10984,7 +10993,10 @@ kotlin.random.Random$Default:
 kotlin.random.Random:
     public abstract int nextBits(int)
 kotlin.random.RandomKt
+kotlin.ranges.RangesKt
+kotlin.sequences.SequencesKt
 kotlin.text.CharsKt
+kotlin.text.StringsKt
 kotlinx.coroutines.AbstractTimeSource:
     public abstract long nanoTime()
     public abstract void parkNanos(java.lang.Object,long)
@@ -10995,7 +11007,7 @@ kotlinx.coroutines.AbstractTimeSource:
     public abstract void unregisterTimeLoopThread()
     public abstract java.lang.Runnable wrapTask(java.lang.Runnable)
 kotlinx.coroutines.AbstractTimeSourceKt:
-    private static kotlinx.coroutines.AbstractTimeSource timeSource
+    public static kotlinx.coroutines.AbstractTimeSource timeSource
 kotlinx.coroutines.CancellableContinuationImpl:
     public java.lang.StackTraceElement getStackTraceElement()
 kotlinx.coroutines.CopyableThrowable
@@ -11033,15 +11045,15 @@ kotlinx.coroutines.internal.ScopeCoroutine:
 kotlinx.coroutines.internal.StackTraceRecoveryKt:
     public static final synthetic java.lang.Throwable access$recoverFromStackFrame(java.lang.Throwable,kotlin.coroutines.jvm.internal.CoroutineStackFrame)
     public static final java.lang.StackTraceElement artificialFrame(java.lang.String)
-    private static final kotlin.Pair causeAndStacktrace(java.lang.Throwable)
-    private static final java.lang.Throwable createFinalException(java.lang.Throwable,java.lang.Throwable,java.util.ArrayDeque)
-    private static final java.util.ArrayDeque createStackTrace(kotlin.coroutines.jvm.internal.CoroutineStackFrame)
-    private static final boolean elementWiseEquals(java.lang.StackTraceElement,java.lang.StackTraceElement)
-    private static final int frameIndex(java.lang.StackTraceElement[],java.lang.String)
+    public static final kotlin.Pair causeAndStacktrace(java.lang.Throwable)
+    public static final java.lang.Throwable createFinalException(java.lang.Throwable,java.lang.Throwable,java.util.ArrayDeque)
+    public static final java.util.ArrayDeque createStackTrace(kotlin.coroutines.jvm.internal.CoroutineStackFrame)
+    public static final boolean elementWiseEquals(java.lang.StackTraceElement,java.lang.StackTraceElement)
+    public static final int frameIndex(java.lang.StackTraceElement[],java.lang.String)
     public static final boolean isArtificial(java.lang.StackTraceElement)
-    private static final void mergeRecoveredTraces(java.lang.StackTraceElement[],java.util.ArrayDeque)
-    private static final java.lang.Throwable recoverFromStackFrame(java.lang.Throwable,kotlin.coroutines.jvm.internal.CoroutineStackFrame)
-    private static final java.lang.Throwable sanitizeStackTrace(java.lang.Throwable)
-    private static final java.lang.Throwable tryCopyAndVerify(java.lang.Throwable)
+    public static final void mergeRecoveredTraces(java.lang.StackTraceElement[],java.util.ArrayDeque)
+    public static final java.lang.Throwable recoverFromStackFrame(java.lang.Throwable,kotlin.coroutines.jvm.internal.CoroutineStackFrame)
+    public static final java.lang.Throwable sanitizeStackTrace(java.lang.Throwable)
+    public static final java.lang.Throwable tryCopyAndVerify(java.lang.Throwable)
     public static final java.lang.Throwable unwrapImpl(java.lang.Throwable)
 kotlinx.coroutines.internal.WeakMapCtorCache

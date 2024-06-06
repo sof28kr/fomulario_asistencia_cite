@@ -569,19 +569,6 @@ library {
 library {
   maven_library {
     groupId: "io.flutter"
-    artifactId: "armeabi_v7a_release"
-    version: "1.0.0-990f1ceac5d57225459df25e403afa437cad120a"
-  }
-  digests {
-    sha256: "\216bx\361l\242\034\344\2555\250\336v\220\274\027\300`+\v\271\001(4\232\217\312\023\006$\216w"
-  }
-  repo_index {
-    value: 2
-  }
-}
-library {
-  maven_library {
-    groupId: "io.flutter"
     artifactId: "arm64_v8a_release"
     version: "1.0.0-990f1ceac5d57225459df25e403afa437cad120a"
   }
@@ -593,21 +580,8 @@ library {
   }
 }
 library {
-  maven_library {
-    groupId: "io.flutter"
-    artifactId: "x86_64_release"
-    version: "1.0.0-990f1ceac5d57225459df25e403afa437cad120a"
-  }
   digests {
-    sha256: "Cs\245\270J%$\300\316`\f{\373\205IP\374\252o\231\255u\354\271/\310\364\267\310 \231\360"
-  }
-  repo_index {
-    value: 2
-  }
-}
-library {
-  digests {
-    sha256: "nB\363\206\257f\264\376\370\001\354\362\020@F|\271\236\311 \023\t\253\315\274\335\205ZF\322b\306"
+    sha256: "\355\340<R\361\221\nX\023\027\341\335\2365\275\215\272\3116#\266\275\352\242S\340\255\237p\352\212\307"
   }
 }
 library_dependencies {
@@ -981,8 +955,6 @@ module_dependencies {
   dependency_index: 12
   dependency_index: 3
   dependency_index: 47
-  dependency_index: 48
-  dependency_index: 49
   dependency_index: 0
   dependency_index: 5
   dependency_index: 6
@@ -991,7 +963,7 @@ module_dependencies {
   dependency_index: 41
   dependency_index: 45
   dependency_index: 46
-  dependency_index: 50
+  dependency_index: 48
 }
 repositories {
   maven_repo {
