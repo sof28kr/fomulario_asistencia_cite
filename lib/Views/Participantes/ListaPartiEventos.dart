@@ -1,3 +1,4 @@
+import 'package:fomulario_asistencia_cite/Models/ProvidersFirma.dart';
 import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -297,8 +298,10 @@ class _ListaPartiEventosState extends State<ListaPartiEventos> {
                       ),
                       PrettyBorderButton(
                         label: '  Nuevo Participante   ',
-                        onPressed: () =>
-                            context.push('/formularioParticipantes'),
+                        onPressed: () {
+                          context.read<ProviderFirma>().resetFirmaString();
+                          context.push('/formularioParticipantes');
+                        },
                         labelStyle: const TextStyle(fontSize: 20),
                         bgColor: const Color(0xffC4ACCD),
                         borderColor: const Color(0xff6C3082),

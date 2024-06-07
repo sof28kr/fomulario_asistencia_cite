@@ -26,6 +26,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
   void initState() {
     super.initState();
     final identificacion = context.read<ProviderEventosId>().provId;
+    print(identificacion);
     fetchOptions(identificacion);
   }
 
@@ -178,7 +179,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                           ),
                         ),
                 ),
-
+                SizedBox(height: 50),
                 //textxfields del formulario
                 Padding(
                   padding:
@@ -195,6 +196,7 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                             fontWeight: FontWeight.w400,
                             color: colores!.c1),
                       ),
+                      SizedBox(height: 50),
                       // Cuerpo de los form fields
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
@@ -342,8 +344,29 @@ class _FormularioParticipantesState extends State<FormularioParticipantes> {
                           },
                         ),
                       ),
+                      SizedBox(height: 50),
 
-                      const subirFirma(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: CustomElevatedButton(
+                            label: 'Ingresar Firma',
+                            onPressed: () => context.push('/firma'),
+                            labelStyle: const TextStyle(
+                              fontSize: 16,
+                              color: Color(0xff2A3439),
+                            ),
+                            bgColor: const Color(0xffC4ACCD),
+                            borderColor: const Color(0xff6C3082),
+                            borderWidth: 0.5,
+                            icon: Icons.edit,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
                       Container(
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         child: isBase64String(

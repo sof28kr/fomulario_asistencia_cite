@@ -1,3 +1,4 @@
+import 'package:fomulario_asistencia_cite/Views/Participantes/SubListaEventosEdit.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
 import 'package:fomulario_asistencia_cite/Conexion/supabaseEvento.dart';
 import 'package:fomulario_asistencia_cite/Models/ParticipantesModelo.dart';
@@ -74,6 +75,9 @@ class MyApp extends StatelessWidget {
           GoRoute(
               path: '/editarParticipantes',
               builder: (context, state) => const EditarParticipantes()),
+          GoRoute(
+              path: '/listaFiltrada3',
+              builder: (context, state) => SubListaEventosEdit()),
 
           //rutas evento
 

@@ -114,7 +114,7 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                             fontWeight: FontWeight.w400,
                             color: colores!.c1),
                       ),
-                      SizedBox(height: 30),
+                      SizedBox(height: 80),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: TextField(
@@ -199,7 +199,28 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                               )),
                         ),
                       ),
-                      const subirFirma(),
+                      SizedBox(height: 50),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: CustomElevatedButton(
+                            label: 'Ingresar Firma',
+                            onPressed: () => context.push('/firma'),
+                            labelStyle: const TextStyle(
+                              fontSize: 16,
+                              color: Color(0xff2A3439),
+                            ),
+                            bgColor: const Color(0xffC4ACCD),
+                            borderColor: const Color(0xff6C3082),
+                            borderWidth: 0.5,
+                            icon: Icons.edit,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
                       Container(
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         child: isBase64String(context
@@ -261,7 +282,7 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                           controllerInputRuc.clear();
                           context.read<ProviderFirma>().resetFirmaString();
 
-                          context.push('/listaParticipantes');
+                          context.push('/listaFiltrada');
                         },
                         labelStyle: const TextStyle(fontSize: 20),
                         bgColor: const Color(0xffC4ACCD),
@@ -275,7 +296,7 @@ class _EditarParticipantesState extends State<EditarParticipantes> {
                         label: 'Ver Listado de Participantes',
                         labelStyle: TextStyle(fontSize: 16, color: colores.c3),
                         onPressed: () {
-                          context.push('/listaParticipantes');
+                          context.push('/listaFiltrada');
                         },
                         secondSlideColor: colores.c1,
                       ),

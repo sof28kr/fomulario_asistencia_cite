@@ -255,6 +255,17 @@ class _SubListaEventosState extends State<SubListaEventos> {
                       const SizedBox(
                         height: 50,
                       ),
+                      PrettyBorderButton(
+                        label: '  Descargar Listado   ',
+                        onPressed: () {},
+                        labelStyle: const TextStyle(fontSize: 20),
+                        bgColor: const Color(0xffC4ACCD),
+                        borderColor: const Color(0xff6C3082),
+                        borderWidth: s3,
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      )
                       // Cuerpo de los form fields
                     ],
                   ),
