@@ -136,81 +136,111 @@
 98-->[:image_picker_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:32:17-33
 99        </service>
 100
-101        <activity
-101-->[:url_launcher_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-13:74
-102            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-102-->[:url_launcher_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
-103            android:exported="false"
-103-->[:url_launcher_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
-104            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-104-->[:url_launcher_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-71
-105
-106        <uses-library
-106-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-107            android:name="androidx.window.extensions"
-107-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-108            android:required="false" />
-108-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-109        <uses-library
-109-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-110            android:name="androidx.window.sidecar"
-110-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-111            android:required="false" />
-111-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-112
-113        <provider
-113-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
-114            android:name="androidx.startup.InitializationProvider"
-114-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:25:13-67
-115            android:authorities="com.example.fomulario_asistencia_cite.androidx-startup"
-115-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:26:13-68
-116            android:exported="false" >
-116-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:27:13-37
-117            <meta-data
-117-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
-118                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-118-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
-119                android:value="androidx.startup" />
-119-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
-120        </provider>
-121
-122        <receiver
-122-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
-123            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-123-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
-124            android:directBootAware="false"
-124-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
-125            android:enabled="true"
-125-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
-126            android:exported="true"
-126-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
-127            android:permission="android.permission.DUMP" >
-127-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
-128            <intent-filter>
-128-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
-129                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-129-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
-129-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
-130            </intent-filter>
-131            <intent-filter>
-131-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
-132                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-132-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
-132-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
-133            </intent-filter>
-134            <intent-filter>
-134-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
-135                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-135-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
-135-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
-136            </intent-filter>
-137            <intent-filter>
-137-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
-138                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-138-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
-138-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
-139            </intent-filter>
-140        </receiver>
-141    </application>
-142
-143</manifest>
+101        <provider
+101-->[:open_file] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/open_file/intermediates/merged_manifest/debug/AndroidManifest.xml:11:9-20:20
+102            android:name="com.crazecoder.openfile.FileProvider"
+102-->[:open_file] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/open_file/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-64
+103            android:authorities="com.example.fomulario_asistencia_cite.fileProvider.com.crazecoder.openfile"
+103-->[:open_file] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/open_file/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-88
+104            android:exported="false"
+104-->[:open_file] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/open_file/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-37
+105            android:grantUriPermissions="true" >
+105-->[:open_file] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/open_file/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-47
+106            <meta-data
+106-->[:image_picker_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-18:75
+107                android:name="android.support.FILE_PROVIDER_PATHS"
+107-->[:image_picker_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-67
+108                android:resource="@xml/filepaths" />
+108-->[:image_picker_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:18:17-72
+109        </provider>
+110
+111        <activity
+111-->[:url_launcher_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-13:74
+112            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+112-->[:url_launcher_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
+113            android:exported="false"
+113-->[:url_launcher_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
+114            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+114-->[:url_launcher_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-71
+115
+116        <provider
+116-->[androidx.emoji2:emoji2:1.2.0] /Users/ventura/.gradle/caches/transforms-3/9eb8e9dbe8953043eb1c1c338161d5bc/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+117            android:name="androidx.startup.InitializationProvider"
+117-->[androidx.emoji2:emoji2:1.2.0] /Users/ventura/.gradle/caches/transforms-3/9eb8e9dbe8953043eb1c1c338161d5bc/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+118            android:authorities="com.example.fomulario_asistencia_cite.androidx-startup"
+118-->[androidx.emoji2:emoji2:1.2.0] /Users/ventura/.gradle/caches/transforms-3/9eb8e9dbe8953043eb1c1c338161d5bc/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+119            android:exported="false" >
+119-->[androidx.emoji2:emoji2:1.2.0] /Users/ventura/.gradle/caches/transforms-3/9eb8e9dbe8953043eb1c1c338161d5bc/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+120            <meta-data
+120-->[androidx.emoji2:emoji2:1.2.0] /Users/ventura/.gradle/caches/transforms-3/9eb8e9dbe8953043eb1c1c338161d5bc/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+121                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+121-->[androidx.emoji2:emoji2:1.2.0] /Users/ventura/.gradle/caches/transforms-3/9eb8e9dbe8953043eb1c1c338161d5bc/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+122                android:value="androidx.startup" />
+122-->[androidx.emoji2:emoji2:1.2.0] /Users/ventura/.gradle/caches/transforms-3/9eb8e9dbe8953043eb1c1c338161d5bc/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+123            <meta-data
+123-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/ventura/.gradle/caches/transforms-3/c618f84fa5760ab1ed477ef06532ca0d/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+124                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+124-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/ventura/.gradle/caches/transforms-3/c618f84fa5760ab1ed477ef06532ca0d/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+125                android:value="androidx.startup" />
+125-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/ventura/.gradle/caches/transforms-3/c618f84fa5760ab1ed477ef06532ca0d/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+126            <meta-data
+126-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+127                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+127-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+128                android:value="androidx.startup" />
+128-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+129        </provider>
+130
+131        <uses-library
+131-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+132            android:name="androidx.window.extensions"
+132-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+133            android:required="false" />
+133-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+134        <uses-library
+134-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+135            android:name="androidx.window.sidecar"
+135-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+136            android:required="false" />
+136-->[androidx.window:window:1.0.0-beta04] /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+137
+138        <receiver
+138-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+139            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+139-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+140            android:directBootAware="false"
+140-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+141            android:enabled="true"
+141-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+142            android:exported="true"
+142-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+143            android:permission="android.permission.DUMP" >
+143-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+144            <intent-filter>
+144-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+145                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+145-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+145-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+146            </intent-filter>
+147            <intent-filter>
+147-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+148                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+148-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+148-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+149            </intent-filter>
+150            <intent-filter>
+150-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+151                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+151-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+151-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+152            </intent-filter>
+153            <intent-filter>
+153-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+154                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+154-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+154-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ventura/.gradle/caches/transforms-3/0b060e01460139de516969929d4da5a0/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+155            </intent-filter>
+156        </receiver>
+157    </application>
+158
+159</manifest>

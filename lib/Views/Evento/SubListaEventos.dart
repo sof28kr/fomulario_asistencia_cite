@@ -4,6 +4,7 @@ import 'package:excel/excel.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
 import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
+import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -365,6 +366,7 @@ class _SubListaEventosState extends State<SubListaEventos> {
   Future<void> exportToExcel(List<Map<String, dynamic>> participantes) async {
     var excel = Excel.createExcel();
     Sheet sheetObject = excel['Sheet1'];
+    String valor = context.read<ProviderEventosId>().provId.toString();
 
     // Add header row
     List<String> headers = [
@@ -394,10 +396,13 @@ class _SubListaEventosState extends State<SubListaEventos> {
 
     // Save the file
     var downloadsDirectory = await getDownloadsDirectory();
-    String outputFile = '${downloadsDirectory!.path}/Participantes.xlsx';
+    String outputFile = '${downloadsDirectory!.path}/Participantes-$valor.xlsx';
     File(outputFile)
       ..createSync(recursive: true)
       ..writeAsBytesSync(excel.encode()!);
+
+    // Open the file
+    OpenFile.open(outputFile);
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Listado exportado: $outputFile')),
