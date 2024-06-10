@@ -20,15 +20,16 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/vent
 	android:name
 		INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml
 manifest
-ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-46:12
-INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-46:12
-INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-46:12
-INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-46:12
-MERGED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-46:12
+ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-48:12
+INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-48:12
+INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-48:12
+INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-48:12
+MERGED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-48:12
 MERGED from [:app_links] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/app_links/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:image_picker_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-36:12
 MERGED from [:flutter_plugin_android_lifecycle] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:path_provider_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:permission_handler_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:shared_preferences_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:url_launcher_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-16:12
 MERGED from [androidx.fragment:fragment:1.1.0] /Users/ventura/.gradle/caches/transforms-3/dc7f3607884cf4f6432dbf890d652d81/transformed/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
@@ -64,15 +65,15 @@ INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/a
 INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/debug/AndroidManifest.xml:1:1-7:12
 	package
 		INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-46:12
+		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-48:12
 		INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/debug/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-46:12
+		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-48:12
 		INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/debug/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-46:12
+		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:1-48:12
 		INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:1:11-69
@@ -86,18 +87,26 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:34:5-78
 	android:name
 		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:34:22-76
-queries
-ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:40:5-45:15
-intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
-ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:41:9-44:18
-action#android.intent.action.PROCESS_TEXT
-ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:42:13-72
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:35:5-80
 	android:name
-		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:42:21-70
+		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:35:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:36:5-79
+	android:name
+		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:36:22-77
+queries
+ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:42:5-47:15
+intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
+ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:43:9-46:18
+action#android.intent.action.PROCESS_TEXT
+ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:44:13-72
+	android:name
+		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:44:21-70
 data
-ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:43:13-50
+ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:45:13-50
 	android:mimeType
-		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:43:19-48
+		ADDED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml:45:19-48
 uses-sdk
 INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/ventura/Documents/sofia/fomulario_asistencia_cite/android/app/src/main/AndroidManifest.xml
@@ -110,6 +119,8 @@ MERGED from [:flutter_plugin_android_lifecycle] /Users/ventura/Documents/sofia/f
 MERGED from [:flutter_plugin_android_lifecycle] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:permission_handler_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:permission_handler_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:shared_preferences_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:shared_preferences_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:url_launcher_android] /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41

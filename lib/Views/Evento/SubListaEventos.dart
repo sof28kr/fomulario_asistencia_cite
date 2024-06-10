@@ -1,7 +1,12 @@
+import 'dart:io';
+
+import 'package:excel/excel.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
 import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class SubListaEventos extends StatefulWidget {
   const SubListaEventos({super.key});
@@ -11,7 +16,6 @@ class SubListaEventos extends StatefulWidget {
 }
 
 class _SubListaEventosState extends State<SubListaEventos> {
-  //variables a moverse:
   final supabase = Supabase.instance.client;
 
   final participantesStream = Supabase.instance.client
@@ -97,142 +101,202 @@ class _SubListaEventosState extends State<SubListaEventos> {
                               );
                             }
 
-                            return ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount:
-                                    participantesConEventoSeleccionado.length,
-                                itemBuilder: (context, index) {
-                                  final participante =
-                                      participantesConEventoSeleccionado[index];
-                                  var participanteId = participante['id'];
-                                  var participanteIdnombre =
-                                      participante['nombre'] ?? 'no hay nombre';
-                                  var participanteIdDNI =
-                                      participante['DNI'] ?? 0;
-                                  var participanteIdDireccion =
-                                      participante['direccion'] ??
-                                          'no hya direccion';
-                                  var participanteIdTelefono =
-                                      participante['telefono'] ?? 0;
-                                  var participanteIdCorreo =
-                                      participante['correo'] ?? 'no hay correo';
-                                  var participanteIdRuc =
-                                      participante['ruc'] ?? 0;
-                                  var participanteIdFirma =
-                                      participante['firma'] ?? 'no hay firma';
+                            return Column(
+                              children: [
+                                ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount:
+                                        participantesConEventoSeleccionado
+                                            .length,
+                                    itemBuilder: (context, index) {
+                                      final participante =
+                                          participantesConEventoSeleccionado[
+                                              index];
+                                      var participanteId = participante['id'];
+                                      var participanteIdnombre =
+                                          participante['nombre'] ??
+                                              'no hay nombre';
+                                      var participanteIdDNI =
+                                          participante['DNI'] ?? 0;
+                                      var participanteIdDireccion =
+                                          participante['direccion'] ??
+                                              'no hya direccion';
+                                      var participanteIdTelefono =
+                                          participante['telefono'] ?? 0;
+                                      var participanteIdCorreo =
+                                          participante['correo'] ??
+                                              'no hay correo';
+                                      var participanteIdRuc =
+                                          participante['ruc'] ?? 0;
+                                      var participanteIdFirma =
+                                          participante['firma'] ??
+                                              'no hay firma';
 
-                                  return Card(
-                                    child: ListTile(
-                                      tileColor: colores.c6,
-                                      onTap: () {
-                                        // hacer click en el listtile
-                                      },
-                                      title: Text(participante['nombre'] ??
-                                          'No registro nombre'),
-                                      subtitle: Text(
-                                          participante['DNI'].toString() ??
-                                              'No registro Dni'),
-                                      //trailing: Text(participante['created_at']
-                                      //.toString() ??
-                                      //'No hay fecha registrada'),
+                                      return Card(
+                                        child: ListTile(
+                                          tileColor: colores.c6,
+                                          onTap: () {
+                                            // hacer click en el listtile
+                                          },
+                                          title: Text(participante['nombre'] ??
+                                              'No registro nombre'),
+                                          subtitle: Text(
+                                              participante['DNI'].toString() ??
+                                                  'No registro Dni'),
+                                          //trailing: Text(participante['created_at']
+                                          //.toString() ??
+                                          //'No hay fecha registrada'),
 
-                                      trailing: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          IconButton(
-                                              onPressed: () {
-                                                context.push(
-                                                    '/editarParticipantes');
-                                                participanteId =
-                                                    participante['id'];
-                                                participanteIdnombre =
-                                                    participante['nombre'] ??
-                                                        'no hay';
-                                                participanteIdDNI =
-                                                    participante['DNI'] ?? 0;
-                                                participanteIdDireccion =
-                                                    participante['direccion'] ??
-                                                        'no hay';
-                                                participanteIdTelefono =
-                                                    participante['telefono'] ??
-                                                        0;
-                                                participanteIdCorreo =
-                                                    participante['correo'] ??
-                                                        'no hay';
-                                                participanteIdRuc =
-                                                    participante['ruc'] ?? 0;
-                                                participanteIdFirma =
-                                                    participante['firma'] ??
-                                                        'no hay';
-                                                context
-                                                    .read<
-                                                        providerParticipanteId>()
-                                                    .changeProvParticipanteId(
-                                                        newprovParticipanteId:
-                                                            participanteId,
-                                                        newprovDNIid:
-                                                            participanteIdDNI,
-                                                        newprovnombreid:
-                                                            participanteIdnombre,
-                                                        newprovdireccionid:
-                                                            participanteIdDireccion,
-                                                        newprovcorreoid:
-                                                            participanteIdCorreo,
-                                                        newprovfirmaid:
-                                                            participanteIdFirma,
-                                                        newprovrucid:
-                                                            participanteIdRuc,
-                                                        newprovtelefonoid:
-                                                            participanteIdTelefono);
-                                              },
-                                              icon: const Icon(Icons.edit)),
-                                          IconButton(
-                                              onPressed: () async {
-                                                // implementar metodo para eliminacion
+                                          trailing: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              IconButton(
+                                                  onPressed: () {
+                                                    context.push(
+                                                        '/editarParticipantes');
+                                                    participanteId =
+                                                        participante['id'];
+                                                    participanteIdnombre =
+                                                        participante[
+                                                                'nombre'] ??
+                                                            'no hay';
+                                                    participanteIdDNI =
+                                                        participante['DNI'] ??
+                                                            0;
+                                                    participanteIdDireccion =
+                                                        participante[
+                                                                'direccion'] ??
+                                                            'no hay';
+                                                    participanteIdTelefono =
+                                                        participante[
+                                                                'telefono'] ??
+                                                            0;
+                                                    participanteIdCorreo =
+                                                        participante[
+                                                                'correo'] ??
+                                                            'no hay';
+                                                    participanteIdRuc =
+                                                        participante['ruc'] ??
+                                                            0;
+                                                    participanteIdFirma =
+                                                        participante['firma'] ??
+                                                            'no hay';
+                                                    context
+                                                        .read<
+                                                            providerParticipanteId>()
+                                                        .changeProvParticipanteId(
+                                                            newprovParticipanteId:
+                                                                participanteId,
+                                                            newprovDNIid:
+                                                                participanteIdDNI,
+                                                            newprovnombreid:
+                                                                participanteIdnombre,
+                                                            newprovdireccionid:
+                                                                participanteIdDireccion,
+                                                            newprovcorreoid:
+                                                                participanteIdCorreo,
+                                                            newprovfirmaid:
+                                                                participanteIdFirma,
+                                                            newprovrucid:
+                                                                participanteIdRuc,
+                                                            newprovtelefonoid:
+                                                                participanteIdTelefono);
+                                                  },
+                                                  icon: const Icon(Icons.edit)),
+                                              IconButton(
+                                                  onPressed: () async {
+                                                    // implementar metodo para eliminacion
 
-                                                bool deleteConfirmed =
-                                                    await showDialog(
-                                                        context: context,
-                                                        builder: (context) {
-                                                          return AlertDialog(
-                                                            title: const Text(
-                                                                'Eliminar Registro del Participantes'),
-                                                            content: const Text(
-                                                                'Seguro que desea eliminar el registro del participante?'),
-                                                            actions: [
-                                                              TextButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    Navigator.pop(
-                                                                        context,
-                                                                        false);
-                                                                  },
-                                                                  child: const Text(
-                                                                      'Cancelar')),
-                                                              TextButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    Navigator.pop(
-                                                                        context,
-                                                                        true);
-                                                                  },
-                                                                  child: const Text(
-                                                                      'Eliminar registro')),
-                                                            ],
-                                                          );
-                                                        });
-                                                if (deleteConfirmed) {
-                                                  await eliminarParticipante(
-                                                      participanteId);
-                                                }
-                                              },
-                                              icon: const Icon(Icons.delete))
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                });
+                                                    bool deleteConfirmed =
+                                                        await showDialog(
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return AlertDialog(
+                                                                title: const Text(
+                                                                    'Eliminar Registro del Participantes'),
+                                                                content: const Text(
+                                                                    'Seguro que desea eliminar el registro del participante?'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.pop(
+                                                                            context,
+                                                                            false);
+                                                                      },
+                                                                      child: const Text(
+                                                                          'Cancelar')),
+                                                                  TextButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.pop(
+                                                                            context,
+                                                                            true);
+                                                                      },
+                                                                      child: const Text(
+                                                                          'Eliminar registro')),
+                                                                ],
+                                                              );
+                                                            });
+                                                    if (deleteConfirmed) {
+                                                      await eliminarParticipante(
+                                                          participanteId);
+                                                    }
+                                                  },
+                                                  icon:
+                                                      const Icon(Icons.delete))
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    }),
+
+                                // tabla prueba
+
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: DataTable(
+                                    columns: const [
+                                      DataColumn(label: Text('Nombre')),
+                                      DataColumn(label: Text('DNI')),
+                                      DataColumn(label: Text('Dirección')),
+                                      DataColumn(label: Text('Teléfono')),
+                                      DataColumn(label: Text('Correo')),
+                                      DataColumn(label: Text('RUC')),
+                                      DataColumn(label: Text('Firma')),
+                                    ],
+                                    rows: participantesConEventoSeleccionado
+                                        .map((participante) => DataRow(cells: [
+                                              DataCell(Text(
+                                                  participante['nombre'] ??
+                                                      'N/A')),
+                                              DataCell(Text(participante['DNI']
+                                                      ?.toString() ??
+                                                  'N/A')),
+                                              DataCell(Text(
+                                                  participante['direccion'] ??
+                                                      'N/A')),
+                                              DataCell(Text(
+                                                  participante['telefono']
+                                                          ?.toString() ??
+                                                      'N/A')),
+                                              DataCell(Text(
+                                                  participante['correo'] ??
+                                                      'N/A')),
+                                              DataCell(Text(participante['ruc']
+                                                      ?.toString() ??
+                                                  'N/A')),
+                                              DataCell(Text(
+                                                  participante['firma'] ??
+                                                      'N/A')),
+                                            ]))
+                                        .toList(),
+                                  ),
+                                ),
+                              ],
+                            );
                           }),
 
                       const SizedBox(
@@ -257,7 +321,22 @@ class _SubListaEventosState extends State<SubListaEventos> {
                       ),
                       PrettyBorderButton(
                         label: '  Descargar Listado   ',
-                        onPressed: () {},
+                        onPressed: () async {
+                          var status = await Permission.storage.request();
+                          if (status.isGranted) {
+                            var participantes = await supabase
+                                .from('neoParticipantes')
+                                .select()
+                                .eq('evento', valor);
+                            exportToExcel(participantes);
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text(
+                                      'Permiso de almacenamiento denegado')),
+                            );
+                          }
+                        },
                         labelStyle: const TextStyle(fontSize: 20),
                         bgColor: const Color(0xffC4ACCD),
                         borderColor: const Color(0xff6C3082),
@@ -266,7 +345,6 @@ class _SubListaEventosState extends State<SubListaEventos> {
                       const SizedBox(
                         height: 50,
                       )
-                      // Cuerpo de los form fields
                     ],
                   ),
                 ),
@@ -282,5 +360,61 @@ class _SubListaEventosState extends State<SubListaEventos> {
     int participanteId,
   ) async {
     await supabase.from("neoParticipantes").delete().eq("id", participanteId);
+  }
+
+  Future<void> exportToExcel(List<Map<String, dynamic>> participantes) async {
+    var excel = Excel.createExcel();
+    Sheet sheetObject = excel['Sheet1'];
+
+    // Add header row
+    List<String> headers = [
+      'Nombre',
+      'DNI',
+      'Dirección',
+      'Teléfono',
+      'Correo',
+      'RUC',
+      'Firma'
+    ];
+    sheetObject.appendRow(headers);
+
+    // Add data rows
+    for (var participante in participantes) {
+      List<String> row = [
+        participante['nombre'] ?? '',
+        participante['DNI']?.toString() ?? '',
+        participante['direccion'] ?? '',
+        participante['telefono']?.toString() ?? '',
+        participante['correo'] ?? '',
+        participante['ruc']?.toString() ?? '',
+        participante['firma'] ?? ''
+      ];
+      sheetObject.appendRow(row);
+    }
+
+    // Save the file
+    var downloadsDirectory = await getDownloadsDirectory();
+    String outputFile = '${downloadsDirectory!.path}/Participantes.xlsx';
+    File(outputFile)
+      ..createSync(recursive: true)
+      ..writeAsBytesSync(excel.encode()!);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Listado exportado: $outputFile')),
+    );
+  }
+
+  Future<Directory?> getDownloadsDirectory() async {
+    if (Platform.isAndroid) {
+      final downloadsPath = Directory('/storage/emulated/0/Download');
+      if (await downloadsPath.exists()) {
+        return downloadsPath;
+      } else {
+        downloadsPath.createSync(recursive: true);
+        return downloadsPath;
+      }
+    } else {
+      return await getApplicationDocumentsDirectory();
+    }
   }
 }
