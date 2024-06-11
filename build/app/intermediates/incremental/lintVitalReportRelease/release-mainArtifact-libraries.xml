@@ -56,6 +56,19 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/android@@:permission_handler_android::release"
+      jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/.transforms/132c28580234d3f99702f7645b7d737e/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/.transforms/132c28580234d3f99702f7645b7d737e/transformed/out/jars/libs/R.jar"
+      resolved="com.baseflow.permissionhandler:permission_handler_android:unspecified"
+      folder="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/.transforms/132c28580234d3f99702f7645b7d737e/transformed/out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/android@@:shared_preferences_android::release"
       jars="/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/shared_preferences_android/.transforms/9aaf8ac556bf192ec4805f4108e88ce3/transformed/out/jars/classes.jar:/Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/shared_preferences_android/.transforms/9aaf8ac556bf192ec4805f4108e88ce3/transformed/out/jars/libs/R.jar"
       resolved="io.flutter.plugins.sharedpreferences:shared_preferences_android:unspecified"
@@ -403,17 +416,9 @@
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.8.0/f7197e7cc76453ac59f8b0f8d5137cc600becd36/kotlin-stdlib-common-1.8.0.jar"
       resolved="org.jetbrains.kotlin:kotlin-stdlib-common:1.8.0"/>
   <library
-      name="io.flutter:armeabi_v7a_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a@jar"
-      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/io.flutter/armeabi_v7a_release/1.0.0-990f1ceac5d57225459df25e403afa437cad120a/1109d7c3d895852acb9b57d3d9349ae33f533e35/armeabi_v7a_release-1.0.0-990f1ceac5d57225459df25e403afa437cad120a.jar"
-      resolved="io.flutter:armeabi_v7a_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a"/>
-  <library
       name="io.flutter:arm64_v8a_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a@jar"
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/io.flutter/arm64_v8a_release/1.0.0-990f1ceac5d57225459df25e403afa437cad120a/7068e56e1496ab721bf87e075734554c7b8540e1/arm64_v8a_release-1.0.0-990f1ceac5d57225459df25e403afa437cad120a.jar"
       resolved="io.flutter:arm64_v8a_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a"/>
-  <library
-      name="io.flutter:x86_64_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a@jar"
-      jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/io.flutter/x86_64_release/1.0.0-990f1ceac5d57225459df25e403afa437cad120a/b980d7fbf42d713005dc426ce5b58ec173b963d0/x86_64_release-1.0.0-990f1ceac5d57225459df25e403afa437cad120a.jar"
-      resolved="io.flutter:x86_64_release:1.0.0-990f1ceac5d57225459df25e403afa437cad120a"/>
   <library
       name="org.jetbrains:annotations:13.0@jar"
       jars="/Users/ventura/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"

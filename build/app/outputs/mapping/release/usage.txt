@@ -738,8 +738,10 @@ androidx.core.app.ActivityCompat$Api23Impl:
     private void <init>()
 androidx.core.app.ActivityCompat$Api28Impl
 androidx.core.app.ActivityCompat$Api30Impl
-androidx.core.app.ActivityCompat$Api31Impl
-androidx.core.app.ActivityCompat$Api32Impl
+androidx.core.app.ActivityCompat$Api31Impl:
+    private void <init>()
+androidx.core.app.ActivityCompat$Api32Impl:
+    private void <init>()
 androidx.core.app.ActivityCompat$PermissionCompatDelegate:
     public abstract boolean onActivityResult(android.app.Activity,int,int,android.content.Intent)
 androidx.core.app.ActivityCompat$SharedElementCallback21Impl
@@ -760,7 +762,6 @@ androidx.core.app.ActivityCompat:
     public static void setExitSharedElementCallback(android.app.Activity,androidx.core.app.SharedElementCallback)
     public static void setLocusContext(android.app.Activity,androidx.core.content.LocusIdCompat,android.os.Bundle)
     public static void setPermissionCompatDelegate(androidx.core.app.ActivityCompat$PermissionCompatDelegate)
-    public static boolean shouldShowRequestPermissionRationale(android.app.Activity,java.lang.String)
     public static void startActivityForResult(android.app.Activity,android.content.Intent,int,android.os.Bundle)
     public static void startIntentSenderForResult(android.app.Activity,android.content.IntentSender,int,android.content.Intent,int,int,int,android.os.Bundle)
     public static void startPostponedEnterTransition(android.app.Activity)
@@ -3631,6 +3632,27 @@ androidx.viewpager.widget.ViewPager$SavedState
 androidx.viewpager.widget.ViewPager$SimpleOnPageChangeListener
 androidx.viewpager.widget.ViewPager$ViewPositionComparator
 androidx.viewpager.widget.ViewPager
+com.baseflow.permissionhandler.BuildConfig
+com.baseflow.permissionhandler.PermissionConstants$PermissionGroup
+com.baseflow.permissionhandler.PermissionConstants$PermissionStatus
+com.baseflow.permissionhandler.PermissionConstants$ServiceStatus
+com.baseflow.permissionhandler.PermissionConstants
+com.baseflow.permissionhandler.PermissionHandlerPlugin:
+    public static void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar)
+com.baseflow.permissionhandler.PermissionUtils:
+    static final java.lang.String SHARED_PREFERENCES_PERMISSION_WAS_DENIED_BEFORE_KEY
+    public void <init>()
+com.baseflow.permissionhandler.R$attr
+com.baseflow.permissionhandler.R$color
+com.baseflow.permissionhandler.R$dimen
+com.baseflow.permissionhandler.R$drawable
+com.baseflow.permissionhandler.R$id
+com.baseflow.permissionhandler.R$integer
+com.baseflow.permissionhandler.R$layout
+com.baseflow.permissionhandler.R$string
+com.baseflow.permissionhandler.R$style
+com.baseflow.permissionhandler.R$styleable
+com.baseflow.permissionhandler.R
 com.example.fomulario_asistencia_cite.BuildConfig
 com.example.fomulario_asistencia_cite.R$attr
 com.example.fomulario_asistencia_cite.R$color
@@ -4158,7 +4180,21 @@ io.flutter.plugin.common.MethodChannel:
     public void resizeChannelBuffer(int)
     public void setWarnsOnChannelOverflow(boolean)
 io.flutter.plugin.common.PluginRegistry$PluginRegistrantCallback
-io.flutter.plugin.common.PluginRegistry$Registrar
+io.flutter.plugin.common.PluginRegistry$Registrar:
+    public abstract android.content.Context activeContext()
+    public abstract android.app.Activity activity()
+    public abstract io.flutter.plugin.common.PluginRegistry$Registrar addNewIntentListener(io.flutter.plugin.common.PluginRegistry$NewIntentListener)
+    public abstract io.flutter.plugin.common.PluginRegistry$Registrar addUserLeaveHintListener(io.flutter.plugin.common.PluginRegistry$UserLeaveHintListener)
+    public abstract io.flutter.plugin.common.PluginRegistry$Registrar addViewDestroyListener(io.flutter.plugin.common.PluginRegistry$ViewDestroyListener)
+    public abstract io.flutter.plugin.common.PluginRegistry$Registrar addWindowFocusChangedListener(io.flutter.plugin.common.PluginRegistry$WindowFocusChangedListener)
+    public abstract android.content.Context context()
+    public abstract java.lang.String lookupKeyForAsset(java.lang.String)
+    public abstract java.lang.String lookupKeyForAsset(java.lang.String,java.lang.String)
+    public abstract io.flutter.plugin.common.BinaryMessenger messenger()
+    public abstract io.flutter.plugin.platform.PlatformViewRegistry platformViewRegistry()
+    public abstract io.flutter.plugin.common.PluginRegistry$Registrar publish(java.lang.Object)
+    public abstract io.flutter.view.TextureRegistry textures()
+    public abstract io.flutter.view.FlutterView view()
 io.flutter.plugin.common.PluginRegistry$ViewDestroyListener
 io.flutter.plugin.common.PluginRegistry$WindowFocusChangedListener
 io.flutter.plugin.common.PluginRegistry
@@ -10933,6 +10969,8 @@ androidx.lifecycle.ViewModelProvider$Factory:
 androidx.lifecycle.ViewModelProvider$NewInstanceFactory:
     public synthetic androidx.lifecycle.ViewModel create(java.lang.Class,androidx.lifecycle.viewmodel.CreationExtras)
 androidx.startup.StartupLogger
+com.baseflow.permissionhandler.ServiceManager:
+    public static boolean isLocationServiceEnablePreKitKat(android.content.Context)
 io.flutter.Log:
     public static int ASSERT
     public static int DEBUG

@@ -1,0 +1,12 @@
+com.baseflow.permissionhandler.permission_handler_android-jetified-annotation-experimental-1.1.0-0 /Users/ventura/.gradle/caches/transforms-3/14e8a015ff2e73476f3d135d36cca642/transformed/jetified-annotation-experimental-1.1.0/res
+com.baseflow.permissionhandler.permission_handler_android-jetified-window-1.0.0-beta04-1 /Users/ventura/.gradle/caches/transforms-3/31330b1554f3b2a213fb9b04131a59f6/transformed/jetified-window-1.0.0-beta04/res
+com.baseflow.permissionhandler.permission_handler_android-jetified-window-java-1.0.0-beta04-2 /Users/ventura/.gradle/caches/transforms-3/4d8333527f04eacf72d45bd8568c1e49/transformed/jetified-window-java-1.0.0-beta04/res
+com.baseflow.permissionhandler.permission_handler_android-core-1.6.0-3 /Users/ventura/.gradle/caches/transforms-3/de52a2656095d0b9b15a5072f1a49b5b/transformed/core-1.6.0/res
+com.baseflow.permissionhandler.permission_handler_android-main-4 /Users/ventura/.pub-cache/hosted/pub.dev/permission_handler_android-10.3.6/android/src/main/res
+com.baseflow.permissionhandler.permission_handler_android-release-5 /Users/ventura/.pub-cache/hosted/pub.dev/permission_handler_android-10.3.6/android/src/release/res
+com.baseflow.permissionhandler.permission_handler_android-pngs-6 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/generated/res/pngs/release
+com.baseflow.permissionhandler.permission_handler_android-resValues-7 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/generated/res/resValues/release
+com.baseflow.permissionhandler.permission_handler_android-rs-8 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/generated/res/rs/release
+com.baseflow.permissionhandler.permission_handler_android-mergeReleaseResources-9 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/intermediates/incremental/release/mergeReleaseResources/merged.dir
+com.baseflow.permissionhandler.permission_handler_android-mergeReleaseResources-10 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+com.baseflow.permissionhandler.permission_handler_android-merged_res-11 /Users/ventura/Documents/sofia/fomulario_asistencia_cite/build/permission_handler_android/intermediates/merged_res/release

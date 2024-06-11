@@ -4,9 +4,10 @@ import 'package:excel/excel.dart';
 import 'package:fomulario_asistencia_cite/Providers/EventoProviderId.dart';
 import 'package:fomulario_asistencia_cite/Providers/ProviderParticipanteId.dart';
 import 'package:fomulario_asistencia_cite/Views/Views.dart';
-import 'package:open_file/open_file.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class SubListaEventos extends StatefulWidget {
@@ -22,6 +23,8 @@ class _SubListaEventosState extends State<SubListaEventos> {
   final participantesStream = Supabase.instance.client
       .from('neoParticipantes')
       .stream(primaryKey: ['id']);
+
+  String? _exportedFilePath;
 
   @override
   void initState() {
@@ -253,49 +256,6 @@ class _SubListaEventosState extends State<SubListaEventos> {
                                         ),
                                       );
                                     }),
-
-                                // tabla prueba
-
-                                SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: DataTable(
-                                    columns: const [
-                                      DataColumn(label: Text('Nombre')),
-                                      DataColumn(label: Text('DNI')),
-                                      DataColumn(label: Text('Dirección')),
-                                      DataColumn(label: Text('Teléfono')),
-                                      DataColumn(label: Text('Correo')),
-                                      DataColumn(label: Text('RUC')),
-                                      DataColumn(label: Text('Firma')),
-                                    ],
-                                    rows: participantesConEventoSeleccionado
-                                        .map((participante) => DataRow(cells: [
-                                              DataCell(Text(
-                                                  participante['nombre'] ??
-                                                      'N/A')),
-                                              DataCell(Text(participante['DNI']
-                                                      ?.toString() ??
-                                                  'N/A')),
-                                              DataCell(Text(
-                                                  participante['direccion'] ??
-                                                      'N/A')),
-                                              DataCell(Text(
-                                                  participante['telefono']
-                                                          ?.toString() ??
-                                                      'N/A')),
-                                              DataCell(Text(
-                                                  participante['correo'] ??
-                                                      'N/A')),
-                                              DataCell(Text(participante['ruc']
-                                                      ?.toString() ??
-                                                  'N/A')),
-                                              DataCell(Text(
-                                                  participante['firma'] ??
-                                                      'N/A')),
-                                            ]))
-                                        .toList(),
-                                  ),
-                                ),
                               ],
                             );
                           }),
@@ -357,6 +317,16 @@ class _SubListaEventosState extends State<SubListaEventos> {
     );
   }
 
+  Future<String> getNombreEvento(String eventoId) async {
+    final eventoData = await supabase
+        .from('eventos')
+        .select('nombre')
+        .eq('id', eventoId)
+        .single();
+
+    return eventoData['nombre'] ?? 'Sin nombre';
+  }
+
   Future<void> eliminarParticipante(
     int participanteId,
   ) async {
@@ -364,49 +334,66 @@ class _SubListaEventosState extends State<SubListaEventos> {
   }
 
   Future<void> exportToExcel(List<Map<String, dynamic>> participantes) async {
-    var excel = Excel.createExcel();
-    Sheet sheetObject = excel['Sheet1'];
-    String valor = context.read<ProviderEventosId>().provId.toString();
+    var status = await Permission.storage.request();
+    if (status.isGranted) {
+      // Continuar con la exportación del archivo
+      // ...
 
-    // Add header row
-    List<String> headers = [
-      'Nombre',
-      'DNI',
-      'Dirección',
-      'Teléfono',
-      'Correo',
-      'RUC',
-      'Firma'
-    ];
-    sheetObject.appendRow(headers);
+      var excel = Excel.createExcel();
+      Sheet sheetObject = excel['Sheet1'];
+      String valor = context.read<ProviderEventosId>().provId.toString();
+      String nombreEvento = await getNombreEvento(valor);
 
-    // Add data rows
-    for (var participante in participantes) {
-      List<String> row = [
-        participante['nombre'] ?? '',
-        participante['DNI']?.toString() ?? '',
-        participante['direccion'] ?? '',
-        participante['telefono']?.toString() ?? '',
-        participante['correo'] ?? '',
-        participante['ruc']?.toString() ?? '',
-        participante['firma'] ?? ''
+      // Add header row
+      List<String> headers = [
+        'Nombre',
+        'DNI',
+        'Dirección',
+        'Teléfono',
+        'Correo',
+        'RUC',
+        'Firma'
       ];
-      sheetObject.appendRow(row);
+      sheetObject.appendRow(headers);
+
+      // Add data rows
+      for (var participante in participantes) {
+        List<String> row = [
+          participante['nombre'] ?? '',
+          participante['DNI']?.toString() ?? '',
+          participante['direccion'] ?? '',
+          participante['telefono']?.toString() ?? '',
+          participante['correo'] ?? '',
+          participante['ruc']?.toString() ?? '',
+          participante['firma'] ?? ''
+        ];
+        sheetObject.appendRow(row);
+      }
+
+      // Save the file
+      var downloadsDirectory = await getDownloadsDirectory();
+      String outputFile =
+          '${downloadsDirectory!.path}/Participantes-$nombreEvento.xlsx';
+      File(outputFile)
+        ..createSync(recursive: true)
+        ..writeAsBytesSync(excel.encode()!);
+
+      // Open the file
+      _exportedFilePath = outputFile;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              'La relacion de participantes se descargo con exito\n\n Encuentrala en tu carpeta de descargas:\n\n $outputFile'),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Permiso de almacenamiento denegado'),
+        ),
+      );
     }
-
-    // Save the file
-    var downloadsDirectory = await getDownloadsDirectory();
-    String outputFile = '${downloadsDirectory!.path}/Participantes-$valor.xlsx';
-    File(outputFile)
-      ..createSync(recursive: true)
-      ..writeAsBytesSync(excel.encode()!);
-
-    // Open the file
-    OpenFile.open(outputFile);
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Listado exportado: $outputFile')),
-    );
   }
 
   Future<Directory?> getDownloadsDirectory() async {
